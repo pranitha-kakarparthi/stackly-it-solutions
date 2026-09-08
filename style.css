@@ -49,10 +49,10 @@ button {
   margin: 0 auto;
 }
 .section {
-  padding: 132px 0;
+  padding: 24px 0;
 }
 .section-sm {
-  padding: 50px 0;
+  padding: 24px 0;
 }
 .page-noise {
   position: fixed;
@@ -416,6 +416,45 @@ h2 {
   margin-top: 6px;
   font-family: "DM Sans";
   letter-spacing: 0.03em;
+}
+.people-panel {
+  position: relative;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border: 1px solid rgba(130, 220, 255, 0.2);
+  border-radius: 12px;
+  background: #102943;
+}
+.people-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7, 17, 31, 0.7), transparent 55%, rgba(6, 182, 212, 0.12));
+  pointer-events: none;
+}
+.people-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+  opacity: 0.9;
+}
+.people-panel span {
+  position: absolute;
+  z-index: 1;
+  left: 12px;
+  bottom: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--white);
+  font-size: 9px;
+  font-weight: 700;
+}
+.people-panel span i {
+  color: var(--mint);
 }
 .chart {
   height: 156px;
@@ -939,7 +978,8 @@ h2 {
 }
 .about-image-frame {
   width: min(540px, 100%);
-  height: min(420px, 100%);
+  height: auto;
+  aspect-ratio: 3 / 2;
   margin: 0;
   position: relative;
   overflow: hidden;
@@ -953,6 +993,7 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 34%;
 }
 .about-image-frame figcaption {
   display: flex;
@@ -1284,6 +1325,83 @@ h2 {
   );
   position: relative;
 }
+.blog-section {
+  background: var(--section);
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.blog-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: rgba(16, 35, 61, 0.72);
+  transition: transform 0.35s var(--ease), border-color 0.3s, box-shadow 0.3s;
+}
+.blog-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(45, 212, 191, 0.35);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.22);
+}
+.blog-image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  background: #102943;
+}
+.blog-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 48%, rgba(7, 17, 31, 0.72));
+}
+.blog-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+  transition: transform 0.5s var(--ease);
+}
+.blog-card:hover .blog-image img {
+  transform: scale(1.04);
+}
+.blog-image span {
+  position: absolute;
+  z-index: 1;
+  left: 15px;
+  bottom: 13px;
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+}
+.blog-card-body {
+  padding: 22px 22px 24px;
+}
+.blog-card-body small {
+  color: var(--cyan);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.blog-card-body h3 {
+  font-size: 19px;
+  line-height: 1.22;
+  margin: 13px 0 10px;
+}
+.blog-card-body p {
+  min-height: 54px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.blog-card-body .text-link {
+  margin-top: 21px;
+}
 .quote-mark {
   position: absolute;
   right: 36px;
@@ -1317,6 +1435,9 @@ h2 {
   border-radius: 50%;
   font-size: 11px;
   font-weight: 700;
+  object-fit: cover;
+  object-position: center 28%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
 }
 .avatar-one {
   background: linear-gradient(135deg, #4ade80, #0f766e);
@@ -1651,7 +1772,7 @@ h2 {
   }
   .about-image-frame {
     height: auto;
-    aspect-ratio: 760 / 426;
+    aspect-ratio: 3 / 2;
   }
   .industry-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1667,7 +1788,7 @@ h2 {
   }
   .about-image-frame {
     height: auto;
-    aspect-ratio: 760 / 426;
+    aspect-ratio: 3 / 2;
   }
 }
 @media (max-width: 760px) {
@@ -1855,7 +1976,7 @@ h2 {
   .about-image-frame {
     width: 100%;
     height: auto;
-    aspect-ratio: 760 / 426;
+    aspect-ratio: 3 / 2;
   }
   .terminal-window {
     width: 100%;
@@ -1934,6 +2055,13 @@ h2 {
   }
   .testimonial-card blockquote {
     font-size: 18px;
+  }
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .blog-card-body p {
+    min-height: 0;
   }
   .slider-controls {
     margin-top: 27px;
