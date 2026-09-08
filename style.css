@@ -1406,8 +1406,8 @@ h2 {
 }
 .footer-main {
   display: grid;
-  grid-template-columns: 1fr 1.7fr;
-  gap: 100px;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 0;
   padding-bottom: 70px;
   border-bottom: 1px solid var(--border);
 }
