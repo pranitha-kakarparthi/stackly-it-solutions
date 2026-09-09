@@ -1,2 +1,109 @@
-﻿<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Sign in to the Stackly workspace."><title>Sign in | Stackly</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="stylesheet" href="style.css"><script defer src="shared.js"></script></head><body class="auth-page"><div class="site-loader" id="siteLoader" role="status" aria-live="polite"><img src="logoStackly.webp" alt=""><span class="loader-spinner"></span><span>Loading Stackly</span></div><main class="auth-shell"><section class="auth-story"><a class="brand" href="index.html"><img src="logoStackly.webp" alt="Stackly"></a><div><div class="eyebrow"><span class="eyebrow-line"></span> Stackly workspace</div><h1>Make progress<br><span class="gradient-text">visible.</span></h1><p>One clear view for the people, systems, and ideas moving your business forward.</p></div><div class="auth-trust"><span><i class="fa-solid fa-shield-halved"></i> Secure by design</span><span><i class="fa-solid fa-users"></i> Built for teams</span></div></section><section class="auth-form-wrap"><div class="auth-topline"><button class="font-toggle" id="fontSizeToggle" type="button" aria-label="Toggle larger text" aria-pressed="false">A<sup>+</sup></button><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Home</a></div><form class="auth-form" id="signInForm" novalidate><div class="form-heading"><span>Welcome back</span><small>Sign in to your Stackly workspace.</small></div><label for="loginEmail">Email address <b>*</b></label><input id="loginEmail" type="email" required autocomplete="email" placeholder="you@company.com"><small class="field-error"></small><label for="loginPassword">Password <b>*</b></label><input id="loginPassword" type="password" required minlength="6" autocomplete="current-password" placeholder="At least 6 characters"><small class="field-error"></small><label for="loginRole">Login as</label><select id="loginRole"><option>Admin</option><option>Manager</option><option>Employee</option><option>Customer</option></select><div class="auth-options"><a href="404.html">Forgot password?</a></div><button class="button button-primary" type="submit">Sign in <i class="fa-solid fa-arrow-right"></i></button><p class="form-status" id="authStatus" role="status"></p><div class="auth-divider"><span>or continue with</span></div><div class="social-auth"><a href="404.html" aria-label="Continue with Google"><i class="fa-brands fa-google"></i></a><a href="404.html" aria-label="Continue with Microsoft"><i class="fa-brands fa-microsoft"></i></a><a href="404.html" aria-label="Continue with LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></div><p class="auth-switch">New to Stackly? <a href="sign-up.html">Create an account</a></p></form></section></main><script defer src="auth.js"></script></body></html>
-
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in to the Stackly workspace." />
+    <title>Sign in | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="shared.js"></script>
+  </head>
+  <body class="auth-page">
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="logoStackly.webp" alt="" /><span class="loader-spinner"></span
+      ><span>Loading Stackly</span>
+    </div>
+    <main class="auth-shell">
+      <section class="auth-story">
+        <a class="brand" href="index.html"
+          ><img src="logoStackly.webp" alt="Stackly"
+        /></a>
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span> Stackly workspace
+          </div>
+          <h1>
+            Make progress<br /><span class="gradient-text">visible.</span>
+          </h1>
+          <p>
+            One clear view for the people, systems, and ideas moving your
+            business forward.
+          </p>
+        </div>
+        <div class="auth-trust">
+          <span><i class="fa-solid fa-shield-halved"></i> Secure by design</span
+          ><span><i class="fa-solid fa-users"></i> Built for teams</span>
+        </div>
+      </section>
+      <section class="auth-form-wrap">
+        <div class="auth-topline">
+          <a href="index.html"
+            ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;&nbsp;Back to
+            Home</a
+          >
+        </div>
+        <form class="auth-form" id="signInForm" novalidate>
+          <div class="form-heading">
+            <span>Welcome back</span
+            ><small>Sign in to your Stackly workspace.</small>
+          </div>
+          <label for="loginEmail">Email address <b>*</b></label
+          ><input
+            id="loginEmail"
+            type="email"
+            required
+            autocomplete="email"
+            placeholder="you@company.com"
+          /><small class="field-error"></small
+          ><label for="loginPassword">Password <b>*</b></label
+          ><input
+            id="loginPassword"
+            type="password"
+            required
+            minlength="6"
+            autocomplete="current-password"
+            placeholder="At least 6 characters"
+          /><small class="field-error"></small
+          ><label for="loginRole">Login as</label
+          ><select id="loginRole">
+            <option>Admin</option>
+            <option>Manager</option>
+            <option>Employee</option>
+            <option>Customer</option>
+          </select>
+          <div class="auth-options">
+            <a href="404.html">Forgot password?</a>
+          </div>
+          <button class="button button-primary" type="submit">
+            Sign in <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <p class="form-status" id="authStatus" role="status"></p>
+          <div class="auth-divider"><span>or continue with</span></div>
+          <div class="social-auth">
+            <a href="404.html" aria-label="Continue with Google"
+              ><i class="fa-brands fa-google"></i></a
+            ><a href="404.html" aria-label="Continue with Microsoft"
+              ><i class="fa-brands fa-microsoft"></i></a
+            ><a href="404.html" aria-label="Continue with LinkedIn"
+              ><i class="fa-brands fa-linkedin-in"></i
+            ></a>
+          </div>
+          <p class="auth-switch">
+            New to Stackly? <a href="sign-up.html">Create an account</a>
+          </p>
+        </form>
+      </section>
+    </main>
+    <script defer src="auth.js"></script>
+  </body>
+</html>

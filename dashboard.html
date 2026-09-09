@@ -1,2 +1,141 @@
-﻿<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Stackly workspace dashboard."><title>Workspace | Stackly</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="stylesheet" href="style.css"><script defer src="shared.js"></script></head><body class="dashboard-page"><div class="site-loader" id="siteLoader" role="status" aria-live="polite"><img src="logoStackly.webp" alt=""><span class="loader-spinner"></span><span>Loading workspace</span></div><header class="dashboard-header"><a class="brand" href="index.html"><img src="logoStackly.webp" alt="Stackly"></a><div class="dashboard-user"><span class="user-avatar" id="userAvatar">S</span><span><strong id="userName">Stackly user</strong><small id="userRole">Workspace member</small></span><button class="font-toggle" id="fontSizeToggle" type="button" aria-label="Toggle larger text" aria-pressed="false">A<sup>+</sup></button><button class="button button-small button-ghost" id="signOut" type="button">Sign out</button></div></header><main class="dashboard-main" id="main-content"><div class="dashboard-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> Your workspace</div><h1>Good morning, <span class="gradient-text" id="greetingName">there.</span></h1><p>See what is moving, what needs attention, and where your team can go next.</p></div><a class="button button-primary" href="contact.html">Talk to Stackly <i class="fa-solid fa-arrow-right"></i></a></div><section class="kpi-grid"><article class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-rocket"></i></span><small>Active initiatives</small><strong>12</strong><em>+18% this month</em></article><article class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-users"></i></span><small>Team members</small><strong>48</strong><em>+6 this quarter</em></article><article class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-shield-halved"></i></span><small>Security posture</small><strong>98.4%</strong><em>Healthy and protected</em></article><article class="kpi-card"><span class="kpi-icon"><i class="fa-solid fa-clock"></i></span><small>Delivery confidence</small><strong>High</strong><em>On track this sprint</em></article></section><div class="dashboard-grid"><section class="dashboard-panel"><div class="panel-heading"><div><small>Delivery pulse</small><h2>Momentum overview</h2></div><span class="status-pill">Live</span></div><div class="momentum-bars"><span style="--bar:72%"><b>Discovery</b><i></i></span><span style="--bar:88%"><b>Design</b><i></i></span><span style="--bar:64%"><b>Build</b><i></i></span><span style="--bar:93%"><b>Launch</b><i></i></span></div><div class="panel-note"><i class="fa-solid fa-circle-check"></i> Your team is ahead of the expected delivery curve.</div></section><section class="dashboard-panel activity-panel"><div class="panel-heading"><div><small>Latest activity</small><h2>What changed</h2></div><i class="fa-solid fa-ellipsis"></i></div><ul class="activity-list"><li><span class="activity-dot cyan"></span><div><strong>New design review booked</strong><small>14 minutes ago</small></div></li><li><span class="activity-dot blue"></span><div><strong>Security audit completed</strong><small>2 hours ago</small></div></li><li><span class="activity-dot mint"></span><div><strong>Cloud migration milestone reached</strong><small>Yesterday</small></div></li></ul></section></div></main><script defer src="dashboard.js"></script></body></html>
-
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Stackly workspace dashboard." />
+    <title>Workspace | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="shared.js"></script>
+  </head>
+  <body class="dashboard-page">
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="logoStackly.webp" alt="" /><span class="loader-spinner"></span
+      ><span>Loading workspace</span>
+    </div>
+    <header class="dashboard-header">
+      <a class="brand" href="index.html"
+        ><img src="logoStackly.webp" alt="Stackly"
+      /></a>
+      <div class="dashboard-user">
+        <span class="user-avatar" id="userAvatar">S</span
+        ><span
+          ><strong id="userName">Stackly user</strong
+          ><small id="userRole">Workspace member</small></span
+        ><button
+          class="button button-small button-ghost"
+          id="signOut"
+          type="button"
+        >
+          Sign out
+        </button>
+      </div>
+    </header>
+    <main class="dashboard-main" id="main-content">
+      <div class="dashboard-heading">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span> Your workspace
+          </div>
+          <h1>
+            Good morning,
+            <span class="gradient-text" id="greetingName">there.</span>
+          </h1>
+          <p>
+            See what is moving, what needs attention, and where your team can go
+            next.
+          </p>
+        </div>
+        <a class="button button-primary" href="contact.html"
+          >Talk to Stackly <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+      <section class="kpi-grid">
+        <article class="kpi-card">
+          <span class="kpi-icon"><i class="fa-solid fa-rocket"></i></span
+          ><small>Active initiatives</small><strong>12</strong
+          ><em>+18% this month</em>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon"><i class="fa-solid fa-users"></i></span
+          ><small>Team members</small><strong>48</strong
+          ><em>+6 this quarter</em>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon"><i class="fa-solid fa-shield-halved"></i></span
+          ><small>Security posture</small><strong>98.4%</strong
+          ><em>Healthy and protected</em>
+        </article>
+        <article class="kpi-card">
+          <span class="kpi-icon"><i class="fa-solid fa-clock"></i></span
+          ><small>Delivery confidence</small><strong>High</strong
+          ><em>On track this sprint</em>
+        </article>
+      </section>
+      <div class="dashboard-grid">
+        <section class="dashboard-panel">
+          <div class="panel-heading">
+            <div>
+              <small>Delivery pulse</small>
+              <h2>Momentum overview</h2>
+            </div>
+            <span class="status-pill">Live</span>
+          </div>
+          <div class="momentum-bars">
+            <span style="--bar: 72%"><b>Discovery</b><i></i></span
+            ><span style="--bar: 88%"><b>Design</b><i></i></span
+            ><span style="--bar: 64%"><b>Build</b><i></i></span
+            ><span style="--bar: 93%"><b>Launch</b><i></i></span>
+          </div>
+          <div class="panel-note">
+            <i class="fa-solid fa-circle-check"></i> Your team is ahead of the
+            expected delivery curve.
+          </div>
+        </section>
+        <section class="dashboard-panel activity-panel">
+          <div class="panel-heading">
+            <div>
+              <small>Latest activity</small>
+              <h2>What changed</h2>
+            </div>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+          <ul class="activity-list">
+            <li>
+              <span class="activity-dot cyan"></span>
+              <div>
+                <strong>New design review booked</strong
+                ><small>14 minutes ago</small>
+              </div>
+            </li>
+            <li>
+              <span class="activity-dot blue"></span>
+              <div>
+                <strong>Security audit completed</strong
+                ><small>2 hours ago</small>
+              </div>
+            </li>
+            <li>
+              <span class="activity-dot mint"></span>
+              <div>
+                <strong>Cloud migration milestone reached</strong
+                ><small>Yesterday</small>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+    <script defer src="dashboard.js"></script>
+  </body>
+</html>

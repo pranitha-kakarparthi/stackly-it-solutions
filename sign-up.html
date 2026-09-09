@@ -1,2 +1,124 @@
-﻿<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Create a Stackly workspace account."><title>Create account | Stackly</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><link rel="stylesheet" href="style.css"><script defer src="shared.js"></script></head><body class="auth-page"><div class="site-loader" id="siteLoader" role="status" aria-live="polite"><img src="logoStackly.webp" alt=""><span class="loader-spinner"></span><span>Loading Stackly</span></div><main class="auth-shell auth-shell-register"><section class="auth-story"><a class="brand" href="index.html"><img src="logoStackly.webp" alt="Stackly"></a><div><div class="eyebrow"><span class="eyebrow-line"></span> Build what's next</div><h1>A better way<br>to <span class="gradient-text">move forward.</span></h1><p>Bring your team, technology, and momentum into one focused workspace.</p></div><div class="auth-trust"><span><i class="fa-solid fa-check"></i> Free workspace</span><span><i class="fa-solid fa-lock"></i> Private by default</span></div></section><section class="auth-form-wrap"><div class="auth-topline"><button class="font-toggle" id="fontSizeToggle" type="button" aria-label="Toggle larger text" aria-pressed="false">A<sup>+</sup></button><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Home</a></div><form class="auth-form" id="signUpForm" novalidate><div class="form-heading"><span>Create your account</span><small>Start your Stackly workspace in a minute.</small></div><div class="form-two"><div><label for="firstName">First name <b>*</b></label><input id="firstName" required autocomplete="given-name"><small class="field-error"></small></div><div><label for="lastName">Last name <b>*</b></label><input id="lastName" required autocomplete="family-name"><small class="field-error"></small></div></div><label for="signupEmail">Email address <b>*</b></label><input id="signupEmail" type="email" required autocomplete="email"><small class="field-error"></small><label for="signupPassword">Password <b>*</b></label><input id="signupPassword" type="password" required minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}" autocomplete="new-password"><small class="field-error"></small><label for="signupRole">Role <b>*</b></label><select id="signupRole" required><option value="">Choose a role</option><option>Admin</option><option>Manager</option><option>Employee</option><option>Customer</option></select><small class="field-error"></small><label class="check-row"><input id="terms" type="checkbox" required><span>I agree to the <a href="404.html">Terms of Use</a> and Privacy Policy. <b>*</b></span></label><button class="button button-primary" type="submit">Create account <i class="fa-solid fa-arrow-right"></i></button><p class="form-status" id="authStatus" role="status"></p><p class="auth-switch">Already registered? <a href="sign-in.html">Sign in</a></p></form></section></main><script defer src="auth.js"></script></body></html>
-
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create a Stackly workspace account." />
+    <title>Create account | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="shared.js"></script>
+  </head>
+  <body class="auth-page">
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="logoStackly.webp" alt="" /><span class="loader-spinner"></span
+      ><span>Loading Stackly</span>
+    </div>
+    <main class="auth-shell auth-shell-register">
+      <section class="auth-story">
+        <a class="brand" href="index.html"
+          ><img src="logoStackly.webp" alt="Stackly"
+        /></a>
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span> Build what's next
+          </div>
+          <h1>
+            A better way<br />to
+            <span class="gradient-text">move forward.</span>
+          </h1>
+          <p>
+            Bring your team, technology, and momentum into one focused
+            workspace.
+          </p>
+        </div>
+        <div class="auth-trust">
+          <span><i class="fa-solid fa-check"></i> Free workspace</span
+          ><span><i class="fa-solid fa-lock"></i> Private by default</span>
+        </div>
+      </section>
+      <section class="auth-form-wrap">
+        <div class="auth-topline">
+          <a href="index.html"
+            ><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;&nbsp;Back to
+            Home</a
+          >
+        </div>
+        <form class="auth-form" id="signUpForm" novalidate>
+          <div class="form-heading">
+            <span>Create your account</span
+            ><small>Start your Stackly workspace in a minute.</small>
+          </div>
+          <div class="form-two">
+            <div>
+              <label for="firstName">First name <b>*</b></label
+              ><input id="firstName" required autocomplete="given-name" /><small
+                class="field-error"
+              ></small>
+            </div>
+            <div>
+              <label for="lastName">Last name <b>*</b></label
+              ><input id="lastName" required autocomplete="family-name" /><small
+                class="field-error"
+              ></small>
+            </div>
+          </div>
+          <label for="signupEmail">Email address <b>*</b></label
+          ><input
+            id="signupEmail"
+            type="email"
+            required
+            autocomplete="email"
+          /><small class="field-error"></small
+          ><label for="signupPassword">Password <b>*</b></label
+          ><input
+            id="signupPassword"
+            type="password"
+            required
+            minlength="8"
+            pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}"
+            autocomplete="new-password"
+          /><small class="field-error"></small
+          ><label for="signupConfirmPassword">Confirm password <b>*</b></label
+          ><input
+            id="signupConfirmPassword"
+            type="password"
+            required
+            minlength="8"
+            autocomplete="new-password"
+          /><small class="field-error"></small
+          ><label for="signupRole">Role <b>*</b></label
+          ><select id="signupRole" required>
+            <option value="">Choose a role</option>
+            <option>Admin</option>
+            <option>Manager</option>
+            <option>Employee</option>
+            <option>Customer</option></select
+          ><small class="field-error"></small
+          ><label class="check-row"
+            ><input id="terms" type="checkbox" required /><span
+              >I agree to the <a href="404.html">Terms of Use</a> and Privacy
+              Policy. <b>*</b></span
+            ></label
+          ><button class="button button-primary" type="submit">
+            Create account <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <p class="form-status" id="authStatus" role="status"></p>
+          <p class="auth-switch">
+            Already registered? <a href="sign-in.html">Sign in</a>
+          </p>
+        </form>
+      </section>
+    </main>
+    <script defer src="auth.js"></script>
+  </body>
+</html>

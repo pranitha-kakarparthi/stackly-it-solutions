@@ -1,27 +1,68 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 | Stackly</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="shared.js"></script>
-</head>
-<body class="error-page">
-  <div class="site-loader" id="siteLoader" role="status" aria-live="polite"><img src="logoStackly.webp" alt=""><span class="loader-spinner"></span><span>Loading Stackly</span></div>
-  <main class="error-content">
-    <a class="brand" href="index.html" aria-label="Stackly home"><img src="logoStackly.webp" alt="Stackly"></a>
-    <div class="error-code">404</div>
-    <h1>Page not found.</h1>
-    <p>The destination you followed is not available yet. Return to Stackly and keep exploring.</p>
-    <form class="error-search" id="errorSearch"><label class="sr-only" for="errorQuery">Search Stackly</label><input id="errorQuery" type="search" placeholder="Search the site"><button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button></form>
-    <div class="error-actions"><a class="button button-primary" href="index.html">Back to home <i class="fa-solid fa-arrow-right"></i></a><a class="button button-ghost" href="contact.html">Contact us</a></div>
-    <nav class="error-links" aria-label="Helpful links"><a href="index.html#services">Services</a><a href="index.html#about">About</a><a href="index.html#blog">Blog</a><a href="contact.html">Contact</a></nav>
-  </main>
-  <script>document.querySelector('#errorSearch')?.addEventListener('submit', (event) => { event.preventDefault(); window.location.href = 'index.html#services'; });</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Manrope:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="shared.js"></script>
+    <script defer src="shared-shell.js"></script>
+  </head>
+  <body class="error-page">
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="logoStackly.webp" alt="" /><span class="loader-spinner"></span
+      ><span>Loading Stackly</span>
+    </div>
+    <header class="inner-header"></header>
+    <main class="error-content">
+      <a class="brand" href="index.html" aria-label="Stackly home"
+        ><img src="logoStackly.webp" alt="Stackly"
+      /></a>
+      <div class="error-code">404</div>
+      <h1>Page not found.</h1>
+      <p>
+        The destination you followed is not available yet. Return to Stackly and
+        keep exploring.
+      </p>
+      <form class="error-search" id="errorSearch">
+        <label class="sr-only" for="errorQuery">Search Stackly</label
+        ><input
+          id="errorQuery"
+          type="search"
+          placeholder="Search the site"
+        /><button type="submit" aria-label="Search">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+      <div class="error-actions">
+        <a class="button button-primary" href="index.html"
+          >Back to home <i class="fa-solid fa-arrow-right"></i></a
+        ><a class="button button-ghost" href="contact.html">Contact us</a>
+      </div>
+      <nav class="error-links" aria-label="Helpful links">
+        <a href="index.html#services">Services</a
+        ><a href="index.html#about">About</a><a href="index.html#blog">Blog</a
+        ><a href="contact.html">Contact</a>
+      </nav>
+    </main>
+    <footer class="footer inner-footer"></footer>
+    <script>
+      document
+        .querySelector("#errorSearch")
+        ?.addEventListener("submit", (event) => {
+          event.preventDefault();
+          window.location.href = "index.html#services";
+        });
+    </script>
+  </body>
 </html>
