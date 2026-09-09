@@ -16,7 +16,7 @@ menuToggle.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   menuToggle.setAttribute(
     "aria-label",
-    isOpen ? "Close navigation" : "Open navigation",
+    isOpen ? "Close navigation" : "Open navigation"
   );
 });
 
@@ -39,7 +39,7 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 },
+  { threshold: 0.12 }
 );
 document
   .querySelectorAll(".reveal")
@@ -55,18 +55,18 @@ const sectionObserver = new IntersectionObserver(
         navLinks.forEach((link) =>
           link.classList.toggle(
             "active",
-            link.getAttribute("href") === `#${current}`,
-          ),
+            link.getAttribute("href") === `#${current}`
+          )
         );
       }
     });
   },
-  { rootMargin: "-35% 0px -55% 0px" },
+  { rootMargin: "-35% 0px -55% 0px" }
 );
 sections.forEach((section) => sectionObserver.observe(section));
 
 backToTop.addEventListener("click", () =>
-  window.scrollTo({ top: 0, behavior: "smooth" }),
+  window.scrollTo({ top: 0, behavior: "smooth" })
 );
 
 // Count statistics once, when the stats band is visible.
@@ -93,7 +93,7 @@ new IntersectionObserver(
   (entries) => {
     if (entries[0].isIntersecting) animateCounters();
   },
-  { threshold: 0.35 },
+  { threshold: 0.35 }
 ).observe(statsSection);
 
 // Lightweight testimonial carousel with keyboard-friendly buttons.
@@ -124,10 +124,10 @@ const description = document.querySelector('meta[name="description"]');
 if (description)
   description.setAttribute(
     "content",
-    "Stackly builds intelligent digital products, cloud systems, and secure technology solutions for ambitious businesses.",
+    "Stackly builds intelligent digital products, cloud systems, and secure technology solutions for ambitious businesses."
   );
 document.querySelectorAll(".brand").forEach((brand) => {
-  brand.innerHTML = '<img src="logoStackly.webp" alt="Stackly">';
+  brand.innerHTML = '<img src="assets/images/logoStackly.webp" alt="Stackly">';
   brand.setAttribute("aria-label", "Stackly home");
 });
 document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
@@ -144,7 +144,7 @@ if (socialLinks) {
   ]
     .map(
       ([label, icon]) =>
-        `<a href="404.html" aria-label="${label}"><i class="fa-brands ${icon}"></i></a>`,
+        `<a href="404.html" aria-label="${label}"><i class="fa-brands ${icon}"></i></a>`
     )
     .join("");
 }
