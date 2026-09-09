@@ -2679,7 +2679,13 @@ html {
 .page-hero::after {
   z-index: -1;
   background:
-    linear-gradient(90deg, var(--bg) 0%, rgba(7, 17, 31, 0.94) 28%, rgba(7, 17, 31, 0.45) 65%, rgba(7, 17, 31, 0.68) 100%),
+    linear-gradient(
+      90deg,
+      var(--bg) 0%,
+      rgba(7, 17, 31, 0.94) 28%,
+      rgba(7, 17, 31, 0.45) 65%,
+      rgba(7, 17, 31, 0.68) 100%
+    ),
     linear-gradient(180deg, rgba(7, 17, 31, 0.2), var(--bg));
 }
 .page-hero .container {
@@ -2704,7 +2710,6 @@ html {
   border-radius: 18px;
   background: rgba(16, 35, 61, 0.72);
   box-shadow: 0 28px 55px rgba(0, 0, 0, 0.28);
-  transform: rotate(1.2deg);
 }
 .page-hero-media::after {
   content: "";
@@ -3368,7 +3373,12 @@ html {
   }
   .page-hero::after {
     background:
-      linear-gradient(90deg, var(--bg) 0%, rgba(7, 17, 31, 0.88) 20%, rgba(7, 17, 31, 0.54) 100%),
+      linear-gradient(
+        90deg,
+        var(--bg) 0%,
+        rgba(7, 17, 31, 0.88) 20%,
+        rgba(7, 17, 31, 0.54) 100%
+      ),
       linear-gradient(180deg, rgba(7, 17, 31, 0.12), var(--bg));
   }
   .surface-form {
