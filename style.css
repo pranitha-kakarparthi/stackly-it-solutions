@@ -2906,9 +2906,30 @@ html {
   display: block;
   margin-top: 8px;
 }
+#loginRole option,
+#signupRole option {
+  background: var(--card);
+}
 .auth-options {
   text-align: right;
   margin: 7px 0 21px;
+}
+.password-container {
+  position: relative;
+}
+.password-container input {
+  width: 100%;
+  padding: 10px 35px 10px 10px; /* space for the icon */
+  font-size: 16px;
+}
+.toggle-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
 }
 .auth-options a,
 .auth-switch a,

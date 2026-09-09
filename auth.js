@@ -20,10 +20,57 @@ const showValidation = (form, firstInvalid) => {
   return false;
 };
 
+const siginPasswordInput = document.getElementById("loginPassword");
+const signIntoggleEye = document.getElementById("signIntoggleEye");
+
+signIntoggleEye &&
+  signIntoggleEye.addEventListener("click", () => {
+    const signInType =
+      siginPasswordInput.getAttribute("type") === "password"
+        ? "text"
+        : "password";
+    siginPasswordInput.setAttribute("type", signInType);
+
+    signIntoggleEye.style.color = signInType === "text" ? "blue" : "#555";
+  });
+
+const signupPasswordInput = document.getElementById("signupPassword");
+const signupToggleEye = document.getElementById("signupToggleEye");
+
+signupToggleEye &&
+  signupToggleEye.addEventListener("click", () => {
+    const signupType =
+      signupPasswordInput.getAttribute("type") === "password"
+        ? "text"
+        : "password";
+    signupPasswordInput.setAttribute("type", signupType);
+
+    signupToggleEye.style.color = signupType === "text" ? "blue" : "#555";
+  });
+
+const signupConfirmPasswordInput = document.getElementById(
+  "signupConfirmPassword"
+);
+const signupConfirmToggleEye = document.getElementById(
+  "signupConfirmToggleEye"
+);
+
+signupConfirmToggleEye &&
+  signupConfirmToggleEye.addEventListener("click", () => {
+    const signupConfirmType =
+      signupConfirmPasswordInput.getAttribute("type") === "password"
+        ? "text"
+        : "password";
+    signupConfirmPasswordInput.setAttribute("type", signupConfirmType);
+
+    signupConfirmToggleEye.style.color =
+      signupConfirmType === "text" ? "blue" : "#555";
+  });
+
 signInForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const invalid = [...signInForm.querySelectorAll("[required]")].find(
-    (field) => !field.value.trim() || !field.validity.valid,
+    (field) => !field.value.trim() || !field.validity.valid
   );
   if (!showValidation(signInForm, invalid)) return;
   const email = document.querySelector("#loginEmail").value.trim();
@@ -43,7 +90,7 @@ signUpForm?.addEventListener("submit", (event) => {
     (field) =>
       (field.type === "checkbox" && !field.checked) ||
       (field.type !== "checkbox" &&
-        (!field.value.trim() || !field.validity.valid)),
+        (!field.value.trim() || !field.validity.valid))
   );
   if (!showValidation(signUpForm, invalid)) return;
   if (password.value !== confirmPassword.value) {

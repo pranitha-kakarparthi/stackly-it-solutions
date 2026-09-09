@@ -65,15 +65,19 @@
             autocomplete="email"
             placeholder="you@company.com"
           /><small class="field-error"></small
-          ><label for="loginPassword">Password <b>*</b></label
-          ><input
-            id="loginPassword"
-            type="password"
-            required
-            minlength="6"
-            autocomplete="current-password"
-            placeholder="At least 6 characters"
-          /><small class="field-error"></small
+          ><label for="loginPassword">Password <b>*</b></label>
+          <div class="password-container">
+            <input
+              id="loginPassword"
+              type="password"
+              required
+              minlength="6"
+              autocomplete="current-password"
+              placeholder="Enter your password"
+            />
+            <span class="toggle-eye" id="signIntoggleEye">&#128065;</span>
+          </div>
+          <small class="field-error"></small
           ><label for="loginRole">Login as</label
           ><select id="loginRole">
             <option>Admin</option>
