@@ -2860,22 +2860,18 @@ html {
   color: var(--muted);
   font-size: 10px;
 }
-.surface-form label,
-.auth-form label {
+.surface-form label {
   display: block;
   color: var(--text);
   font-size: 11px;
   font-weight: 700;
   margin: 14px 0 7px;
 }
-.surface-form label b,
-.auth-form label b {
+.surface-form label b {
   color: var(--cyan);
 }
 .surface-form input,
-.surface-form textarea,
-.auth-form input,
-.auth-form select {
+.surface-form textarea {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: 7px;
@@ -2890,26 +2886,105 @@ html {
   min-height: 110px;
 }
 .surface-form input:focus,
-.surface-form textarea:focus,
-.auth-form input:focus,
-.auth-form select:focus {
+.surface-form textarea:focus {
   border-color: var(--cyan);
-}
-.field-error {
-  display: block;
-  min-height: 13px;
-  color: #fca5a5;
-  font-size: 10px;
-  margin-top: 5px;
 }
 .surface-form .button {
   margin-top: 14px;
 }
+
+/* Auth form structure, field groups, and inputs */
+.form-group {
+  margin-bottom: 16px;
+  position: relative;
+}
+.auth-form label {
+  display: block;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
+}
+.auth-form label b {
+  color: var(--cyan);
+  margin-left: 2px;
+}
+.auth-form input:not([type="checkbox"]),
+.auth-form select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: 0;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--white);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.2s;
+}
+.auth-form input::placeholder {
+  color: #64748b;
+  font-size: 13px;
+}
+.auth-form input:focus,
+.auth-form select:focus {
+  border-color: var(--cyan);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+.auth-form input.has-error,
+.auth-form select.has-error,
+.form-group.has-error input,
+.form-group.has-error select {
+  border-color: #f87171 !important;
+  background: rgba(248, 113, 113, 0.04) !important;
+}
+.auth-form input.has-error:focus,
+.auth-form select.has-error:focus,
+.form-group.has-error input:focus,
+.form-group.has-error select:focus {
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2) !important;
+}
+.field-error {
+  display: block;
+  min-height: 15px;
+  color: #f87171;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+.field-error:empty {
+  min-height: 0;
+  margin-top: 0;
+}
 .form-status {
   min-height: 18px;
   color: var(--mint);
-  font-size: 11px;
-  margin-top: 11px;
+  font-size: 12px;
+  margin-top: 14px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 500;
+}
+.form-status.is-success {
+  color: var(--mint);
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  padding: 10px 14px;
+}
+.form-status.is-error {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+  padding: 10px 14px;
 }
 .map-section {
   padding: 0 0 105px;
@@ -3028,30 +3103,60 @@ html {
   display: block;
   margin-top: 8px;
 }
-#loginRole option,
-#signupRole option {
+.auth-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238291a7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+.auth-form select option {
   background: var(--card);
+  color: var(--white);
+  padding: 8px;
 }
 .auth-options {
   text-align: right;
-  margin: 7px 0 21px;
+  margin: 4px 0 18px;
 }
 .password-container {
   position: relative;
+  width: 100%;
 }
 .password-container input {
-  width: 100%;
-  padding: 10px 35px 10px 10px; /* space for the icon */
-  font-size: 16px;
+  padding-right: 42px !important;
 }
 .toggle-eye {
   position: absolute;
-  right: 10px;
+  right: 4px;
   top: 50%;
   transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
   cursor: pointer;
-  font-size: 18px;
-  color: #555;
+  font-size: 14px;
+  color: var(--muted);
+  border-radius: 6px;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+  z-index: 2;
+}
+.toggle-eye:hover,
+.toggle-eye:focus-visible {
+  color: var(--cyan);
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+.toggle-eye.is-active {
+  color: var(--cyan);
 }
 .auth-options a,
 .auth-switch a,
@@ -3068,7 +3173,7 @@ html {
   gap: 12px;
   color: var(--muted);
   font-size: 10px;
-  margin: 26px 0 15px;
+  margin: 24px 0 15px;
 }
 .auth-divider:before,
 .auth-divider:after {
@@ -3091,23 +3196,35 @@ html {
   text-align: center;
   color: var(--muted);
   font-size: 11px;
-  margin-top: 27px;
+  margin-top: 24px;
 }
 .form-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+.check-group {
+  margin: 12px 0 20px;
+}
 .check-row {
   display: flex !important;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   font-weight: 400 !important;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+  margin: 0 !important;
   line-height: 1.5;
 }
-.check-row input {
-  width: auto;
+.check-row input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
   margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--cyan);
+  cursor: pointer;
 }
 .dashboard-page {
   min-height: 100vh;
