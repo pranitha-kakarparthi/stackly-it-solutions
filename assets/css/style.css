@@ -2860,37 +2860,89 @@ html {
   color: var(--muted);
   font-size: 10px;
 }
+.surface-form .form-group {
+  margin-bottom: 16px;
+  position: relative;
+}
 .surface-form label {
   display: block;
   color: var(--text);
-  font-size: 11px;
-  font-weight: 700;
-  margin: 14px 0 7px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.01em;
 }
 .surface-form label b {
   color: var(--cyan);
+  margin-left: 2px;
 }
 .surface-form input,
 .surface-form textarea {
   width: 100%;
   border: 1px solid var(--border);
-  border-radius: 7px;
+  border-radius: 8px;
   outline: 0;
   background: rgba(255, 255, 255, 0.04);
   color: var(--white);
-  padding: 12px;
-  font-size: 12px;
+  padding: 11px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background-color 0.2s;
 }
-.surface-form textarea {
-  resize: vertical;
-  min-height: 110px;
+.surface-form input::placeholder,
+.surface-form textarea::placeholder {
+  color: #64748b;
+  font-size: 13px;
 }
 .surface-form input:focus,
 .surface-form textarea:focus {
   border-color: var(--cyan);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+.surface-form input.has-error,
+.surface-form textarea.has-error {
+  border-color: #f87171 !important;
+  background: rgba(248, 113, 113, 0.04) !important;
+}
+.surface-form input.has-error:focus,
+.surface-form textarea.has-error:focus {
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.2) !important;
+}
+.surface-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.field-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.field-label-row label {
+  margin-bottom: 0;
+}
+.char-counter {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.char-counter.is-warning {
+  color: #fbbf24;
+}
+.char-counter.is-max {
+  color: #f87171;
+  font-weight: 600;
 }
 .surface-form .button {
   margin-top: 14px;
+  width: 100%;
 }
 
 /* Auth form structure, field groups, and inputs */

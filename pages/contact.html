@@ -29,7 +29,9 @@
   </head>
   <body class="inner-page">
     <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
-      <img src="../assets/images/logoStackly.webp" alt="" /><span class="loader-spinner"></span
+      <img src="../assets/images/logoStackly.webp" alt="" /><span
+        class="loader-spinner"
+      ></span
       ><span>Loading Stackly</span>
     </div>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -153,43 +155,74 @@
           </div>
           <form class="surface-form" id="contactForm" novalidate>
             <div class="form-heading">
-              <span>Start a project</span
-              ><small>We usually reply within one business day.</small>
+              <span>Start a project</span>
+              <small>We usually reply within one business day.</small>
             </div>
-            <label for="contactName">Name <b>*</b></label
-            ><input
-              id="contactName"
-              name="name"
-              required
-              autocomplete="name"
-            /><small class="field-error"></small
-            ><label for="contactEmail">Email <b>*</b></label
-            ><input
-              id="contactEmail"
-              name="email"
-              type="email"
-              required
-              autocomplete="email"
-            /><small class="field-error"></small
-            ><label for="contactPhone">Mobile number</label
-            ><input
-              id="contactPhone"
-              name="phone"
-              type="tel"
-              autocomplete="tel"
-            /><label for="contactSubject">Subject <b>*</b></label
-            ><input id="contactSubject" name="subject" required /><small
-              class="field-error"
-            ></small
-            ><label for="contactMessage">Message <b>*</b></label
-            ><textarea
-              id="contactMessage"
-              name="message"
-              rows="5"
-              required
-            ></textarea
-            ><small class="field-error"></small
-            ><button class="button button-primary" type="submit">
+            <div class="form-group">
+              <label for="contactName">Name <b>*</b></label>
+              <input
+                id="contactName"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+                placeholder="Your full name"
+              />
+              <small class="field-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email <b>*</b></label>
+              <input
+                id="contactEmail"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                placeholder="you@company.com"
+              />
+              <small class="field-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Mobile number <b>*</b></label>
+              <input
+                id="contactPhone"
+                name="phone"
+                type="tel"
+                required
+                autocomplete="tel"
+                placeholder="+1 (555) 000-0000"
+              />
+              <small class="field-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject <b>*</b></label>
+              <input
+                id="contactSubject"
+                name="subject"
+                type="text"
+                required
+                placeholder="How can we help?"
+              />
+              <small class="field-error"></small>
+            </div>
+            <div class="form-group">
+              <div class="field-label-row">
+                <label for="contactMessage">Message <b>*</b></label>
+                <span class="char-counter"
+                  ><span id="charCount">0</span> / 500</span
+                >
+              </div>
+              <textarea
+                id="contactMessage"
+                name="message"
+                rows="5"
+                maxlength="500"
+                required
+                placeholder="Tell us about your project or enquiry..."
+              ></textarea>
+              <small class="field-error"></small>
+            </div>
+            <button class="button button-primary" type="submit">
               Send enquiry <i class="fa-solid fa-arrow-right"></i>
             </button>
             <p class="form-status" id="contactStatus" role="status"></p>
@@ -314,7 +347,9 @@
         </div>
         <div class="footer-bottom">
           <span>&copy; 2026 Stackly Technologies. All rights reserved.</span>
-          <div><a href="../404.html">Privacy</a><a href="../404.html">Terms</a></div>
+          <div>
+            <a href="../404.html">Privacy</a><a href="../404.html">Terms</a>
+          </div>
           <span>Made for what's next <i class="fa-solid fa-arrow-up"></i></span>
         </div>
       </div>
