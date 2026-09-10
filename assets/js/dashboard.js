@@ -12,7 +12,20 @@ if (!session) {
     .slice(0, 1)
     .toUpperCase();
 }
+
+// Sign out clears the active session and returns to login
 document.querySelector("#signOut")?.addEventListener("click", () => {
   window.StacklySession.clearSession();
   window.location.href = "sign-in.html";
 });
+
+// Any interactive action trigger inside dashboard routes to 404 (except signout and brand)
+document
+  .querySelector(".dashboard-main")
+  ?.addEventListener("click", (event) => {
+    const target = event.target.closest("button, .action-trigger");
+    if (target && target.id !== "signOut" && !target.closest(".brand")) {
+      event.preventDefault();
+      window.location.href = "../404.html";
+    }
+  });

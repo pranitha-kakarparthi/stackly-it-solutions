@@ -20,7 +20,9 @@
   </head>
   <body class="dashboard-page">
     <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
-      <img src="../assets/images/logoStackly.webp" alt="" /><span class="loader-spinner"></span
+      <img src="../assets/images/logoStackly.webp" alt="" /><span
+        class="loader-spinner"
+      ></span
       ><span>Loading workspace</span>
     </div>
     <header class="dashboard-header">
@@ -45,91 +47,403 @@
       <div class="dashboard-heading">
         <div>
           <div class="eyebrow">
-            <span class="eyebrow-line"></span> Your workspace
+            <span class="eyebrow-line"></span> Enterprise IT Workspace
           </div>
           <h1>
             Good morning,
             <span class="gradient-text" id="greetingName">there.</span>
           </h1>
           <p>
-            See what is moving, what needs attention, and where your team can go
-            next.
+            Real-time telemetry, cloud infrastructure health, and active
+            enterprise IT initiatives.
           </p>
         </div>
-        <a class="button button-primary" href="contact.html"
-          >Talk to Stackly <i class="fa-solid fa-arrow-right"></i
-        ></a>
+        <div class="dashboard-actions">
+          <a class="action-btn-ghost" href="../404.html"
+            ><i class="fa-solid fa-ticket"></i> New Ticket</a
+          >
+          <a class="action-btn-ghost" href="../404.html"
+            ><i class="fa-solid fa-cloud-arrow-up"></i> Deploy Service</a
+          >
+          <a class="button button-primary" href="../404.html"
+            ><i class="fa-solid fa-headset"></i> Support Desk</a
+          >
+        </div>
       </div>
+
       <section class="kpi-grid">
         <article class="kpi-card">
-          <span class="kpi-icon"><i class="fa-solid fa-rocket"></i></span
-          ><small>Active initiatives</small><strong>12</strong
-          ><em>+18% this month</em>
+          <span class="kpi-icon"><i class="fa-solid fa-rocket"></i></span>
+          <small>Active Initiatives</small>
+          <strong>14</strong>
+          <em>+18% this month</em>
         </article>
         <article class="kpi-card">
-          <span class="kpi-icon"><i class="fa-solid fa-users"></i></span
-          ><small>Team members</small><strong>48</strong
-          ><em>+6 this quarter</em>
+          <span class="kpi-icon"><i class="fa-solid fa-server"></i></span>
+          <small>Cloud Availability</small>
+          <strong>99.98%</strong>
+          <em>4 regions operational</em>
         </article>
         <article class="kpi-card">
-          <span class="kpi-icon"><i class="fa-solid fa-shield-halved"></i></span
-          ><small>Security posture</small><strong>98.4%</strong
-          ><em>Healthy and protected</em>
+          <span class="kpi-icon"
+            ><i class="fa-solid fa-shield-halved"></i
+          ></span>
+          <small>Security Posture</small>
+          <strong>98.4%</strong>
+          <em>SOC2 Type II Protected</em>
         </article>
         <article class="kpi-card">
-          <span class="kpi-icon"><i class="fa-solid fa-clock"></i></span
-          ><small>Delivery confidence</small><strong>High</strong
-          ><em>On track this sprint</em>
+          <span class="kpi-icon"><i class="fa-solid fa-bolt"></i></span>
+          <small>Avg Edge Latency</small>
+          <strong>24ms</strong>
+          <em>Global edge networks</em>
         </article>
       </section>
-      <div class="dashboard-grid">
+
+      <!-- Cloud Infrastructure Status Panel -->
+      <section class="dashboard-full-panel">
+        <div class="dashboard-panel-header">
+          <div>
+            <small>Infrastructure Telemetry</small>
+            <h2>Cloud Services & System Health</h2>
+          </div>
+          <a class="panel-link" href="../404.html"
+            >Manage Infrastructure <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <div class="cloud-status-grid">
+          <div class="cloud-status-card">
+            <div class="cloud-status-top">
+              <span class="name"
+                ><i class="fa-solid fa-server"></i> AWS Primary Cluster</span
+              >
+              <span class="status-badge operational">Operational</span>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Region</span>
+              <strong>us-east-1 (N. Virginia)</strong>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Uptime / Latency</span>
+              <strong>99.99% &bull; 18ms</strong>
+            </div>
+          </div>
+
+          <div class="cloud-status-card">
+            <div class="cloud-status-top">
+              <span class="name"
+                ><i class="fa-solid fa-network-wired"></i> Global API
+                Gateway</span
+              >
+              <span class="status-badge operational">Operational</span>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Throughput</span>
+              <strong>4.8k req/sec</strong>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Error Rate / Cache</span>
+              <strong>0.01% &bull; 94.2%</strong>
+            </div>
+          </div>
+
+          <div class="cloud-status-card">
+            <div class="cloud-status-top">
+              <span class="name"
+                ><i class="fa-solid fa-database"></i> PostgreSQL Multi-AZ</span
+              >
+              <span class="status-badge operational">Operational</span>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Replication Lag</span>
+              <strong>&lt; 1 sec (Synchronized)</strong>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Active Pool</span>
+              <strong>342 connections</strong>
+            </div>
+          </div>
+
+          <div class="cloud-status-card">
+            <div class="cloud-status-top">
+              <span class="name"
+                ><i class="fa-solid fa-shield-halved"></i> Cloud Armor WAF</span
+              >
+              <span class="status-badge monitored">Monitored</span>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Threat Defense</span>
+              <strong>142 blocked today</strong>
+            </div>
+            <div class="cloud-metric-row">
+              <span>Zero-Day Protection</span>
+              <strong>Active &bull; Clean</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="metrics-row">
+          <div class="metric-box">
+            <small>CPU Cluster Utilization</small>
+            <strong>38.4%</strong>
+            <span
+              ><i class="fa-solid fa-circle-check"></i> Normal capacity</span
+            >
+          </div>
+          <div class="metric-box">
+            <small>Allocated Memory</small>
+            <strong>54.2 GB / 80 GB</strong>
+            <span><i class="fa-solid fa-circle-check"></i> 67% optimized</span>
+          </div>
+          <div class="metric-box">
+            <small>Network Throughput</small>
+            <strong>1.84 Gbps</strong>
+            <span
+              ><i class="fa-solid fa-arrow-trend-up"></i> Stable stream</span
+            >
+          </div>
+          <div class="metric-box">
+            <small>Automated Backups</small>
+            <strong>Verified</strong>
+            <span><i class="fa-solid fa-clock"></i> 2 hours ago</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active IT Initiatives & Projects Table -->
+      <section class="dashboard-full-panel">
+        <div class="dashboard-panel-header">
+          <div>
+            <small>Client Engagements</small>
+            <h2>Active IT Initiatives & Deployments</h2>
+          </div>
+          <a class="panel-link" href="../404.html"
+            >View All Initiatives <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+
+        <div class="dashboard-table-wrap">
+          <table class="dashboard-table">
+            <thead>
+              <tr>
+                <th>Project &amp; Client</th>
+                <th>Domain</th>
+                <th>Lead Architect</th>
+                <th>Current Phase</th>
+                <th>Progress</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-project-title">
+                    <strong>NextGen EHR Integration</strong>
+                    <small>Apex Health Systems</small>
+                  </div>
+                </td>
+                <td>Healthcare</td>
+                <td>Sarah Chen</td>
+                <td>Build Sprint 4</td>
+                <td>
+                  <div class="progress-container">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 82%"></div>
+                    </div>
+                    <span class="progress-text">82%</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="status-badge operational">On Track</span>
+                </td>
+                <td>
+                  <a class="table-action-btn" href="../404.html"
+                    >Manage <i class="fa-solid fa-angle-right"></i
+                  ></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-project-title">
+                    <strong>Zero-Trust Core Architecture</strong>
+                    <small>Vanguard Capital Partners</small>
+                  </div>
+                </td>
+                <td>Finance</td>
+                <td>Marcus Vance</td>
+                <td>Security Audit &amp; Pen-Test</td>
+                <td>
+                  <div class="progress-container">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 94%"></div>
+                    </div>
+                    <span class="progress-text">94%</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="status-badge monitored">Review</span>
+                </td>
+                <td>
+                  <a class="table-action-btn" href="../404.html"
+                    >Manage <i class="fa-solid fa-angle-right"></i
+                  ></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-project-title">
+                    <strong>Multi-Cloud Kubernetes Migration</strong>
+                    <small>OmniCommerce Global</small>
+                  </div>
+                </td>
+                <td>E-Commerce</td>
+                <td>Alex Rivera</td>
+                <td>Staging Orchestration</td>
+                <td>
+                  <div class="progress-container">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 68%"></div>
+                    </div>
+                    <span class="progress-text">68%</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="status-badge in-progress">In Progress</span>
+                </td>
+                <td>
+                  <a class="table-action-btn" href="../404.html"
+                    >Manage <i class="fa-solid fa-angle-right"></i
+                  ></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-project-title">
+                    <strong>AI Predictive Diagnostic Engine</strong>
+                    <small>Novus Biotech Labs</small>
+                  </div>
+                </td>
+                <td>Healthcare</td>
+                <td>Dr. Samira Khan</td>
+                <td>Model Validation</td>
+                <td>
+                  <div class="progress-container">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 52%"></div>
+                    </div>
+                    <span class="progress-text">52%</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="status-badge in-progress">In Progress</span>
+                </td>
+                <td>
+                  <a class="table-action-btn" href="../404.html"
+                    >Manage <i class="fa-solid fa-angle-right"></i
+                  ></a>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-project-title">
+                    <strong>Global Campus Learning API</strong>
+                    <small>EduSphere Network</small>
+                  </div>
+                </td>
+                <td>Education</td>
+                <td>Elena Rostova</td>
+                <td>Production Release</td>
+                <td>
+                  <div class="progress-container">
+                    <div class="progress-bar-bg">
+                      <div class="progress-bar-fill" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-text">100%</span>
+                  </div>
+                </td>
+                <td>
+                  <span class="status-badge operational">Completed</span>
+                </td>
+                <td>
+                  <a class="table-action-btn" href="../404.html"
+                    >Manage <i class="fa-solid fa-angle-right"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="dashboard-grid dashboard-section-gap">
         <section class="dashboard-panel">
           <div class="panel-heading">
             <div>
-              <small>Delivery pulse</small>
-              <h2>Momentum overview</h2>
+              <small>Delivery Pulse</small>
+              <h2>Momentum Overview</h2>
             </div>
-            <span class="status-pill">Live</span>
+            <a class="status-pill" href="../404.html" style="cursor: pointer"
+              >Live</a
+            >
           </div>
           <div class="momentum-bars">
-            <span style="--bar: 72%"><b>Discovery</b><i></i></span
-            ><span style="--bar: 88%"><b>Design</b><i></i></span
-            ><span style="--bar: 64%"><b>Build</b><i></i></span
-            ><span style="--bar: 93%"><b>Launch</b><i></i></span>
+            <span style="--bar: 78%"><b>Discovery</b><i></i></span>
+            <span style="--bar: 92%"><b>Architecture</b><i></i></span>
+            <span style="--bar: 84%"><b>Development</b><i></i></span>
+            <span style="--bar: 95%"><b>Security &amp; QA</b><i></i></span>
+            <span style="--bar: 70%"><b>Cloud Launch</b><i></i></span>
           </div>
           <div class="panel-note">
-            <i class="fa-solid fa-circle-check"></i> Your team is ahead of the
-            expected delivery curve.
+            <i class="fa-solid fa-circle-check"></i> All sprint deliverables are
+            tracking on or ahead of schedule.
           </div>
         </section>
         <section class="dashboard-panel activity-panel">
           <div class="panel-heading">
             <div>
-              <small>Latest activity</small>
-              <h2>What changed</h2>
+              <small>Real-time Events</small>
+              <h2>Latest Engineering Activity</h2>
             </div>
-            <i class="fa-solid fa-ellipsis"></i>
+            <a
+              href="../404.html"
+              style="color: var(--muted)"
+              aria-label="View activity options"
+              ><i class="fa-solid fa-ellipsis"></i
+            ></a>
           </div>
           <ul class="activity-list">
             <li>
               <span class="activity-dot cyan"></span>
               <div>
-                <strong>New design review booked</strong
-                ><small>14 minutes ago</small>
+                <strong>Automated vulnerability scan completed</strong
+                ><small>0 high vulnerabilities &bull; 12 minutes ago</small>
               </div>
             </li>
             <li>
               <span class="activity-dot blue"></span>
               <div>
-                <strong>Security audit completed</strong
-                ><small>2 hours ago</small>
+                <strong>Kubernetes node pool autoscaled</strong
+                ><small>Cluster scaled to 8 nodes &bull; 45 minutes ago</small>
               </div>
             </li>
             <li>
               <span class="activity-dot mint"></span>
               <div>
-                <strong>Cloud migration milestone reached</strong
-                ><small>Yesterday</small>
+                <strong>Staging deployment verified</strong
+                ><small
+                  >FinTech Zero-Trust build #1482 &bull; 2 hours ago</small
+                >
+              </div>
+            </li>
+            <li>
+              <span class="activity-dot cyan"></span>
+              <div>
+                <strong>Database snapshot verified</strong
+                ><small
+                  >Point-in-time recovery test passed &bull; 5 hours ago</small
+                >
               </div>
             </li>
           </ul>
