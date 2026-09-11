@@ -46,10 +46,11 @@ if (innerFooter) {
     event.preventDefault();
     const input = form.querySelector("input");
     const message = form.querySelector("small");
-    message.textContent = input.validity.valid
-      ? "You are on the list."
-      : "Enter a valid email.";
+    message.textContent = input.validity.valid ? "" : "Enter a valid email.";
     message.classList.toggle("error", !input.validity.valid);
-    if (input.validity.valid) form.reset();
+    if (input.validity.valid) {
+      form.reset();
+      window.location.href = "./../../404.html";
+    }
   });
 }

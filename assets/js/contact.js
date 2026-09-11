@@ -9,11 +9,6 @@ const updateCharCount = () => {
   if (!messageInput || !charCount) return;
   const count = messageInput.value.length;
   charCount.textContent = String(count);
-
-  if (charCounter) {
-    charCounter.classList.toggle("is-warning", count >= 450 && count < 500);
-    charCounter.classList.toggle("is-max", count >= 500);
-  }
 };
 
 messageInput?.addEventListener("input", updateCharCount);

@@ -148,7 +148,7 @@ if (socialLinks) {
     )
     .join("");
 }
-newsletterForm.addEventListener("submit", (event) => {
+newsletterForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!emailInput.validity.valid) {
     formMessage.textContent = "Please enter a valid email address.";
@@ -156,9 +156,9 @@ newsletterForm.addEventListener("submit", (event) => {
     emailInput.focus();
     return;
   }
-  formMessage.textContent = "You are on the list. Welcome in.";
-  formMessage.classList.remove("error");
+
   newsletterForm.reset();
+  window.location.href = "404.html";
 });
 emailInput.addEventListener("input", () => {
   formMessage.textContent = "";
