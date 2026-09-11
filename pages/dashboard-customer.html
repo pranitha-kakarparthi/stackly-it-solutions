@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Stackly Enterprise Client Portal - Subscribed Solutions, SLA Telemetry, and Dedicated Technical Support."
+    />
+    <title>Customer Workspace | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script defer src="../assets/js/shared.js"></script>
+  </head>
+  <body class="dashboard-page">
+    <!-- Screen Loader -->
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="../assets/images/logoStackly.webp" alt="" />
+      <span class="loader-spinner"></span>
+      <span>Loading Client Portal...</span>
+    </div>
+
+    <!-- Fixed Header -->
+    <header class="dashboard-header">
+      <a class="brand" href="../index.html">
+        <img src="../assets/images/logoStackly.webp" alt="Stackly" />
+      </a>
+      <div class="dashboard-user">
+        <span class="user-avatar" id="userAvatar">C</span>
+        <span>
+          <strong id="userName">Enterprise Client</strong>
+          <small id="userRole">Customer Access</small>
+        </span>
+        <button
+          class="button button-small button-ghost"
+          id="signOut"
+          type="button"
+        >
+          Sign out
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-main" id="main-content">
+      <div class="container">
+        <!-- Top Hero & Greeting Section -->
+        <section class="dashboard-hero-section" data-aos="fade-down">
+          <div class="dashboard-heading">
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              <span>Client Services &amp; SLA Management</span>
+            </div>
+            <h1>
+              <span id="greetingTime">Good morning</span>,
+              <span class="gradient-text" id="greetingName"
+                >Enterprise Partner.</span
+              >
+            </h1>
+            <p>
+              Your managed cloud subscriptions, 99.99% uptime SLA commitments,
+              and dedicated engineering support tickets.
+            </p>
+          </div>
+
+          <!-- Dynamic Meta & System Health Pills -->
+          <div
+            class="dashboard-meta-bar"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 16px;
+              margin-top: 20px;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="dashboard-meta-pill">
+                <i class="fa-solid fa-clock"></i>
+                <span id="timeAndZone">Loading local time...</span>
+              </div>
+              <div class="system-status-indicator">
+                <span class="status-pulse"></span>
+                <span>Enterprise SLA: 99.99% Active</span>
+              </div>
+              <div class="dashboard-meta-pill">
+                <i
+                  class="fa-solid fa-user-shield"
+                  style="color: var(--mint)"
+                ></i>
+                <span>Dedicated TAM: Alex Miller</span>
+              </div>
+            </div>
+
+            <!-- Quick Action Triggers -->
+            <div
+              class="dashboard-actions"
+              style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+            >
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-plus"></i> Open Support Ticket
+              </a>
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-cloud-arrow-up"></i> Upgrade Capacity
+              </a>
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-download"></i> Invoices &amp; Reports
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Quick Controls Grid -->
+          <div
+            class="quick-controls-grid"
+            data-aos="fade-up"
+            data-aos-delay="50"
+          >
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Real-Time Incident SMS</strong>
+                <small>Enabled &bull; Direct dispatch to on-call phone</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Auto-Scaling Burst Protection</strong>
+                <small>Enabled &bull; Up to 200% burst quota</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Monthly Usage Digest</strong>
+                <small>Enabled &bull; Delivered on 1st of month</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Auto-Renew Subscriptions</strong>
+                <small>Disabled &bull; Manual PO invoice approval</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- KPI Grid: Core Customer Metrics -->
+        <section class="kpi-grid" style="margin-top: 32px">
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="50">
+            <span class="kpi-icon"><i class="fa-solid fa-cloud"></i></span>
+            <small>Subscribed Solutions</small>
+            <strong>3 Tiers</strong>
+            <em>Enterprise Cloud &bull; Active</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="kpi-icon"
+              ><i class="fa-solid fa-shield-heart"></i
+            ></span>
+            <small>Guaranteed SLA</small>
+            <strong>99.99%</strong>
+            <em>0 incidents during current cycle</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="150">
+            <span class="kpi-icon"><i class="fa-solid fa-headset"></i></span>
+            <small>Active Support Inquiries</small>
+            <strong>1 Open</strong>
+            <em>Assigned TAM working on resolution</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="kpi-icon"
+              ><i class="fa-solid fa-calendar-check"></i
+            ></span>
+            <small>Billing Cycle Days</small>
+            <strong>19 Days Left</strong>
+            <em>Estimated monthly: $4,200</em>
+          </article>
+        </section>
+
+        <!-- Panel 1: Monthly Service Quotas & API Consumption Telemetry -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Usage Telemetry</small>
+              <h2>Monthly Service Quotas &amp; API Consumption</h2>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+              "
+            >
+              <!-- Interactive Time-Range Selector -->
+              <div class="time-range-pills">
+                <button type="button" class="time-pill-btn active">
+                  Current Cycle
+                </button>
+                <button type="button" class="time-pill-btn">Last Month</button>
+                <button type="button" class="time-pill-btn">Q2 2026</button>
+                <button type="button" class="time-pill-btn">
+                  Year-to-Date
+                </button>
+              </div>
+              <a class="panel-link action-trigger" href="../404.html">
+                Quota Manager <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Horizontal Bars for Service Quotas -->
+          <div class="chart-bars-wrap">
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong
+                  >Managed Cloud Compute Units (480/600 vCPU-Hours)</strong
+                >
+                <span>80% &bull; Normal</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill mint" style="width: 80%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>Bandwidth Data Egress (12.4 TB / 20 TB Plan)</strong>
+                <span>62% &bull; Optimal</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill cyan" style="width: 62%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>Enterprise API Gateway (1.45M / 2.0M Requests)</strong>
+                <span>72% &bull; Healthy</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 72%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong
+                  >Encrypted Object Storage (3.8 TB / 5.0 TB
+                  Provisioned)</strong
+                >
+                <span>76% &bull; Normal</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill mint" style="width: 76%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong
+                  >24/7 Dedicated Support Hours (14 / 20 Hours Used)</strong
+                >
+                <span>70% &bull; Available</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill warning" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry Metrics -->
+          <div
+            class="metrics-row"
+            style="
+              margin-top: 24px;
+              padding-top: 20px;
+              border-top: 1px solid var(--border);
+            "
+          >
+            <div class="metric-block">
+              <span class="metric-label">Monthly SLA Attainment</span>
+              <strong class="metric-value">100.0%</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-circle-check"></i> Exceeds 99.99%
+                target</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Avg API Latency</span>
+              <strong class="metric-value">22 ms</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-bolt"></i> Low latency verified</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Support Response Time</span>
+              <strong class="metric-value">8 mins</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-headset"></i> P1 Guarantee: 15m</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Contract Status</span>
+              <strong class="metric-value">Active &bull; Q4</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-shield-check"></i> Annual
+                agreement</small
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 2: Interactive Enterprise Support Tickets Table -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Helpdesk &amp; Incidents</small>
+              <h2>Enterprise Support Inquiries &amp; Technical Tickets</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Submit Ticket <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Interactive Search & Status Filtering Toolbar -->
+          <div class="dashboard-filter-toolbar">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                class="table-search-input"
+                data-target-table="customerTicketsTable"
+                placeholder="Filter tickets by ID, service, subject, or TAM..."
+              />
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <label
+                for="customerStatusFilter"
+                style="font-size: 12px; color: var(--muted)"
+                >Filter Status:</label
+              >
+              <select
+                id="customerStatusFilter"
+                class="filter-dropdown table-status-filter"
+                data-target-table="customerTicketsTable"
+              >
+                <option value="all">All Statuses</option>
+                <option value="in progress">In Progress</option>
+                <option value="resolved">Resolved</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Interactive Table -->
+          <div class="dashboard-table-wrap">
+            <table class="dashboard-table" id="customerTicketsTable">
+              <thead>
+                <tr>
+                  <th>Ticket ID</th>
+                  <th>Service Domain</th>
+                  <th>Subject / Summary</th>
+                  <th>Priority</th>
+                  <th>Assigned TAM</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>TKT-8841</strong></td>
+                  <td>Cloud Infrastructure</td>
+                  <td>
+                    Additional read-replica provisioning in Frankfurt zone
+                  </td>
+                  <td><span class="badge-tag blue">P3 Low</span></td>
+                  <td>Alex Miller</td>
+                  <td>
+                    <span class="status-badge in-progress">In Progress</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Track</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>TKT-8812</strong></td>
+                  <td>Edge Security</td>
+                  <td>WAF custom regex rule whitelist for webhook ingestion</td>
+                  <td><span class="badge-tag warning">P2 Medium</span></td>
+                  <td>Sarah Jenkins</td>
+                  <td>
+                    <span class="status-badge operational">Resolved</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Track</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>TKT-8790</strong></td>
+                  <td>Database Ops</td>
+                  <td>
+                    PostgreSQL automated backup retention extension (30 to 90
+                    days)
+                  </td>
+                  <td><span class="badge-tag purple">P2 Medium</span></td>
+                  <td>Alex Miller</td>
+                  <td>
+                    <span class="status-badge operational">Completed</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Track</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>TKT-8764</strong></td>
+                  <td>Network &amp; CDN</td>
+                  <td>Origin SSL certificate renewal verification</td>
+                  <td><span class="badge-tag success">P4 Minor</span></td>
+                  <td>Alex Chen</td>
+                  <td>
+                    <span class="status-badge operational">Completed</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Track</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>TKT-8730</strong></td>
+                  <td>Compliance</td>
+                  <td>
+                    SOC2 Type II annual audit compliance pack download request
+                  </td>
+                  <td><span class="badge-tag blue">P3 Low</span></td>
+                  <td>Sarah Jenkins</td>
+                  <td>
+                    <span class="status-badge operational">Resolved</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Track</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>TKT-8695</strong></td>
+                  <td>Disaster Recovery</td>
+                  <td>Quarterly failover drill simulation report</td>
+                  <td><span class="badge-tag purple">P2 Medium</span></td>
+                  <td>Alex Miller</td>
+                  <td>
+                    <span class="status-badge operational">Completed</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Track</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Panel 3: Subscribed Services & Solution Entitlements Grid -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Service Tiers</small>
+              <h2>Active Enterprise Solutions &amp; Plan Entitlements</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Add New Service <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div
+            class="dashboard-grid"
+            style="
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 20px;
+            "
+          >
+            <article
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <span
+                  class="kpi-icon"
+                  style="
+                    margin-bottom: 0;
+                    width: 44px;
+                    height: 44px;
+                    font-size: 18px;
+                  "
+                  ><i class="fa-solid fa-cloud"></i
+                ></span>
+                <span class="status-badge operational">Active Tier</span>
+              </div>
+              <strong
+                style="
+                  font-size: 16px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 6px;
+                "
+                >Enterprise Managed Cloud v4</strong
+              >
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 16px;
+                "
+              >
+                Multi-region automated failover, dedicated Kubernetes cluster,
+                and zero downtime rolling upgrades.
+              </p>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text);
+                  border-top: 1px solid var(--border);
+                  padding-top: 12px;
+                  display: flex;
+                  justify-content: space-between;
+                "
+              >
+                <span>Renews: Dec 31, 2026</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Manage &rarr;</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <span
+                  class="kpi-icon"
+                  style="
+                    margin-bottom: 0;
+                    width: 44px;
+                    height: 44px;
+                    font-size: 18px;
+                  "
+                  ><i class="fa-solid fa-shield-halved"></i
+                ></span>
+                <span class="status-badge operational">Active Tier</span>
+              </div>
+              <strong
+                style="
+                  font-size: 16px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 6px;
+                "
+                >24/7 Threat Detection &amp; SOC</strong
+              >
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 16px;
+                "
+              >
+                Continuous SIEM telemetry ingestion, zero-day mitigation, DDoS
+                protection, and automated incident triage.
+              </p>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text);
+                  border-top: 1px solid var(--border);
+                  padding-top: 12px;
+                  display: flex;
+                  justify-content: space-between;
+                "
+              >
+                <span>Renews: Dec 31, 2026</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Manage &rarr;</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <span
+                  class="kpi-icon"
+                  style="
+                    margin-bottom: 0;
+                    width: 44px;
+                    height: 44px;
+                    font-size: 18px;
+                  "
+                  ><i class="fa-solid fa-headset"></i
+                ></span>
+                <span class="status-badge operational">Active Tier</span>
+              </div>
+              <strong
+                style="
+                  font-size: 16px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 6px;
+                "
+                >Dedicated Technical Account Manager</strong
+              >
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 16px;
+                "
+              >
+                Quarterly executive reviews, tailored cloud roadmap planning,
+                and 15-minute priority SLA turnaround.
+              </p>
+              <div
+                style="
+                  font-size: 11px;
+                  color: var(--text);
+                  border-top: 1px solid var(--border);
+                  padding-top: 12px;
+                  display: flex;
+                  justify-content: space-between;
+                "
+              >
+                <span>Renews: Dec 31, 2026</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Manage &rarr;</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Panel 4: Billing History & Statements -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Account Ledger</small>
+              <h2>Recent Enterprise Invoices &amp; Statements</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              All Invoices <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="dashboard-table-wrap">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th>Invoice ID</th>
+                  <th>Billing Period</th>
+                  <th>Amount</th>
+                  <th>Payment Method</th>
+                  <th>Invoice Status</th>
+                  <th>Receipt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>INV-2026-08</strong></td>
+                  <td>Aug 01, 2026 &ndash; Aug 31, 2026</td>
+                  <td>$4,200.00</td>
+                  <td>Corporate ACH &bull; Ending 9021</td>
+                  <td><span class="status-badge operational">Paid</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Download PDF</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>INV-2026-07</strong></td>
+                  <td>Jul 01, 2026 &ndash; Jul 31, 2026</td>
+                  <td>$4,200.00</td>
+                  <td>Corporate ACH &bull; Ending 9021</td>
+                  <td><span class="status-badge operational">Paid</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Download PDF</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>INV-2026-06</strong></td>
+                  <td>Jun 01, 2026 &ndash; Jun 30, 2026</td>
+                  <td>$4,150.00</td>
+                  <td>Corporate ACH &bull; Ending 9021</td>
+                  <td><span class="status-badge operational">Paid</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Download PDF</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer inner-footer"></footer>
+
+    <!-- AOS & Dashboard Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script defer src="../assets/js/dashboard.js"></script>
+  </body>
+</html>

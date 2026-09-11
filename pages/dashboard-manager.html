@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Stackly IT Manager Workspace - Delivery Roadmaps, Team Velocity, SLA Metrics, and Resource Allocation."
+    />
+    <title>IT Manager Workspace | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script defer src="../assets/js/shared.js"></script>
+  </head>
+  <body class="dashboard-page">
+    <!-- Screen Loader -->
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="../assets/images/logoStackly.webp" alt="" />
+      <span class="loader-spinner"></span>
+      <span>Loading Manager Console...</span>
+    </div>
+
+    <!-- Fixed Header -->
+    <header class="dashboard-header">
+      <a class="brand" href="../index.html">
+        <img src="../assets/images/logoStackly.webp" alt="Stackly" />
+      </a>
+      <div class="dashboard-user">
+        <span class="user-avatar" id="userAvatar">M</span>
+        <span>
+          <strong id="userName">IT Manager</strong>
+          <small id="userRole">Manager Access</small>
+        </span>
+        <button
+          class="button button-small button-ghost"
+          id="signOut"
+          type="button"
+        >
+          Sign out
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-main" id="main-content">
+      <div class="container">
+        <!-- Top Hero & Greeting Section -->
+        <section class="dashboard-hero-section" data-aos="fade-down">
+          <div class="dashboard-heading">
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              <span>Engineering Deliveries &amp; Resource Operations</span>
+            </div>
+            <h1>
+              <span id="greetingTime">Good morning</span>,
+              <span class="gradient-text" id="greetingName"
+                >Engineering Lead.</span
+              >
+            </h1>
+            <p>
+              Review active delivery milestones, monitor sprint burn-up rates,
+              and inspect team capacity across all squads.
+            </p>
+          </div>
+
+          <!-- Dynamic Meta & System Health Pills -->
+          <div
+            class="dashboard-meta-bar"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 16px;
+              margin-top: 20px;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="dashboard-meta-pill">
+                <i class="fa-solid fa-clock"></i>
+                <span id="timeAndZone">Loading local time...</span>
+              </div>
+              <div class="system-status-indicator">
+                <span class="status-pulse"></span>
+                <span>Sprint 26: 94% On Schedule</span>
+              </div>
+              <div class="dashboard-meta-pill">
+                <i class="fa-solid fa-users" style="color: var(--cyan)"></i>
+                <span>4 Engineering Squads Active</span>
+              </div>
+            </div>
+
+            <!-- Quick Action Triggers -->
+            <div
+              class="dashboard-actions"
+              style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+            >
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-plus"></i> New Sprint Milestone
+              </a>
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-file-invoice-dollar"></i> Budget Overview
+              </a>
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-chart-pie"></i> Export Velocity Report
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Quick Controls Grid -->
+          <div
+            class="quick-controls-grid"
+            data-aos="fade-up"
+            data-aos-delay="50"
+          >
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Sprint Auto-Assign</strong>
+                <small>Enabled &bull; Balances ticket weighting</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>SLA Escalation Alerts</strong>
+                <small>Enabled &bull; Priority escalation at 80% SLA</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Weekly Client Digest</strong>
+                <small>Enabled &bull; Auto-dispatches Monday 09:00</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Overtime Safeguard</strong>
+                <small>Disabled &bull; Squad allocation uncapped</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- KPI Grid: Core Management Metrics -->
+        <section class="kpi-grid" style="margin-top: 32px">
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="50">
+            <span class="kpi-icon"
+              ><i class="fa-solid fa-diagram-project"></i
+            ></span>
+            <small>Active Deliveries</small>
+            <strong>14 Projects</strong>
+            <em>12 on schedule &bull; 2 under review</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="kpi-icon"><i class="fa-solid fa-gauge-high"></i></span>
+            <small>Team Sprint Velocity</small>
+            <strong>184 Pts</strong>
+            <em>+18% higher than sprint avg</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="150">
+            <span class="kpi-icon"
+              ><i class="fa-solid fa-clock-rotate-left"></i
+            ></span>
+            <small>SLA Resolution Rate</small>
+            <strong>98.6%</strong>
+            <em>Mean time to resolve: 42 mins</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="kpi-icon"><i class="fa-solid fa-user-check"></i></span>
+            <small>Resource Allocation</small>
+            <strong>87% Bandwidth</strong>
+            <em>13% available buffer for Q4</em>
+          </article>
+        </section>
+
+        <!-- Panel 1: Sprint Milestones & Burn-Up Velocity -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Sprint Execution</small>
+              <h2>Active Milestones &amp; Burn-Up Velocity</h2>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+              "
+            >
+              <!-- Interactive Time-Range Selector -->
+              <div class="time-range-pills">
+                <button type="button" class="time-pill-btn active">
+                  Sprint 26
+                </button>
+                <button type="button" class="time-pill-btn">Sprint 25</button>
+                <button type="button" class="time-pill-btn">Sprint 24</button>
+                <button type="button" class="time-pill-btn">Quarterly</button>
+              </div>
+              <a class="panel-link action-trigger" href="../404.html">
+                Roadmap Details <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Horizontal Bars for Project Progress -->
+          <div class="chart-bars-wrap">
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>Fintech Cloud Migration Phase 3 (Apex Banking)</strong>
+                <span>92% &bull; Near Completion</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill mint" style="width: 92%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>Zero-Trust Identity Federation (MedCore Health)</strong>
+                <span>78% &bull; In Code Review</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill cyan" style="width: 78%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong
+                  >Microservices Decoupling (Global Retail E-Commerce)</strong
+                >
+                <span>95% &bull; Delivering</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill mint" style="width: 95%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong
+                  >Kubernetes Ingress Gateway Upgrade (Core Platform)</strong
+                >
+                <span>64% &bull; Testing Phase</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 64%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>Data Pipeline Modernization &amp; Kafka Mesh</strong>
+                <span>48% &bull; Sizing Review</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill warning" style="width: 48%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Velocity Metrics -->
+          <div
+            class="metrics-row"
+            style="
+              margin-top: 24px;
+              padding-top: 20px;
+              border-top: 1px solid var(--border);
+            "
+          >
+            <div class="metric-block">
+              <span class="metric-label">Completed Story Points</span>
+              <strong class="metric-value">172 / 184 Pts</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-arrow-trend-up"></i> 93.5% Burn-up</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Pull Request Cycle Time</span>
+              <strong class="metric-value">4.2 Hours</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-bolt"></i> Fast turnaround</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Deployment Frequency</span>
+              <strong class="metric-value">18 Deploys/Wk</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-rocket"></i> Elite DORA tier</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Unplanned Bug Rate</span>
+              <strong class="metric-value">1.8%</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-shield-check"></i> Below 5% target</small
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 2: Department Budget Burn & Vendor Spend Tracker -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Financial Governance</small>
+              <h2>Department Budget Burn &amp; Vendor Cost Tracker</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Fiscal Ledger <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div
+            class="dashboard-grid"
+            style="
+              grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+              gap: 20px;
+            "
+          >
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <small
+                style="color: var(--muted); display: block; margin-bottom: 4px"
+                >Cloud Infrastructure</small
+              >
+              <strong
+                style="
+                  font-size: 22px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 8px;
+                "
+                >$42,850</strong
+              >
+              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
+                <div class="chart-bar-fill mint" style="width: 85%"></div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>Cap: $50,000</span
+                ><span style="color: var(--mint)">85% utilized</span>
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <small
+                style="color: var(--muted); display: block; margin-bottom: 4px"
+                >SaaS Licenses &amp; Tooling</small
+              >
+              <strong
+                style="
+                  font-size: 22px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 8px;
+                "
+                >$18,200</strong
+              >
+              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
+                <div class="chart-bar-fill cyan" style="width: 82%"></div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>Cap: $22,000</span
+                ><span style="color: var(--cyan)">82% utilized</span>
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <small
+                style="color: var(--muted); display: block; margin-bottom: 4px"
+                >External Specialized Contractors</small
+              >
+              <strong
+                style="
+                  font-size: 22px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 8px;
+                "
+                >$12,400</strong
+              >
+              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
+                <div class="chart-bar-fill" style="width: 80%"></div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>Cap: $15,000</span
+                ><span style="color: var(--white)">80% utilized</span>
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <small
+                style="color: var(--muted); display: block; margin-bottom: 4px"
+                >Training &amp; Certifications</small
+              >
+              <strong
+                style="
+                  font-size: 22px;
+                  color: var(--white);
+                  display: block;
+                  margin-bottom: 8px;
+                "
+                >$4,100</strong
+              >
+              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
+                <div class="chart-bar-fill warning" style="width: 68%"></div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>Cap: $6,000</span
+                ><span style="color: var(--muted)">68% utilized</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Panel 3: Interactive Department Deliverables & Sprint Milestones Table -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Deliverables Portfolio</small>
+              <h2>Active Client Projects &amp; Sprint Milestones</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Gantt View <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Interactive Search & Status Filtering Toolbar -->
+          <div class="dashboard-filter-toolbar">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                class="table-search-input"
+                data-target-table="managerProjectsTable"
+                placeholder="Filter deliverables by project, client, lead, or domain..."
+              />
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <label
+                for="managerStatusFilter"
+                style="font-size: 12px; color: var(--muted)"
+                >Status Filter:</label
+              >
+              <select
+                id="managerStatusFilter"
+                class="filter-dropdown table-status-filter"
+                data-target-table="managerProjectsTable"
+              >
+                <option value="all">All Projects</option>
+                <option value="delivering">Delivering</option>
+                <option value="in progress">In Progress</option>
+                <option value="code review">Code Review</option>
+                <option value="planning">Planning</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Interactive Table -->
+          <div class="dashboard-table-wrap">
+            <table class="dashboard-table" id="managerProjectsTable">
+              <thead>
+                <tr>
+                  <th>Client &amp; Initiative</th>
+                  <th>Industry Domain</th>
+                  <th>Tech Lead</th>
+                  <th>Milestone Scope</th>
+                  <th>Progress</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Apex Banking Group</strong>
+                      <small>Core Cloud Migration &bull; Tier-1</small>
+                    </div>
+                  </td>
+                  <td>Banking / FinTech</td>
+                  <td>Alex Chen</td>
+                  <td>Multi-AZ Vault Provisioning</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 92%"></div>
+                      </div>
+                      <span class="progress-text">92%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-badge operational">Delivering</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>MedCore Systems</strong>
+                      <small>Zero-Trust HIPAA Ingress</small>
+                    </div>
+                  </td>
+                  <td>Healthcare IT</td>
+                  <td>Sarah Jenkins</td>
+                  <td>Role-Based Access Control</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 78%"></div>
+                      </div>
+                      <span class="progress-text">78%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-badge in-progress">Code Review</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Global Retail Corp</strong>
+                      <small>Black Friday Peak Elasticity</small>
+                    </div>
+                  </td>
+                  <td>E-Commerce</td>
+                  <td>Elena Rostova</td>
+                  <td>Microservices Decoupling</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 95%"></div>
+                      </div>
+                      <span class="progress-text">95%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-badge operational">Delivering</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>OmniLogistics Hub</strong>
+                      <small>Fleet IoT Telemetry Ingestion</small>
+                    </div>
+                  </td>
+                  <td>Supply Chain</td>
+                  <td>Marcus Vance</td>
+                  <td>Kafka Real-Time Streaming</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 60%"></div>
+                      </div>
+                      <span class="progress-text">60%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-badge in-progress">In Progress</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>DE-Telecom Enterprise</strong>
+                      <small>5G Core Network Slicing</small>
+                    </div>
+                  </td>
+                  <td>Telecommunications</td>
+                  <td>Klaus Schmidt</td>
+                  <td>BGP Peering &amp; Edge Mesh</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 35%"></div>
+                      </div>
+                      <span class="progress-text">35%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span
+                      class="status-badge"
+                      style="
+                        background: rgba(245, 158, 11, 0.15);
+                        color: #f59e0b;
+                      "
+                      >Planning</span
+                    >
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>FinTech Secure Net</strong>
+                      <small>Automated Fraud Detection Engine</small>
+                    </div>
+                  </td>
+                  <td>FinTech</td>
+                  <td>David Thorne</td>
+                  <td>Model Inference Gateway</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: 84%"></div>
+                      </div>
+                      <span class="progress-text">84%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span class="status-badge operational">Delivering</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Panel 4: Team Capacity Heatmap & Allocation Matrix -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Resource Planning</small>
+              <h2>Engineering Squad Capacity &amp; Workload Heatmap</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Rebalance Squads <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div
+            class="dashboard-grid"
+            style="
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 20px;
+            "
+          >
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 10px;
+                "
+              >
+                <strong style="color: var(--white); font-size: 14px"
+                  >Squad Alpha (Cloud &amp; DevOps)</strong
+                >
+                <span class="status-badge operational">92% Loaded</span>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 12px;
+                "
+              >
+                6 Engineers &bull; 42 Tickets In Flight &bull; Lead: Alex Chen
+              </p>
+              <div class="chart-bar-bg" style="height: 6px">
+                <div class="chart-bar-fill mint" style="width: 92%"></div>
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 10px;
+                "
+              >
+                <strong style="color: var(--white); font-size: 14px"
+                  >Squad Bravo (Backend &amp; APIs)</strong
+                >
+                <span class="status-badge operational">84% Loaded</span>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 12px;
+                "
+              >
+                8 Engineers &bull; 56 Tickets In Flight &bull; Lead: Priya Patel
+              </p>
+              <div class="chart-bar-bg" style="height: 6px">
+                <div class="chart-bar-fill cyan" style="width: 84%"></div>
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 10px;
+                "
+              >
+                <strong style="color: var(--white); font-size: 14px"
+                  >Squad Charlie (Frontend &amp; UI)</strong
+                >
+                <span class="status-badge operational">78% Loaded</span>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 12px;
+                "
+              >
+                5 Engineers &bull; 28 Tickets In Flight &bull; Lead: Elena
+                Rostova
+              </p>
+              <div class="chart-bar-bg" style="height: 6px">
+                <div class="chart-bar-fill" style="width: 78%"></div>
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  margin-bottom: 10px;
+                "
+              >
+                <strong style="color: var(--white); font-size: 14px"
+                  >Squad Delta (Security &amp; QA)</strong
+                >
+                <span class="status-badge operational">88% Loaded</span>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 12px;
+                "
+              >
+                4 Engineers &bull; 34 Audits In Flight &bull; Lead: Sarah
+                Jenkins
+              </p>
+              <div class="chart-bar-bg" style="height: 6px">
+                <div class="chart-bar-fill mint" style="width: 88%"></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer inner-footer"></footer>
+
+    <!-- AOS & Dashboard Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script defer src="../assets/js/dashboard.js"></script>
+  </body>
+</html>

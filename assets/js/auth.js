@@ -281,7 +281,8 @@ signInForm?.addEventListener("submit", (event) => {
   authStatus.textContent = "Signed in. Opening your workspace...";
   authStatus.className = "form-status is-success";
   window.setTimeout(() => {
-    window.location.href = "dashboard.html";
+    const roleSlug = (role || "Admin").toLowerCase();
+    window.location.href = `dashboard-${roleSlug}.html`;
   }, 350);
 });
 

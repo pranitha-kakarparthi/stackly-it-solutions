@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Stackly Administrator Workspace - Infrastructure, Security, and Cluster Telemetry."
+    />
+    <title>Admin Workspace | Stackly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script defer src="../assets/js/shared.js"></script>
+  </head>
+  <body class="dashboard-page">
+    <!-- Screen Loader -->
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+      <img src="../assets/images/logoStackly.webp" alt="" />
+      <span class="loader-spinner"></span>
+      <span>Loading Admin Console...</span>
+    </div>
+
+    <!-- Fixed Header -->
+    <header class="dashboard-header">
+      <a class="brand" href="../index.html">
+        <img src="../assets/images/logoStackly.webp" alt="Stackly" />
+      </a>
+      <div class="dashboard-user">
+        <span class="user-avatar" id="userAvatar">A</span>
+        <span>
+          <strong id="userName">Administrator</strong>
+          <small id="userRole">Admin Access</small>
+        </span>
+        <button
+          class="button button-small button-ghost"
+          id="signOut"
+          type="button"
+        >
+          Sign out
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-main" id="main-content">
+      <div class="container">
+        <!-- Top Hero & Greeting Section -->
+        <section class="dashboard-hero-section" data-aos="fade-down">
+          <div class="dashboard-heading">
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span>
+              <span>Global Infrastructure Telemetry</span>
+            </div>
+            <h1>
+              <span id="greetingTime">Good morning</span>,
+              <span class="gradient-text" id="greetingName"
+                >Administrator.</span
+              >
+            </h1>
+            <p>
+              Cluster orchestration, zero-trust security enforcement, and
+              multi-region cloud performance are synchronized.
+            </p>
+          </div>
+
+          <!-- Dynamic Meta & System Health Pills -->
+          <div
+            class="dashboard-meta-bar"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 16px;
+              margin-top: 20px;
+              flex-wrap: wrap;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="dashboard-meta-pill">
+                <i class="fa-solid fa-clock"></i>
+                <span id="timeAndZone">Loading local time...</span>
+              </div>
+              <div class="system-status-indicator">
+                <span class="status-pulse"></span>
+                <span>Global Nodes: 99.99% Operational</span>
+              </div>
+              <div class="dashboard-meta-pill">
+                <i
+                  class="fa-solid fa-shield-halved"
+                  style="color: var(--mint)"
+                ></i>
+                <span>SOC2 &bull; Enforced</span>
+              </div>
+            </div>
+
+            <!-- Quick Action Triggers -->
+            <div
+              class="dashboard-actions"
+              style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+            >
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-plus"></i> Provision Node
+              </a>
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-rotate"></i> Flush Global CDN
+              </a>
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-file-export"></i> Export Audit Log
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Quick Controls Grid -->
+          <div
+            class="quick-controls-grid"
+            data-aos="fade-up"
+            data-aos-delay="50"
+          >
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>DDoS Mitigation Shield</strong>
+                <small>Enabled &bull; Automated BGP diversion</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Auto-Scaling Daemon</strong>
+                <small>Enabled &bull; Dynamic pod elasticity</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Audit Telemetry Stream</strong>
+                <small>Enabled &bull; 100% request tracing</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="quick-control-card">
+              <div class="quick-control-info">
+                <strong>Maintenance Mode Lock</strong>
+                <small>Disabled &bull; All endpoints public</small>
+              </div>
+              <label class="interactive-toggle">
+                <input type="checkbox" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- KPI Grid: Core Cluster Metrics -->
+        <section class="kpi-grid" style="margin-top: 32px">
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="50">
+            <span class="kpi-icon"><i class="fa-solid fa-server"></i></span>
+            <small>Active Cluster Nodes</small>
+            <strong>148 Nodes</strong>
+            <em>+12 nodes provisioned today</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="100">
+            <span class="kpi-icon"><i class="fa-solid fa-globe"></i></span>
+            <small>Global Infrastructure Uptime</small>
+            <strong>99.99%</strong>
+            <em>All 6 primary regions healthy</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="150">
+            <span class="kpi-icon"
+              ><i class="fa-solid fa-shield-halved"></i
+            ></span>
+            <small>Security &amp; Compliance</small>
+            <strong>SOC2 Type II</strong>
+            <em>99.2% zero-trust score</em>
+          </article>
+          <article class="kpi-card" data-aos="fade-up" data-aos-delay="200">
+            <span class="kpi-icon"><i class="fa-solid fa-wallet"></i></span>
+            <small>Monthly Cloud Spend</small>
+            <strong>$42,850</strong>
+            <em>8.4% under allocated budget</em>
+          </article>
+        </section>
+
+        <!-- Panel 1: Multi-Region Cluster Utilization & Health -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>System Resources</small>
+              <h2>Multi-Region Cluster Utilization &amp; Health</h2>
+            </div>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                flex-wrap: wrap;
+              "
+            >
+              <!-- Interactive Time-Range Selector -->
+              <div class="time-range-pills">
+                <button type="button" class="time-pill-btn active">1H</button>
+                <button type="button" class="time-pill-btn">24H</button>
+                <button type="button" class="time-pill-btn">7D</button>
+                <button type="button" class="time-pill-btn">30D</button>
+              </div>
+              <a class="panel-link action-trigger" href="../404.html">
+                Telemetry Settings <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Horizontal Bars for Cluster Utilization -->
+          <div class="chart-bars-wrap">
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>US-East (N. Virginia &bull; Primary Tier)</strong>
+                <span>88% &bull; Optimal</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 88%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>US-West (Oregon &bull; Failover Hot Standby)</strong>
+                <span>62% &bull; Balanced</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill cyan" style="width: 62%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>EU-Central (Frankfurt &bull; GDPR Secured Zone)</strong>
+                <span>91% &bull; High Load</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill warning" style="width: 91%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>AP-South (Mumbai &bull; Edge Gateway)</strong>
+                <span>74% &bull; Normal</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill mint" style="width: 74%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong>AP-East (Tokyo &bull; High Throughput Mesh)</strong>
+                <span>53% &bull; Healthy</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 53%"></div>
+              </div>
+            </div>
+            <div class="chart-item">
+              <div class="chart-item-header">
+                <strong
+                  >SA-East (São Paulo &bull; Latin America Gateway)</strong
+                >
+                <span>42% &bull; Low Latency</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill cyan" style="width: 42%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry Metrics -->
+          <div
+            class="metrics-row"
+            style="
+              margin-top: 24px;
+              padding-top: 20px;
+              border-top: 1px solid var(--border);
+            "
+          >
+            <div class="metric-block">
+              <span class="metric-label">Allocated vCPU</span>
+              <strong class="metric-value">1,024 Cores</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-arrow-trend-up"></i> 72% current
+                load</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Cluster Memory</span>
+              <strong class="metric-value">4.096 TB RAM</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-circle-check"></i> 64% used</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Edge Network Ingress</span>
+              <strong class="metric-value">14.2 Gbps</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-signal"></i> 0.00% packet loss</small
+              >
+            </div>
+            <div class="metric-block">
+              <span class="metric-label">Avg Global RTT</span>
+              <strong class="metric-value">18.4 ms</strong>
+              <small class="metric-sub text-success"
+                ><i class="fa-solid fa-bolt"></i> Low latency SLA</small
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel 2: Infrastructure Topology & Node Orchestration -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Node Health</small>
+              <h2>Active Kubernetes Nodes &amp; Pod Orchestration</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Cluster Dashboard <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div
+            class="dashboard-grid"
+            style="
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 20px;
+            "
+          >
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >k8s-worker-us-east-01</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Zone: us-east-1a &bull; c5.4xlarge</small
+                  >
+                </div>
+                <span class="status-badge operational">Healthy</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>CPU: 38%</span><span>RAM: 14.2/32 GB</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 38%"></div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>34 Running Pods</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >View Pods &rarr;</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >db-primary-postgres-01</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Zone: us-east-1b &bull; r5b.8xlarge</small
+                  >
+                </div>
+                <span class="status-badge operational">Primary</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>IOPS: 8,400</span><span>Storage: 42%</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill cyan" style="width: 42%"></div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>Replica Lag: 2ms</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >DB Telemetry &rarr;</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >ingress-envoy-edge-01</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Zone: Global Anycast &bull; m5.2xlarge</small
+                  >
+                </div>
+                <span class="status-badge operational">Active</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>Req/s: 42.5k</span><span>TLS 1.3: 99.8%</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill" style="width: 65%"></div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>HTTP 5xx: 0.001%</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Route Rules &rarr;</a
+                >
+              </div>
+            </article>
+
+            <article
+              class="dashboard-card"
+              style="
+                padding: 20px;
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >cache-redis-cluster-04</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Zone: eu-central-1a &bull; cache.r6g</small
+                  >
+                </div>
+                <span class="status-badge operational">In Sync</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>Hit Rate: 96.4%</span><span>RAM: 68%</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 68%"></div>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  font-size: 11px;
+                  color: var(--muted);
+                "
+              >
+                <span>Keys: 4.8 Million</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Key Eviction &rarr;</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Panel 3: Interactive User Access, Identity & Audit Logs Table -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Identity &amp; Governance</small>
+              <h2>Enterprise User Directory &amp; Audit Logs</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Access Matrix <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Interactive Search & Status Filtering Toolbar -->
+          <div class="dashboard-filter-toolbar">
+            <div class="search-input-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                class="table-search-input"
+                data-target-table="adminAuditTable"
+                placeholder="Filter users by name, email, IP, or role..."
+              />
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px">
+              <label
+                for="adminStatusFilter"
+                style="font-size: 12px; color: var(--muted)"
+                >Filter Status:</label
+              >
+              <select
+                id="adminStatusFilter"
+                class="filter-dropdown table-status-filter"
+                data-target-table="adminAuditTable"
+              >
+                <option value="all">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="suspended">Suspended</option>
+                <option value="mfa required">MFA Required</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Interactive Table -->
+          <div class="dashboard-table-wrap">
+            <table class="dashboard-table" id="adminAuditTable">
+              <thead>
+                <tr>
+                  <th>Identity / User</th>
+                  <th>Enterprise Role</th>
+                  <th>MFA Status</th>
+                  <th>Last Session</th>
+                  <th>Source IP</th>
+                  <th>Account Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Alex Chen</strong>
+                      <small>alex.chen@stackly.internal</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-tag purple">Admin</span></td>
+                  <td><span class="badge-tag success">FIDO2 WebAuthn</span></td>
+                  <td>2 minutes ago</td>
+                  <td>192.0.2.45</td>
+                  <td><span class="status-badge operational">Active</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Manage</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Sarah Jenkins</strong>
+                      <small>s.jenkins@stackly.internal</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-tag blue">Manager</span></td>
+                  <td><span class="badge-tag success">TOTP Hardware</span></td>
+                  <td>18 minutes ago</td>
+                  <td>198.51.100.14</td>
+                  <td><span class="status-badge operational">Active</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Manage</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Priya Patel</strong>
+                      <small>priya.patel@stackly.internal</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-tag mint">Employee</span></td>
+                  <td><span class="badge-tag success">Enforced (App)</span></td>
+                  <td>1 hour ago</td>
+                  <td>203.0.113.88</td>
+                  <td><span class="status-badge operational">Active</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Manage</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Marcus Vance</strong>
+                      <small>m.vance@apexhealth.com</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-tag warning">Customer</span></td>
+                  <td><span class="badge-tag success">Enforced (SMS)</span></td>
+                  <td>3 hours ago</td>
+                  <td>198.51.100.201</td>
+                  <td><span class="status-badge operational">Active</span></td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Manage</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>David Thorne</strong>
+                      <small>d.thorne@fintechsecure.net</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-tag warning">Customer</span></td>
+                  <td><span class="badge-tag warning">MFA Required</span></td>
+                  <td>Yesterday</td>
+                  <td>192.88.99.12</td>
+                  <td>
+                    <span class="status-badge in-progress">MFA Required</span>
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Prompt</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-project-title">
+                      <strong>Klaus Schmidt</strong>
+                      <small>k.schmidt@de-telecom.eu</small>
+                    </div>
+                  </td>
+                  <td><span class="badge-tag mint">Employee</span></td>
+                  <td><span class="badge-tag danger">Revoked</span></td>
+                  <td>5 days ago</td>
+                  <td>195.12.88.40</td>
+                  <td>
+                    <span
+                      class="status-badge"
+                      style="
+                        background: rgba(239, 68, 68, 0.15);
+                        color: #ef4444;
+                      "
+                      >Suspended</span
+                    >
+                  </td>
+                  <td>
+                    <a
+                      class="table-action-btn action-trigger"
+                      href="../404.html"
+                      >Review</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Panel 4: Live Cluster Orchestration Terminal -->
+        <section class="dashboard-full-panel" data-aos="fade-up">
+          <div class="dashboard-panel-header">
+            <div>
+              <small>Real-Time Telemetry</small>
+              <h2>Automated Orchestration Audit Feed</h2>
+            </div>
+            <a class="panel-link action-trigger" href="../404.html">
+              Raw Syslog Stream <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div
+            class="live-terminal"
+            style="
+              background: rgba(4, 9, 18, 0.95);
+              border: 1px solid var(--border);
+              border-radius: 10px;
+              padding: 18px 20px;
+              font-family: monospace;
+              font-size: 12px;
+              line-height: 1.8;
+              color: #a5f3fc;
+              overflow-x: auto;
+            "
+          >
+            <div>
+              <span style="color: var(--mint)">[2026-09-11 14:15:02 UTC]</span>
+              <span style="color: #60a5fa">INFO</span> &bull; Autoscaler:
+              Scale-up triggered for pool [us-east-1a-compute]. 4 new pods
+              dispatched.
+            </div>
+            <div>
+              <span style="color: var(--mint)">[2026-09-11 14:15:18 UTC]</span>
+              <span style="color: var(--mint)">OK</span> &bull; Envoy Gateway:
+              TLS certificates renewed via Let's Encrypt automated challenge.
+            </div>
+            <div>
+              <span style="color: var(--mint)">[2026-09-11 14:15:44 UTC]</span>
+              <span style="color: #f59e0b">WARN</span> &bull; RateLimiter:
+              Suspicious burst traffic mitigated from CIDR 198.51.100.0/24. 0
+              impact on SLA.
+            </div>
+            <div>
+              <span style="color: var(--mint)">[2026-09-11 14:16:10 UTC]</span>
+              <span style="color: var(--mint)">OK</span> &bull; DB Replication:
+              WAL streaming confirmed on read-replicas. Total replication delay:
+              1.4ms.
+            </div>
+            <div>
+              <span style="color: var(--mint)">[2026-09-11 14:16:32 UTC]</span>
+              <span style="color: #60a5fa">INFO</span> &bull; SOC2 Sentinel:
+              Identity integrity audit passed with 100% compliance across active
+              sessions.
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer inner-footer"></footer>
+
+    <!-- AOS & Dashboard Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script defer src="../assets/js/dashboard.js"></script>
+  </body>
+</html>
