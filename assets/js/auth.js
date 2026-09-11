@@ -94,8 +94,8 @@ const validateSignIn = () => {
   if (!password) {
     setFieldError(passwordField, "Password is required.");
     firstInvalid = firstInvalid || passwordField;
-  } else if (password.length < 6) {
-    setFieldError(passwordField, "Password must be at least 6 characters.");
+  } else if (password.length < 8) {
+    setFieldError(passwordField, "Password must be at least 8 characters.");
     firstInvalid = firstInvalid || passwordField;
   }
 
@@ -112,6 +112,7 @@ const validateSignIn = () => {
 };
 
 // Sign-up validation
+// Sign-up validation
 const validateSignUp = () => {
   clearFormErrors(signUpForm);
   let firstInvalid = null;
@@ -119,21 +120,33 @@ const validateSignUp = () => {
   const firstNameField = document.querySelector("#firstName");
   const lastNameField = document.querySelector("#lastName");
   const emailField = document.querySelector("#signupEmail");
+  const phoneField = document.querySelector("#signupPhone");
   const passwordField = document.querySelector("#signupPassword");
   const confirmPasswordField = document.querySelector("#signupConfirmPassword");
   const roleField = document.querySelector("#signupRole");
   const termsField = document.querySelector("#terms");
 
-  if (firstNameField && !firstNameField.value.trim()) {
+  // First name validation: alphabetic and spaces only
+  const firstName = firstNameField ? firstNameField.value.trim() : "";
+  if (!firstName) {
     setFieldError(firstNameField, "First name is required.");
+    firstInvalid = firstInvalid || firstNameField;
+  } else if (!/^[A-Za-z\s]+$/.test(firstName)) {
+    setFieldError(firstNameField, "Only alphabets and spaces are allowed.");
     firstInvalid = firstInvalid || firstNameField;
   }
 
-  if (lastNameField && !lastNameField.value.trim()) {
+  // Last name validation: alphabetic and spaces only
+  const lastName = lastNameField ? lastNameField.value.trim() : "";
+  if (!lastName) {
     setFieldError(lastNameField, "Last name is required.");
+    firstInvalid = firstInvalid || lastNameField;
+  } else if (!/^[A-Za-z\s]+$/.test(lastName)) {
+    setFieldError(lastNameField, "Only alphabets and spaces are allowed.");
     firstInvalid = firstInvalid || lastNameField;
   }
 
+  // Email validation
   const email = emailField ? emailField.value.trim() : "";
   if (!email) {
     setFieldError(emailField, "Email address is required.");
@@ -143,6 +156,17 @@ const validateSignUp = () => {
     firstInvalid = firstInvalid || emailField;
   }
 
+  // Mobile number validation: exactly 10 digits
+  const phone = phoneField ? phoneField.value.trim() : "";
+  if (!phone) {
+    setFieldError(phoneField, "Mobile number is required.");
+    firstInvalid = firstInvalid || phoneField;
+  } else if (!/^\d{10}$/.test(phone)) {
+    setFieldError(phoneField, "Please enter a valid 10-digit mobile number.");
+    firstInvalid = firstInvalid || phoneField;
+  }
+
+  // Password validation
   const password = passwordField ? passwordField.value : "";
   if (!password) {
     setFieldError(passwordField, "Password is required.");
@@ -158,6 +182,7 @@ const validateSignUp = () => {
     firstInvalid = firstInvalid || passwordField;
   }
 
+  // Confirm password validation
   const confirmPassword = confirmPasswordField
     ? confirmPasswordField.value
     : "";
@@ -169,11 +194,13 @@ const validateSignUp = () => {
     firstInvalid = firstInvalid || confirmPasswordField;
   }
 
+  // Role validation
   if (roleField && !roleField.value) {
     setFieldError(roleField, "Please choose a role.");
     firstInvalid = firstInvalid || roleField;
   }
 
+  // Terms and conditions validation
   if (termsField && !termsField.checked) {
     setFieldError(
       termsField,
@@ -189,10 +216,43 @@ const validateSignUp = () => {
   return true;
 };
 
+// Immediate input validation for first and last name (alphabets + spaces only)
+const firstNameInput = document.querySelector("#firstName");
+const lastNameInput = document.querySelector("#lastName");
+const signupPhoneInput = document.querySelector("#signupPhone");
+
+[firstNameInput, lastNameInput].forEach((field) => {
+  if (!field) return;
+  field.addEventListener("input", () => {
+    const val = field.value;
+    if (val && !/^[A-Za-z\s]*$/.test(val)) {
+      setFieldError(field, "Only alphabets and spaces are allowed.");
+    } else {
+      clearFieldError(field);
+    }
+  });
+});
+
+// Immediate input validation for mobile number (only numbers allowed)
+signupPhoneInput?.addEventListener("input", () => {
+  const val = signupPhoneInput.value;
+  if (val && /\D/.test(val)) {
+    setFieldError(signupPhoneInput, "Mobile number must contain only numbers.");
+  } else {
+    clearFieldError(signupPhoneInput);
+  }
+});
+
 // Real-time error clearing when user edits any field
 document
   .querySelectorAll(".auth-form input, .auth-form select")
   .forEach((field) => {
+    if (
+      field === firstNameInput ||
+      field === lastNameInput ||
+      field === signupPhoneInput
+    )
+      return;
     field.addEventListener("input", () => {
       clearFieldError(field);
       if (authStatus) {

@@ -5,14 +5,19 @@ const navLinks = [...document.querySelectorAll(".nav-link")];
 const backToTop = document.querySelector("#backToTop");
 
 // Keep navigation state and the mobile menu in sync with the page.
+// Locks background scroll completely when mobile menu is open.
 const closeMenu = () => {
   navMenu.classList.remove("open");
+  document.body.classList.remove("nav-open");
+  document.documentElement.classList.remove("nav-open");
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.setAttribute("aria-label", "Open navigation");
 };
 
 menuToggle.addEventListener("click", () => {
   const isOpen = navMenu.classList.toggle("open");
+  document.body.classList.toggle("nav-open", isOpen);
+  document.documentElement.classList.toggle("nav-open", isOpen);
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   menuToggle.setAttribute(
     "aria-label",

@@ -24,6 +24,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <script defer src="../assets/js/shared.js"></script>
     <script defer src="../assets/js/shared-shell.js"></script>
   </head>
@@ -48,7 +52,10 @@
       </div>
     </header>
     <main id="main-content">
-      <section class="page-hero page-hero-about section">
+      <!-- ========================================================================= -->
+      <!-- SECTION 1: HERO & PURPOSE                                                 -->
+      <!-- ========================================================================= -->
+      <section class="page-hero page-hero-about section" data-aos="fade-up">
         <div class="container">
           <div class="page-hero-grid">
             <div class="page-hero-copy">
@@ -82,7 +89,11 @@
           </div>
         </div>
       </section>
-      <section class="section about-page-story">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 2: OUR PERSPECTIVE & STORY                                        -->
+      <!-- ========================================================================= -->
+      <section class="section about-page-story" data-aos="fade-up">
         <div class="container story-grid">
           <div>
             <div class="section-kicker">Our perspective</div>
@@ -113,19 +124,23 @@
           </figure>
         </div>
       </section>
-      <section class="section image-story-band">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 3: HOW WE WORK & INFRASTRUCTURE                                    -->
+      <!-- ========================================================================= -->
+      <section class="section image-story-band" data-aos="fade-up">
         <div class="container image-story-grid">
           <figure class="image-story-feature">
             <img
-              src="../assets/images/solutions-meeting.webp"
-              alt="Technology team reviewing a digital product"
+              src="../assets/images/about-datacenter.webp"
+              alt="High-density modern data center server architecture"
               width="1200"
               height="800"
               loading="lazy"
             />
             <figcaption>
-              <span>01</span> Ideas become useful when people shape them
-              together.
+              <span>01</span> Enterprise engineering backed by resilient modern
+              infrastructure.
             </figcaption>
           </figure>
           <div class="image-story-copy">
@@ -141,20 +156,24 @@
             </p>
             <div class="image-story-thumbs">
               <img
-                src="../assets/images/services-engineering.webp"
-                alt="Stackly colleagues collaborating in a technology workspace"
+                src="../assets/images/about-mission.webp"
+                alt="Stackly engineering workstation and development mission"
                 loading="lazy"
               />
               <img
-                src="../assets/images/contact-portrait.webp"
-                alt="Stackly client portrait"
+                src="../assets/images/about-innovation.webp"
+                alt="Cutting edge technology hardware and developer innovation setup"
                 loading="lazy"
               />
             </div>
           </div>
         </div>
       </section>
-      <section class="section values-section">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 4: GUIDING PRINCIPLES                                             -->
+      <!-- ========================================================================= -->
+      <section class="section values-section" data-aos="fade-up">
         <div class="container">
           <div class="center-heading">
             <div class="eyebrow">
@@ -167,7 +186,7 @@
             </h2>
           </div>
           <div class="value-grid">
-            <article class="value-card">
+            <article class="value-card" data-aos="fade-up" data-aos-delay="100">
               <i class="fa-solid fa-ear-listen"></i>
               <h3>Listen deeply</h3>
               <p>
@@ -175,7 +194,7 @@
                 business behind the brief.
               </p>
             </article>
-            <article class="value-card">
+            <article class="value-card" data-aos="fade-up" data-aos-delay="200">
               <i class="fa-solid fa-compass"></i>
               <h3>Make it clear</h3>
               <p>
@@ -183,7 +202,7 @@
                 with confidence.
               </p>
             </article>
-            <article class="value-card">
+            <article class="value-card" data-aos="fade-up" data-aos-delay="300">
               <i class="fa-solid fa-handshake"></i>
               <h3>Stay accountable</h3>
               <p>
@@ -194,7 +213,11 @@
           </div>
         </div>
       </section>
-      <section class="cta-section section">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 5: CALL TO ACTION                                                 -->
+      <!-- ========================================================================= -->
+      <section class="cta-section section" data-aos="fade-up">
         <div class="container cta-inner">
           <div class="eyebrow">
             <span class="eyebrow-line"></span> Work with Stackly
@@ -206,9 +229,9 @@
           </h2>
           <p>Bring us the hard problem. We will bring the right people.</p>
           <div class="hero-actions">
-            <a class="button button-light" href="contact.html"
+            <a class="button button-light" href="./../404.html"
               >Start a conversation <i class="fa-solid fa-arrow-right"></i></a
-            ><a class="button button-outline-light" href="sign-up.html"
+            ><a class="button button-outline-light" href="./../404.html"
               >Create workspace</a
             >
           </div>
@@ -313,5 +336,14 @@
         </div>
       </div>
     </footer>
+    <!-- AOS Scroll Animations Library & Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.AOS) {
+          AOS.init({ duration: 700, once: true, offset: 40 });
+        }
+      });
+    </script>
   </body>
 </html>

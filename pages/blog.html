@@ -23,6 +23,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script defer src="../assets/js/shared.js"></script>
     <script defer src="../assets/js/shared-shell.js"></script>
@@ -153,7 +157,225 @@
           </div>
         </div>
       </section>
+
+      <!-- Section 3: Architecture Deep-Dive Feature -->
+      <section
+        class="section"
+        style="
+          background: rgba(16, 35, 61, 0.45);
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        "
+        data-aos="fade-up"
+      >
+        <div class="container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1.1fr;
+              gap: 45px;
+              align-items: center;
+            "
+          >
+            <figure class="solution-image-frame" data-aos="fade-right">
+              <img
+                src="../assets/images/blog-devops-feature.webp"
+                alt="Developer workstation and modern software deployment pipeline"
+                loading="lazy"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+                "
+              />
+              <figcaption
+                style="margin-top: 10px; font-size: 11px; color: var(--muted)"
+              >
+                <i class="fa-solid fa-terminal" style="color: var(--cyan)"></i>
+                Engineering Field Notes &bull; DevOps Architecture
+              </figcaption>
+            </figure>
+            <div data-aos="fade-left">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Architectural Deep-Dive
+              </div>
+              <h2>
+                Deconstructing Monoliths: From Chaos to Continuous Delivery
+              </h2>
+              <p style="margin: 16px 0 20px; line-height: 1.8">
+                Transitioning enterprise codebases into loosely-coupled services
+                requires more than containerization. Explore how our engineering
+                team redesigned event brokers, reduced database connection
+                thrashing, and achieved automated blue-green zero-downtime
+                rollouts across multi-region clusters.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  gap: 20px;
+                  align-items: center;
+                  margin-bottom: 22px;
+                "
+              >
+                <span style="font-size: 12px; color: var(--mint)"
+                  ><i class="fa-solid fa-clock"></i> 9 min read</span
+                >
+                <span style="font-size: 12px; color: var(--muted)"
+                  ><i class="fa-solid fa-tag"></i> Cloud Infrastructure</span
+                >
+              </div>
+              <a class="button button-primary" href="../404.html"
+                >Read Full Architecture Brief
+                <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Industry Podcasts & Executive Roundtables -->
+      <section class="section" data-aos="fade-up">
+        <div class="container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.1fr 0.9fr;
+              gap: 45px;
+              align-items: center;
+            "
+          >
+            <div data-aos="fade-right">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Voices in Technology
+              </div>
+              <h2>
+                The Stackly Tech Roundtable: Conversations with System Builders
+              </h2>
+              <p style="margin: 16px 0 20px; line-height: 1.8">
+                Tune in to bi-weekly conversations where enterprise CTOs,
+                Principal Engineers, and cybersecurity specialists share
+                battle-tested strategies on scaling distributed architectures,
+                incident post-mortems, and building high-trust developer
+                organizations.
+              </p>
+              <ul
+                style="
+                  list-style: none;
+                  padding: 0;
+                  display: grid;
+                  gap: 12px;
+                  margin-bottom: 24px;
+                "
+              >
+                <li
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    color: var(--text);
+                    font-size: 13px;
+                  "
+                >
+                  <i
+                    class="fa-solid fa-microphone-lines"
+                    style="color: var(--cyan)"
+                  ></i>
+                  <span
+                    >Episode 42: Real-time Event Streaming at 10M
+                    events/sec</span
+                  >
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    color: var(--text);
+                    font-size: 13px;
+                  "
+                >
+                  <i
+                    class="fa-solid fa-microphone-lines"
+                    style="color: var(--cyan)"
+                  ></i>
+                  <span
+                    >Episode 41: Why Zero-Trust Must Begin with Developer
+                    Ergonomics</span
+                  >
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    color: var(--text);
+                    font-size: 13px;
+                  "
+                >
+                  <i
+                    class="fa-solid fa-microphone-lines"
+                    style="color: var(--cyan)"
+                  ></i>
+                  <span
+                    >Episode 40: Kubernetes Cost Optimization in Turbulent
+                    Markets</span
+                  >
+                </li>
+              </ul>
+              <a class="button button-ghost" href="../404.html"
+                >Browse All Episodes</a
+              >
+            </div>
+            <figure class="solution-image-frame" data-aos="fade-left">
+              <img
+                src="../assets/images/blog-podcast-webinar.webp"
+                alt="Modern studio workspace and technology podcast production setup"
+                loading="lazy"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+                "
+              />
+              <figcaption
+                style="margin-top: 10px; font-size: 11px; color: var(--muted)"
+              >
+                <i
+                  class="fa-solid fa-headphones"
+                  style="color: var(--mint)"
+                ></i>
+                Available on Spotify, Apple &amp; YouTube
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Editorial Insights & Newsletter Subscription -->
+      <section class="cta-section section" data-aos="fade-up">
+        <div class="container cta-inner">
+          <div class="eyebrow">
+            <span class="eyebrow-line"></span> Weekly Engineering Brief
+          </div>
+          <h2>
+            Stay ahead of the curve with<br /><span class="gradient-text"
+              >curated architectural insights.</span
+            >
+          </h2>
+          <p
+            style="max-width: 600px; margin: 12px auto 24px; color: var(--text)"
+          >
+            Join over 15,000 technology leaders and system architects receiving
+            our monthly teardowns on cloud resilience, threat models, and
+            software craft.
+          </p>
+          <a class="button button-light" href="./../404.html"
+            >Subscribe to Insights <i class="fa-solid fa-arrow-right"></i
+          ></a>
+        </div>
+      </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <footer class="footer inner-footer">
       <div class="container">
         <div class="footer-main">
@@ -252,5 +474,14 @@
         </div>
       </div>
     </footer>
+    <!-- AOS Scroll Animations Library & Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.AOS) {
+          AOS.init({ duration: 700, once: true, offset: 40 });
+        }
+      });
+    </script>
   </body>
 </html>

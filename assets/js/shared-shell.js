@@ -25,22 +25,39 @@ if (innerHeader) {
 
   const toggle = document.querySelector("#innerMenuToggle");
   const menu = document.querySelector("#innerNavMenu");
+
+  // Close navigation and restore body scroll
+  const closeInnerMenu = () => {
+    if (menu) menu.classList.remove("open");
+    document.body.classList.remove("nav-open");
+    document.documentElement.classList.remove("nav-open");
+    if (toggle) {
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open navigation");
+    }
+  };
+
   toggle?.addEventListener("click", () => {
     const open = menu.classList.toggle("open");
+    document.body.classList.toggle("nav-open", open);
+    document.documentElement.classList.toggle("nav-open", open);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute(
       "aria-label",
       open ? "Close navigation" : "Open navigation"
     );
   });
+
   menu
     ?.querySelectorAll("a")
-    .forEach((link) =>
-      link.addEventListener("click", () => menu.classList.remove("open"))
-    );
+    .forEach((link) => link.addEventListener("click", closeInnerMenu));
 }
 
 if (innerFooter) {
+  const isInPages = window.location.pathname
+    .replace(/\\/g, "/")
+    .includes("/pages/");
+  const rootPath = isInPages ? "../" : "./";
   const form = innerFooter.querySelector(".inner-newsletter");
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -50,7 +67,7 @@ if (innerFooter) {
     message.classList.toggle("error", !input.validity.valid);
     if (input.validity.valid) {
       form.reset();
-      window.location.href = "./../../404.html";
+      window.location.href = `${rootPath}404.html`;
     }
   });
 }

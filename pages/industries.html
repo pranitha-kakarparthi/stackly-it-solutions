@@ -23,6 +23,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script defer src="../assets/js/shared.js"></script>
     <script defer src="../assets/js/shared-shell.js"></script>
@@ -94,7 +98,7 @@
                 Connected, human-centered experiences for providers, patients,
                 and the people who support them.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Talk healthcare <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
@@ -107,7 +111,7 @@
                 Clearer, safer digital journeys for teams and customers
                 navigating high-stakes decisions.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Talk finance <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
@@ -120,7 +124,7 @@
                 Faster, more personal commerce experiences that turn attention
                 into lasting loyalty.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Talk commerce <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
@@ -133,16 +137,17 @@
                 Thoughtful platforms that help people learn, teach, and grow
                 with less friction.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Talk education <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
           </div>
         </div>
       </section>
-      <section class="section industry-image-band">
+      <!-- Section 3: Context in Practice Image Band -->
+      <section class="section industry-image-band" data-aos="fade-up">
         <div class="container industry-image-grid">
-          <div class="industry-image-copy">
+          <div class="industry-image-copy" data-aos="fade-right">
             <div class="section-kicker">Context in practice</div>
             <h2>
               Technology that<br /><span class="gradient-text"
@@ -154,26 +159,143 @@
               and ambitions of the people using them.
             </p>
           </div>
-          <div class="industry-image-strip">
+          <div class="industry-image-strip" data-aos="fade-left">
             <img
               src="../assets/images/industry-team.webp"
-              alt="Healthcare professional working with digital technology"
+              alt="Engineering team collaborating on IT transformation"
               loading="lazy"
             />
             <img
               src="../assets/images/industry-learning.webp"
-              alt="Team working together on a technology project"
+              alt="Education technology learning campus platform"
               loading="lazy"
             />
             <img
               src="../assets/images/industry-commerce.webp"
-              alt="Professional portrait representing a technology user"
+              alt="Omnichannel retail commerce technology infrastructure"
               loading="lazy"
             />
           </div>
         </div>
       </section>
-      <section class="cta-section section">
+
+      <!-- Section 4: Healthcare & Life Sciences Specialized IT Infrastructure -->
+      <section
+        class="section"
+        style="
+          background: rgba(16, 35, 61, 0.45);
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        "
+        data-aos="fade-up"
+      >
+        <div class="container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 45px;
+              align-items: center;
+            "
+          >
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Life Sciences &amp; Care
+              </div>
+              <h2>HIPAA-Compliant Healthcare Architectures</h2>
+              <p style="margin: 16px 0 20px; line-height: 1.8">
+                From electronic health records (EHR) synchronization to
+                diagnostic telemetry, we architect zero-latency medical IT
+                networks with hardware-backed encryption, automated audit
+                logging, and certified regulatory compliance.
+              </p>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 14px;
+                  margin-bottom: 24px;
+                "
+              >
+                <div
+                  style="
+                    padding: 14px;
+                    background: rgba(7, 17, 31, 0.6);
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                  "
+                >
+                  <strong
+                    style="
+                      color: var(--cyan);
+                      font-size: 13px;
+                      display: block;
+                      margin-bottom: 4px;
+                    "
+                    ><i class="fa-solid fa-notes-medical"></i> FHIR / HL7
+                    APIs</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Interoperable clinical data exchange with end-to-end
+                    security.</small
+                  >
+                </div>
+                <div
+                  style="
+                    padding: 14px;
+                    background: rgba(7, 17, 31, 0.6);
+                    border: 1px solid var(--border);
+                    border-radius: 10px;
+                  "
+                >
+                  <strong
+                    style="
+                      color: var(--mint);
+                      font-size: 13px;
+                      display: block;
+                      margin-bottom: 4px;
+                    "
+                    ><i class="fa-solid fa-hospital-user"></i> 99.999%
+                    High-Availability</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Continuous uptime for patient monitoring &amp; emergency
+                    telemetry.</small
+                  >
+                </div>
+              </div>
+              <a class="button button-primary" href="./../404.html"
+                >Request Healthcare Architecture Brief
+                <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+            <figure class="solution-image-frame" data-aos="fade-left">
+              <img
+                src="../assets/images/industries-healthcare.webp"
+                alt="Healthcare digital systems and medical technology infrastructure"
+                loading="lazy"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+                "
+              />
+              <figcaption
+                style="margin-top: 10px; font-size: 11px; color: var(--muted)"
+              >
+                <i
+                  class="fa-solid fa-shield-halved"
+                  style="color: var(--mint)"
+                ></i>
+                Certified Clinical Data Perimeter
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Consultation CTA Banner -->
+      <section class="cta-section section" data-aos="fade-up">
         <div class="container cta-inner">
           <div class="eyebrow">
             <span class="eyebrow-line"></span> Your context matters
@@ -183,12 +305,13 @@
               >behind the brief.</span
             >
           </h2>
-          <a class="button button-light" href="contact.html"
+          <a class="button button-light" href="./../404.html"
             >Start a conversation <i class="fa-solid fa-arrow-right"></i
           ></a>
         </div>
       </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <footer class="footer inner-footer">
       <div class="container">
         <div class="footer-main">
@@ -287,5 +410,14 @@
         </div>
       </div>
     </footer>
+    <!-- AOS Scroll Animations Library & Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.AOS) {
+          AOS.init({ duration: 700, once: true, offset: 40 });
+        }
+      });
+    </script>
   </body>
 </html>

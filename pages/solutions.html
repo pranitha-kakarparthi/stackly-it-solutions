@@ -23,6 +23,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script defer src="../assets/js/shared.js"></script>
     <script defer src="../assets/js/shared-shell.js"></script>
@@ -81,59 +85,344 @@
           </div>
         </div>
       </section>
-      <section class="section solution-list">
+      <!-- Section 2: Enterprise Transformation Pillars -->
+      <section class="section solution-list" data-aos="fade-up">
         <div class="container">
-          <article class="solution-row">
-            <div class="solution-index">01</div>
-            <div>
-              <h2>Modernize operations</h2>
-              <p>
-                Unify fragmented systems, remove repetitive work, and give teams
-                a clearer view of the decisions ahead.
-              </p>
-              <a class="text-link" href="contact.html"
-                >Explore the opportunity <i class="fa-solid fa-arrow-right"></i
-              ></a>
+          <div
+            class="section-head"
+            style="margin-bottom: 40px; text-align: center"
+          >
+            <div class="eyebrow" style="justify-content: center">
+              <span class="eyebrow-line"></span> Architectural Foundations
             </div>
-            <span class="solution-icon"
-              ><i class="fa-solid fa-arrows-rotate"></i
-            ></span>
-          </article>
-          <article class="solution-row">
-            <div class="solution-index">02</div>
-            <div>
-              <h2>Connect customer experiences</h2>
-              <p>
-                Make every digital interaction feel intentional, useful, and
-                consistent from first touch to long-term relationship.
-              </p>
-              <a class="text-link" href="contact.html"
-                >Design the experience <i class="fa-solid fa-arrow-right"></i
-              ></a>
+            <h2>Enterprise Transformation Framework</h2>
+            <p style="max-width: 680px; margin: 10px auto 0">
+              Purpose-built engineering blueprints designed to resolve
+              operational friction and accelerate digital velocity.
+            </p>
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 40px;
+              align-items: center;
+              margin-bottom: 30px;
+            "
+          >
+            <figure class="solution-image-frame" data-aos="fade-right">
+              <img
+                src="../assets/images/solutions-cloud-migration.webp"
+                alt="Global digital network and cloud migration architecture"
+                loading="lazy"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+                "
+              />
+              <figcaption
+                style="margin-top: 10px; font-size: 11px; color: var(--muted)"
+              >
+                <i
+                  class="fa-solid fa-cloud-arrow-up"
+                  style="color: var(--cyan)"
+                ></i>
+                Multi-Region Automated Cloud Mesh
+              </figcaption>
+            </figure>
+            <div data-aos="fade-left">
+              <article class="solution-row" style="margin-bottom: 20px">
+                <div class="solution-index">01</div>
+                <div>
+                  <h3>Modernize Operations &amp; Infra</h3>
+                  <p>
+                    Unify fragmented microservices, eliminate manual operational
+                    toil, and establish real-time observability across
+                    distributed Kubernetes workloads.
+                  </p>
+                  <a class="text-link" href="./../404.html"
+                    >Explore the opportunity
+                    <i class="fa-solid fa-arrow-right"></i
+                  ></a>
+                </div>
+              </article>
+              <article class="solution-row" style="margin-bottom: 20px">
+                <div class="solution-index">02</div>
+                <div>
+                  <h3>Resilient Digital Experience</h3>
+                  <p>
+                    Engineer sub-second latency user journeys with distributed
+                    edge nodes, automated self-healing clusters, and guaranteed
+                    99.99% service availability.
+                  </p>
+                  <a class="text-link" href="./../404.html"
+                    >Design the experience
+                    <i class="fa-solid fa-arrow-right"></i
+                  ></a>
+                </div>
+              </article>
+              <article class="solution-row">
+                <div class="solution-index">03</div>
+                <div>
+                  <h3>Scale with High Governance</h3>
+                  <p>
+                    Implement infrastructure-as-code with immutable change
+                    tracking, multi-region failover automation, and strict
+                    enterprise cloud guardrails.
+                  </p>
+                  <a class="text-link" href="./../404.html"
+                    >Plan for scale <i class="fa-solid fa-arrow-right"></i
+                  ></a>
+                </div>
+              </article>
             </div>
-            <span class="solution-icon"><i class="fa-solid fa-link"></i></span>
-          </article>
-          <article class="solution-row">
-            <div class="solution-index">03</div>
-            <div>
-              <h2>Scale with confidence</h2>
-              <p>
-                Build the cloud, data, and security foundations that let
-                ambitious plans grow without losing control.
-              </p>
-              <a class="text-link" href="contact.html"
-                >Plan for scale <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
-            <span class="solution-icon"
-              ><i class="fa-solid fa-chart-line"></i
-            ></span>
-          </article>
+          </div>
         </div>
       </section>
-      <section class="section solution-image-band">
+
+      <!-- Section 3: Zero-Trust Cybersecurity Architecture -->
+      <section
+        class="section"
+        style="
+          background: rgba(16, 35, 61, 0.45);
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        "
+        data-aos="fade-up"
+      >
+        <div class="container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.1fr 0.9fr;
+              gap: 45px;
+              align-items: center;
+            "
+          >
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Threat Immunity
+              </div>
+              <h2>Zero-Trust Security &amp; Data Sovereignty</h2>
+              <p style="margin: 16px 0 24px; line-height: 1.8">
+                Modern threat vectors require defense-in-depth where identity is
+                the new perimeter. Our security solutions embed least-privilege
+                access, end-to-end cryptographic verification, and AI-driven
+                behavioral threat detection directly into your software delivery
+                pipelines.
+              </p>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 16px;
+                  margin-bottom: 24px;
+                "
+              >
+                <div
+                  style="
+                    padding: 16px;
+                    background: rgba(7, 17, 31, 0.6);
+                    border: 1px solid var(--border);
+                    border-radius: 12px;
+                  "
+                >
+                  <strong
+                    style="
+                      color: var(--cyan);
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      font-size: 14px;
+                    "
+                    ><i class="fa-solid fa-fingerprint"></i> FIDO2 &amp;
+                    IAM</strong
+                  >
+                  <small
+                    style="
+                      color: var(--muted);
+                      display: block;
+                      margin-top: 6px;
+                      font-size: 11px;
+                    "
+                    >Phishing-resistant biometrics &amp; conditional zero-trust
+                    access.</small
+                  >
+                </div>
+                <div
+                  style="
+                    padding: 16px;
+                    background: rgba(7, 17, 31, 0.6);
+                    border: 1px solid var(--border);
+                    border-radius: 12px;
+                  "
+                >
+                  <strong
+                    style="
+                      color: var(--mint);
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                      font-size: 14px;
+                    "
+                    ><i class="fa-solid fa-shield-virus"></i> Automated
+                    SOC</strong
+                  >
+                  <small
+                    style="
+                      color: var(--muted);
+                      display: block;
+                      margin-top: 6px;
+                      font-size: 11px;
+                    "
+                    >24/7 SIEM monitoring with automated incident
+                    quarantine.</small
+                  >
+                </div>
+              </div>
+              <a class="button button-primary" href="./../404.html"
+                >Schedule Security Audit <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+            <figure class="solution-image-frame" data-aos="fade-left">
+              <img
+                src="../assets/images/solutions-cyber-defense.webp"
+                alt="Cybersecurity digital defense matrix and data shield"
+                loading="lazy"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+                "
+              />
+              <figcaption
+                style="margin-top: 10px; font-size: 11px; color: var(--muted)"
+              >
+                <i class="fa-solid fa-lock" style="color: var(--mint)"></i>
+                Hardware-Backed Cryptographic Boundary
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Real-Time Intelligence & Data Pipeline -->
+      <section class="section" data-aos="fade-up">
+        <div class="container">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 0.9fr 1.1fr;
+              gap: 45px;
+              align-items: center;
+            "
+          >
+            <figure class="solution-image-frame" data-aos="fade-right">
+              <img
+                src="../assets/images/solutions-data-analytics.webp"
+                alt="Enterprise real-time data analytics telemetry dashboard"
+                loading="lazy"
+                style="
+                  border-radius: 16px;
+                  border: 1px solid var(--border);
+                  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+                "
+              />
+              <figcaption
+                style="margin-top: 10px; font-size: 11px; color: var(--muted)"
+              >
+                <i class="fa-solid fa-chart-pie" style="color: var(--cyan)"></i>
+                Real-Time Telemetry &amp; Event Stream
+              </figcaption>
+            </figure>
+            <div data-aos="fade-left">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Data Engineering
+              </div>
+              <h2>High-Throughput Analytics &amp; Intelligent Event Streams</h2>
+              <p style="margin: 16px 0 20px; line-height: 1.8">
+                Turn disparate operational signals into predictive decisions.
+                Stackly constructs streaming data pipelines that ingest,
+                harmonize, and analyze millions of telemetry events per second
+                without dropping a single record.
+              </p>
+              <ul
+                style="
+                  list-style: none;
+                  padding: 0;
+                  display: grid;
+                  gap: 12px;
+                  margin-bottom: 24px;
+                "
+              >
+                <li
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    color: var(--text);
+                    font-size: 13px;
+                  "
+                >
+                  <i
+                    class="fa-solid fa-circle-check"
+                    style="color: var(--mint)"
+                  ></i>
+                  <span
+                    >Unified lakehouse architecture uniting transaction logs
+                    &amp; analytical models</span
+                  >
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    color: var(--text);
+                    font-size: 13px;
+                  "
+                >
+                  <i
+                    class="fa-solid fa-circle-check"
+                    style="color: var(--mint)"
+                  ></i>
+                  <span
+                    >Sub-second query response over petabyte-scale historical
+                    datasets</span
+                  >
+                </li>
+                <li
+                  style="
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    color: var(--text);
+                    font-size: 13px;
+                  "
+                >
+                  <i
+                    class="fa-solid fa-circle-check"
+                    style="color: var(--mint)"
+                  ></i>
+                  <span
+                    >Automated anomaly detection alerts sent directly to
+                    engineering Slack/Teams</span
+                  >
+                </li>
+              </ul>
+              <a class="button button-ghost" href="./../404.html"
+                >Explore Data Engineering</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Measurable Outcomes & System Resilience -->
+      <section class="section solution-image-band" data-aos="fade-up">
         <div class="container solution-image-grid">
-          <figure class="solution-image-frame">
+          <figure class="solution-image-frame" data-aos="fade-right">
             <img
               src="../assets/images/solutions-outcomes.webp"
               alt="Team collaborating on a digital transformation project"
@@ -144,7 +433,7 @@
               Confident teams.
             </figcaption>
           </figure>
-          <div>
+          <div data-aos="fade-left">
             <div class="section-kicker">Designed around outcomes</div>
             <h2>
               Better technology<br /><span class="gradient-text"
@@ -152,22 +441,26 @@
               >
             </h2>
             <p class="section-lead">
-              The right solution gives people the clarity and confidence to do
-              their best work every day.
+              The right solution eliminates cognitive burden, empowers
+              engineering teams, and gives executives complete transparency into
+              operational health.
             </p>
           </div>
         </div>
       </section>
-      <section class="section quote-band">
+
+      <!-- Section 6: Client Validation & Strategic Philosophy -->
+      <section class="section quote-band" data-aos="fade-up">
         <div class="container">
           <blockquote>
-            “The right solution gives people more confidence to do their best
-            work.”
+            “The right solution gives engineering teams the confidence to
+            innovate rapidly without sacrificing operational stability.”
           </blockquote>
-          <p>Stackly / Human-led technology</p>
+          <p>Stackly / Enterprise Technology Architecture</p>
         </div>
       </section>
     </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <footer class="footer inner-footer">
       <div class="container">
         <div class="footer-main">
@@ -266,5 +559,14 @@
         </div>
       </div>
     </footer>
+    <!-- AOS Scroll Animations Library & Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.AOS) {
+          AOS.init({ duration: 700, once: true, offset: 40 });
+        }
+      });
+    </script>
   </body>
 </html>

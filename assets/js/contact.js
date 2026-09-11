@@ -49,13 +49,30 @@ const isValidEmail = (email) => {
 };
 
 const isValidPhone = (phone) => {
-  const digits = phone.replace(/\D/g, "");
-  return (
-    digits.length >= 7 &&
-    digits.length <= 15 &&
-    /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(phone)
-  );
+  return /^\d{10}$/.test(phone.trim());
 };
+
+// Immediate input validation for contact name (alphabets + spaces only)
+const contactNameField = document.querySelector("#contactName");
+contactNameField?.addEventListener("input", () => {
+  const val = contactNameField.value;
+  if (val && !/^[A-Za-z\s]*$/.test(val)) {
+    setError(contactNameField, "Only alphabets and spaces are allowed.");
+  } else {
+    clearError(contactNameField);
+  }
+});
+
+// Immediate input validation for contact mobile number (numbers only)
+const contactPhoneField = document.querySelector("#contactPhone");
+contactPhoneField?.addEventListener("input", () => {
+  const val = contactPhoneField.value;
+  if (val && /\D/.test(val)) {
+    setError(contactPhoneField, "Mobile number must contain only numbers.");
+  } else {
+    clearError(contactPhoneField);
+  }
+});
 
 // Form submission validation
 form?.addEventListener("submit", (event) => {
@@ -71,8 +88,12 @@ form?.addEventListener("submit", (event) => {
   let firstInvalid = null;
 
   // Name validation
-  if (!nameField.value.trim()) {
+  const name = nameField ? nameField.value.trim() : "";
+  if (!name) {
     setError(nameField, "Name is required.");
+    firstInvalid = firstInvalid || nameField;
+  } else if (!/^[A-Za-z\s]+$/.test(name)) {
+    setError(nameField, "Only alphabets and spaces are allowed.");
     firstInvalid = firstInvalid || nameField;
   }
 
@@ -86,13 +107,13 @@ form?.addEventListener("submit", (event) => {
     firstInvalid = firstInvalid || emailField;
   }
 
-  // Mobile number validation (mandatory)
+  // Mobile number validation (mandatory 10 digits)
   const phone = phoneField.value.trim();
   if (!phone) {
     setError(phoneField, "Mobile number is required.");
     firstInvalid = firstInvalid || phoneField;
   } else if (!isValidPhone(phone)) {
-    setError(phoneField, "Please enter a valid phone number (min 7 digits).");
+    setError(phoneField, "Please enter a valid 10-digit mobile number.");
     firstInvalid = firstInvalid || phoneField;
   }
 
@@ -107,8 +128,8 @@ form?.addEventListener("submit", (event) => {
   if (!msg) {
     setError(msgField, "Message is required.");
     firstInvalid = firstInvalid || msgField;
-  } else if (msg.length < 10) {
-    setError(msgField, "Message must be at least 10 characters.");
+  } else if (msg.length < 1) {
+    setError(msgField, "Message must be at least 1 character.");
     firstInvalid = firstInvalid || msgField;
   }
 
@@ -117,18 +138,15 @@ form?.addEventListener("submit", (event) => {
     return;
   }
 
-  // Success state
-  if (status) {
-    status.textContent =
-      "Thank you! Your enquiry has been received. We will get back to you shortly.";
-    status.className = "form-status is-success";
-  }
+  // Reset form and redirect to 404.html upon successful submission
   form.reset();
   updateCharCount();
+  window.location.href = "../404.html";
 });
 
-// Live clear on input/change
-form?.querySelectorAll("input, textarea").forEach((field) => {
+// Live clear on input/change for other fields
+form?.querySelectorAll("input, textarea, select").forEach((field) => {
+  if (field === contactNameField || field === contactPhoneField) return;
   field.addEventListener("input", () => {
     clearError(field);
     if (status && !status.classList.contains("is-success")) {

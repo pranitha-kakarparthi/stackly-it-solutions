@@ -21,6 +21,18 @@ The following subpage images were downloaded from Unsplash and optimized locally
 - `assets/images/blog-security-card.webp`: https://images.unsplash.com/photo-1581091226825-a6a2a5aee158
 - `assets/images/blog-ai-card.webp`: https://images.unsplash.com/photo-1551836022-d5d88e9218df
 - `assets/images/contact-hero.webp`: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2
-- `assets/images/contact-team.webp`: https://images.unsplash.com/photo-1542744173-8e7e53415bb0
+- `assets/images/solutions-cloud-migration.webp`: https://images.unsplash.com/photo-1451187580459-43490279c0fa
+- `assets/images/solutions-cyber-defense.webp`: https://images.unsplash.com/photo-1563986768609-322da13575f3
+- `assets/images/solutions-data-analytics.webp`: https://images.unsplash.com/photo-1551288049-bebda4e38f71
+- `assets/images/services-security.webp`: https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5
+- `assets/images/services-devops.webp`: https://images.unsplash.com/photo-1558494949-ef010cbdcc31
+- `assets/images/services-ai.webp`: https://images.unsplash.com/photo-1518770660439-4636190af475
+- `assets/images/blog-devops-feature.webp`: https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2
+- `assets/images/blog-podcast-webinar.webp`: https://images.unsplash.com/photo-1504384308090-c894fdcc538d
+- `assets/images/contact-support-hubs.webp`: https://images.unsplash.com/photo-1486406146926-c627a92ad1ab
+- `assets/images/contact-sla-tiers.webp`: https://images.unsplash.com/photo-1544197150-b99a580bb7a8
+- `assets/images/about-datacenter.webp`: https://images.unsplash.com/photo-1587620962725-abab7fe55159
+- `assets/images/about-mission.webp`: https://images.unsplash.com/photo-1519389950473-47ba0277781c
+- `assets/images/about-innovation.webp`: https://images.unsplash.com/photo-1531297484001-80022131f5a1
 
 These assets are used under the Unsplash License: https://unsplash.com/license

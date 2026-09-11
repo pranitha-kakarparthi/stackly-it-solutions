@@ -37,9 +37,21 @@
         keep exploring.
       </p>
       <div class="error-actions">
-        <a class="button button-primary" href="index.html"
-          >Back to home <i class="fa-solid fa-arrow-right"></i></a
-        ><a class="button button-ghost" href="pages/contact.html">Contact us</a>
+        <button
+          type="button"
+          class="button button-ghost"
+          id="goBackBtn"
+          onclick="
+            if (window.history.length > 1) {
+              window.history.back();
+            } else {
+              window.location.href = 'index.html';
+            }
+          "
+        >
+          <i class="fa-solid fa-arrow-left"></i> Go back
+        </button>
+        <a class="button button-primary" href="index.html">Go to home</a>
       </div>
       <nav class="error-links" aria-label="Helpful links">
         <a href="pages/services.html">Services</a

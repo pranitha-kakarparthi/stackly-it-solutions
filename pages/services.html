@@ -24,6 +24,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <script defer src="../assets/js/shared.js"></script>
     <script defer src="../assets/js/shared-shell.js"></script>
   </head>
@@ -48,7 +52,10 @@
       </div>
     </header>
     <main id="main-content">
-      <section class="page-hero page-hero-services section">
+      <!-- ========================================================================= -->
+      <!-- SECTION 1: SERVICES HERO                                                  -->
+      <!-- ========================================================================= -->
+      <section class="page-hero page-hero-services section" data-aos="fade-up">
         <div class="container">
           <div class="page-hero-grid">
             <div class="page-hero-copy">
@@ -80,10 +87,17 @@
           </div>
         </div>
       </section>
-      <section class="section service-page-grid">
+      <!-- ========================================================================= -->
+      <!-- SECTION 2: CORE SERVICE DOMAINS                                           -->
+      <!-- ========================================================================= -->
+      <section class="section service-page-grid" data-aos="fade-up">
         <div class="container">
           <div class="service-detail-grid">
-            <article class="service-detail">
+            <article
+              class="service-detail"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <span class="service-icon"><i class="fa-solid fa-code"></i></span
               ><small>01 / Product engineering</small>
               <h2>Web development</h2>
@@ -91,11 +105,15 @@
                 Fast, accessible digital products designed around the way your
                 customers and teams actually work.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Discuss your build <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-detail">
+            <article
+              class="service-detail"
+              data-aos="fade-up"
+              data-aos-delay="150"
+            >
               <span class="service-icon"
                 ><i class="fa-solid fa-mobile-screen-button"></i></span
               ><small>02 / Mobile experiences</small>
@@ -104,11 +122,15 @@
                 Useful, dependable mobile experiences that feel natural from the
                 first tap to the thousandth.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Discuss your build <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-detail">
+            <article
+              class="service-detail"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <span class="service-icon"><i class="fa-solid fa-cloud"></i></span
               ><small>03 / Infrastructure</small>
               <h2>Cloud solutions</h2>
@@ -116,11 +138,15 @@
                 Resilient cloud systems that give your business room to scale
                 without adding operational drag.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Plan your cloud <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-detail">
+            <article
+              class="service-detail"
+              data-aos="fade-up"
+              data-aos-delay="250"
+            >
               <span class="service-icon"
                 ><i class="fa-solid fa-shield-halved"></i></span
               ><small>04 / Trust and risk</small>
@@ -129,11 +155,15 @@
                 Practical security programs that protect your people, data, and
                 reputation while work keeps moving.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Strengthen security <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-detail">
+            <article
+              class="service-detail"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <span class="service-icon"
                 ><i class="fa-solid fa-pen-nib"></i></span
               ><small>05 / Experience design</small>
@@ -142,11 +172,15 @@
                 Clear, considered interfaces that make complicated products
                 easier and more satisfying to use.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Shape an experience <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-detail">
+            <article
+              class="service-detail"
+              data-aos="fade-up"
+              data-aos-delay="350"
+            >
               <span class="service-icon"
                 ><i class="fa-solid fa-compass-drafting"></i></span
               ><small>06 / Direction</small>
@@ -155,14 +189,18 @@
                 A practical roadmap for modernizing systems, prioritizing
                 investment, and creating momentum.
               </p>
-              <a class="text-link" href="contact.html"
+              <a class="text-link" href="./../404.html"
                 >Find your direction <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
           </div>
         </div>
       </section>
-      <section class="section service-image-band">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 3: DELIVERY TEAM & WORKSPACE                                      -->
+      <!-- ========================================================================= -->
+      <section class="section service-image-band" data-aos="fade-up">
         <div class="container service-image-grid">
           <div class="service-image-copy">
             <div class="eyebrow">
@@ -177,7 +215,7 @@
               Designers, engineers, cloud specialists, and security thinkers
               working as one delivery team.
             </p>
-            <a class="text-link" href="contact.html"
+            <a class="text-link" href="./../404.html"
               >Bring us your next challenge
               <i class="fa-solid fa-arrow-right"></i
             ></a>
@@ -198,7 +236,91 @@
           </div>
         </div>
       </section>
-      <section class="section pricing-section">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 4: SPECIALIZED CAPABILITIES SHOWCASE                              -->
+      <!-- ========================================================================= -->
+      <section class="section capabilities-spotlight" data-aos="fade-up">
+        <div class="container">
+          <div class="center-heading">
+            <div class="eyebrow">
+              <span class="eyebrow-line"></span> Specialized Practices
+            </div>
+            <h2>
+              Pillars of modern <br /><span class="gradient-text"
+                >enterprise delivery.</span
+              >
+            </h2>
+            <p>
+              Purpose-built engineering frameworks designed to scale reliably
+              under load.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="../assets/images/services-security.webp"
+                alt="SecOps matrix and vulnerability mitigation"
+                style="
+                  width: 100%;
+                  height: 180px;
+                  object-fit: cover;
+                  border-radius: var(--radius-sm);
+                  margin-bottom: 1rem;
+                "
+                loading="lazy"
+              />
+              <h3>Zero-Trust SecOps</h3>
+              <p>
+                Continuous compliance scanning, automated vulnerability triage,
+                and encrypted identity fabrics.
+              </p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="../assets/images/services-devops.webp"
+                alt="High throughput cloud servers and CI/CD pipelines"
+                style="
+                  width: 100%;
+                  height: 180px;
+                  object-fit: cover;
+                  border-radius: var(--radius-sm);
+                  margin-bottom: 1rem;
+                "
+                loading="lazy"
+              />
+              <h3>Automated CI/CD & DevOps</h3>
+              <p>
+                Containerized workloads, blue-green deployment pipelines, and
+                self-healing infrastructure topologies.
+              </p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+              <img
+                src="../assets/images/services-ai.webp"
+                alt="High performance neural chips and intelligent automation"
+                style="
+                  width: 100%;
+                  height: 180px;
+                  object-fit: cover;
+                  border-radius: var(--radius-sm);
+                  margin-bottom: 1rem;
+                "
+                loading="lazy"
+              />
+              <h3>AI & Intelligent Automation</h3>
+              <p>
+                Enterprise data orchestration, bespoke LLM pipelines, and
+                automated business process intelligence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ========================================================================= -->
+      <!-- SECTION 5: PRICING & ENGAGEMENT MODELS                                    -->
+      <!-- ========================================================================= -->
+      <section class="section pricing-section" data-aos="fade-up">
         <div class="container">
           <div class="center-heading">
             <div class="eyebrow">
@@ -215,7 +337,11 @@
             </p>
           </div>
           <div class="pricing-grid">
-            <article class="pricing-card">
+            <article
+              class="pricing-card"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <small>Foundation</small>
               <h3>Launch</h3>
               <strong>From $2,500</strong>
@@ -229,11 +355,15 @@
                   <i class="fa-solid fa-check"></i> Weekly progress review
                 </li>
               </ul>
-              <a class="button button-ghost" href="contact.html"
+              <a class="button button-ghost" href="./../404.html"
                 >Start a conversation</a
               >
             </article>
-            <article class="pricing-card pricing-featured">
+            <article
+              class="pricing-card pricing-featured"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <span class="pricing-badge">Most popular</span
               ><small>Momentum</small>
               <h3>Scale</h3>
@@ -254,11 +384,15 @@
                   review
                 </li>
               </ul>
-              <a class="button button-primary" href="contact.html"
+              <a class="button button-primary" href="./../404.html"
                 >Talk to an expert</a
               >
             </article>
-            <article class="pricing-card">
+            <article
+              class="pricing-card"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <small>Partnership</small>
               <h3>Transform</h3>
               <strong>Custom scope</strong>
@@ -276,34 +410,42 @@
                   <i class="fa-solid fa-check"></i> Ongoing advisory partnership
                 </li>
               </ul>
-              <a class="button button-ghost" href="contact.html"
+              <a class="button button-ghost" href="./../404.html"
                 >Plan together</a
               >
             </article>
           </div>
         </div>
       </section>
-      <section class="stats-section">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 6: MEASURABLE IMPACT & STATS                                      -->
+      <!-- ========================================================================= -->
+      <section class="stats-section" data-aos="fade-up">
         <div class="container stats-grid">
-          <div class="stat-block">
+          <div class="stat-block" data-aos="fade-up" data-aos-delay="100">
             <strong>150</strong><span>+</span>
             <p>Projects delivered</p>
           </div>
-          <div class="stat-block">
+          <div class="stat-block" data-aos="fade-up" data-aos-delay="200">
             <strong>80</strong><span>+</span>
             <p>Happy clients</p>
           </div>
-          <div class="stat-block">
+          <div class="stat-block" data-aos="fade-up" data-aos-delay="300">
             <strong>10</strong><span>+</span>
             <p>Years of experience</p>
           </div>
-          <div class="stat-block">
+          <div class="stat-block" data-aos="fade-up" data-aos-delay="400">
             <strong>25</strong><span>+</span>
             <p>Technology experts</p>
           </div>
         </div>
       </section>
-      <section class="cta-section section">
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 7: CALL TO ACTION                                                 -->
+      <!-- ========================================================================= -->
+      <section class="cta-section section" data-aos="fade-up">
         <div class="container cta-inner">
           <div class="eyebrow">
             <span class="eyebrow-line"></span> Start with a question
@@ -314,7 +456,7 @@
             >
           </h2>
           <p>Tell us what you are trying to make better.</p>
-          <a class="button button-light" href="contact.html"
+          <a class="button button-light" href="./../404.html"
             >Talk to Stackly <i class="fa-solid fa-arrow-right"></i
           ></a>
         </div>
@@ -418,5 +560,14 @@
         </div>
       </div>
     </footer>
+    <!-- AOS Scroll Animations Library & Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.AOS) {
+          AOS.init({ duration: 700, once: true, offset: 40 });
+        }
+      });
+    </script>
   </body>
 </html>

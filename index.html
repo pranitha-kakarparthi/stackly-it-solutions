@@ -20,6 +20,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
     <script defer src="assets/js/shared.js"></script>
     <script defer src="assets/js/script.js"></script>
     <script type="application/ld+json">
@@ -59,7 +63,7 @@
     <header class="site-header">
       <nav class="navbar" id="navbar" aria-label="Main navigation">
         <div class="container nav-inner">
-          <a class="brand" href="#home" aria-label="Stackly home"
+          <a class="brand" href="#" aria-label="Stackly home"
             ><span class="brand-mark"><i class="fa-solid fa-n"></i></span
             ><span>STACKLY<span class="brand-dot">.</span></span></a
           >
@@ -74,7 +78,7 @@
           </button>
           <div class="nav-menu" id="navMenu">
             <div class="nav-links">
-              <a class="nav-link active" href="#home">Home</a
+              <a class="nav-link active" href="#">Home</a
               ><a class="nav-link" href="pages/about.html">About</a
               ><a class="nav-link" href="pages/services.html">Services</a
               ><a class="nav-link" href="pages/solutions.html">Solutions</a
@@ -94,7 +98,10 @@
     </header>
 
     <main id="main-content">
-      <section class="hero section" id="home">
+      <!-- ========================================================================= -->
+      <!-- SECTION 1: HERO                                                           -->
+      <!-- ========================================================================= -->
+      <section class="hero section" id="home" data-aos="fade-up">
         <div class="hero-grid container">
           <div class="hero-copy reveal">
             <div class="eyebrow">
@@ -192,7 +199,10 @@
         </div>
       </section>
 
-      <section class="trusted section-sm">
+      <!-- ========================================================================= -->
+      <!-- SECTION 2: TRUSTED CLIENTS                                                -->
+      <!-- ========================================================================= -->
+      <section class="trusted section-sm" data-aos="fade-up">
         <div class="container trusted-inner">
           <p>Trusted by forward-thinking businesses</p>
           <div class="logo-row">
@@ -203,7 +213,10 @@
         </div>
       </section>
 
-      <section class="section services" id="services">
+      <!-- ========================================================================= -->
+      <!-- SECTION 3: SERVICES                                                       -->
+      <!-- ========================================================================= -->
+      <section class="section services" id="services" data-aos="fade-up">
         <div class="container">
           <div class="section-heading reveal">
             <div>
@@ -221,7 +234,11 @@
             </p>
           </div>
           <div class="service-grid">
-            <article class="service-card reveal">
+            <article
+              class="service-card reveal"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <div class="service-icon"><i class="fa-solid fa-code"></i></div>
               <span class="card-number">01</span>
               <h3>Web Development</h3>
@@ -233,7 +250,11 @@
                 >Learn more <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-card reveal reveal-delay">
+            <article
+              class="service-card reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="150"
+            >
               <div class="service-icon">
                 <i class="fa-solid fa-mobile-screen-button"></i>
               </div>
@@ -247,7 +268,11 @@
                 >Learn more <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-card reveal">
+            <article
+              class="service-card reveal"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <div class="service-icon"><i class="fa-solid fa-cloud"></i></div>
               <span class="card-number">03</span>
               <h3>Cloud Solutions</h3>
@@ -259,7 +284,11 @@
                 >Learn more <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-card reveal reveal-delay">
+            <article
+              class="service-card reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="250"
+            >
               <div class="service-icon">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
@@ -273,7 +302,11 @@
                 >Learn more <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-card reveal">
+            <article
+              class="service-card reveal"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <div class="service-icon">
                 <i class="fa-solid fa-pen-nib"></i>
               </div>
@@ -287,7 +320,11 @@
                 >Learn more <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="service-card reveal reveal-delay">
+            <article
+              class="service-card reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="350"
+            >
               <div class="service-icon">
                 <i class="fa-solid fa-compass-drafting"></i>
               </div>
@@ -310,7 +347,10 @@
         </div>
       </section>
 
-      <section class="section about-section" id="about">
+      <!-- ========================================================================= -->
+      <!-- SECTION 4: ABOUT STACKLY                                                  -->
+      <!-- ========================================================================= -->
+      <section class="section about-section" id="about" data-aos="fade-up">
         <div class="container about-grid">
           <div class="about-visual reveal">
             <figure class="about-image-frame">
@@ -384,28 +424,50 @@
         </div>
       </section>
 
-      <section class="stats-section">
+      <!-- ========================================================================= -->
+      <!-- SECTION 5: KEY METRICS & STATS                                            -->
+      <!-- ========================================================================= -->
+      <section class="stats-section" data-aos="fade-up">
         <div class="container stats-grid">
-          <div class="stat-block reveal">
+          <div
+            class="stat-block reveal"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <strong class="counter" data-target="150">0</strong><span>+</span>
             <p>Projects delivered</p>
           </div>
-          <div class="stat-block reveal reveal-delay">
+          <div
+            class="stat-block reveal reveal-delay"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             <strong class="counter" data-target="80">0</strong><span>+</span>
             <p>Happy clients</p>
           </div>
-          <div class="stat-block reveal">
+          <div
+            class="stat-block reveal"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <strong class="counter" data-target="10">0</strong><span>+</span>
             <p>Years of experience</p>
           </div>
-          <div class="stat-block reveal reveal-delay">
+          <div
+            class="stat-block reveal reveal-delay"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             <strong class="counter" data-target="25">0</strong><span>+</span>
             <p>Technology experts</p>
           </div>
         </div>
       </section>
 
-      <section class="section industries" id="industries">
+      <!-- ========================================================================= -->
+      <!-- SECTION 6: INDUSTRY EXPERTISE                                             -->
+      <!-- ========================================================================= -->
+      <section class="section industries" id="industries" data-aos="fade-up">
         <div class="container">
           <div class="center-heading reveal">
             <div class="eyebrow">
@@ -422,7 +484,11 @@
             </p>
           </div>
           <div class="industry-grid">
-            <article class="industry-card industry-health reveal">
+            <article
+              class="industry-card industry-health reveal"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <div class="industry-card-top">
                 <span class="industry-icon"
                   ><i class="fa-solid fa-heart-pulse"></i></span
@@ -436,7 +502,11 @@
                 >Explore sector <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="industry-card industry-finance reveal reveal-delay">
+            <article
+              class="industry-card industry-finance reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <div class="industry-card-top">
                 <span class="industry-icon"
                   ><i class="fa-solid fa-chart-pie"></i></span
@@ -450,7 +520,11 @@
                 >Explore sector <i class="fa-solid fa-arrow-right"></i
               ></a>
             </article>
-            <article class="industry-card industry-commerce reveal">
+            <article
+              class="industry-card industry-commerce reveal"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <div class="industry-card-top">
                 <span class="industry-icon"
                   ><i class="fa-solid fa-bag-shopping"></i></span
@@ -466,6 +540,8 @@
             </article>
             <article
               class="industry-card industry-education reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="400"
             >
               <div class="industry-card-top">
                 <span class="industry-icon"
@@ -484,7 +560,10 @@
         </div>
       </section>
 
-      <section class="section process" id="process">
+      <!-- ========================================================================= -->
+      <!-- SECTION 7: DELIVERY PROCESS                                               -->
+      <!-- ========================================================================= -->
+      <section class="section process" id="process" data-aos="fade-up">
         <div class="container">
           <div class="section-heading reveal">
             <div>
@@ -501,27 +580,47 @@
             </p>
           </div>
           <div class="process-line">
-            <div class="process-step reveal">
+            <div
+              class="process-step reveal"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <span class="step-number">01</span>
               <h3>Discover</h3>
               <p>Listen deeply. Find the signal in the noise.</p>
             </div>
-            <div class="process-step reveal reveal-delay">
+            <div
+              class="process-step reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <span class="step-number">02</span>
               <h3>Plan</h3>
               <p>Turn the right questions into a clear direction.</p>
             </div>
-            <div class="process-step reveal">
+            <div
+              class="process-step reveal"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <span class="step-number">03</span>
               <h3>Design</h3>
               <p>Make the complex feel considered and simple.</p>
             </div>
-            <div class="process-step reveal reveal-delay">
+            <div
+              class="process-step reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <span class="step-number">04</span>
               <h3>Develop</h3>
               <p>Build with craft, speed, and future-proof thinking.</p>
             </div>
-            <div class="process-step reveal">
+            <div
+              class="process-step reveal"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
               <span class="step-number">05</span>
               <h3>Launch</h3>
               <p>Bring it to life, then make it better every day.</p>
@@ -530,7 +629,14 @@
         </div>
       </section>
 
-      <section class="section testimonials" id="testimonials">
+      <!-- ========================================================================= -->
+      <!-- SECTION 8: CLIENT STORIES & TESTIMONIALS                                  -->
+      <!-- ========================================================================= -->
+      <section
+        class="section testimonials"
+        id="testimonials"
+        data-aos="fade-up"
+      >
         <div class="container testimonial-layout">
           <div class="testimonial-heading reveal">
             <div class="eyebrow">
@@ -627,7 +733,10 @@
         </div>
       </section>
 
-      <section class="section blog-section" id="blog">
+      <!-- ========================================================================= -->
+      <!-- SECTION 9: INSIGHTS & BLOG                                                -->
+      <!-- ========================================================================= -->
+      <section class="section blog-section" id="blog" data-aos="fade-up">
         <div class="container">
           <div class="section-heading reveal">
             <div>
@@ -646,7 +755,11 @@
             </p>
           </div>
           <div class="blog-grid">
-            <article class="blog-card reveal">
+            <article
+              class="blog-card reveal"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               <a class="blog-image" href="404.html"
                 ><img
                   src="assets/images/blog-cloud.webp"
@@ -668,7 +781,11 @@
                 ></a>
               </div>
             </article>
-            <article class="blog-card reveal reveal-delay">
+            <article
+              class="blog-card reveal reveal-delay"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               <a class="blog-image" href="404.html"
                 ><img
                   src="assets/images/blog-security.webp"
@@ -690,7 +807,11 @@
                 ></a>
               </div>
             </article>
-            <article class="blog-card reveal">
+            <article
+              class="blog-card reveal"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               <a class="blog-image" href="404.html"
                 ><img
                   src="assets/images/blog-ai.webp"
@@ -716,7 +837,10 @@
         </div>
       </section>
 
-      <section class="cta-section section" id="contact">
+      <!-- ========================================================================= -->
+      <!-- SECTION 10: CALL TO ACTION                                                -->
+      <!-- ========================================================================= -->
+      <section class="cta-section section" id="contact" data-aos="fade-up">
         <div class="cta-glow"></div>
         <div class="container cta-inner reveal">
           <div class="eyebrow">
@@ -743,7 +867,7 @@
       <div class="container">
         <div class="footer-main">
           <div class="footer-brand">
-            <a class="brand" href="#home"
+            <a class="brand" href="#"
               ><span class="brand-mark"><i class="fa-solid fa-n"></i></span
               ><span>STACKLY<span class="brand-dot">.</span></span></a
             >
@@ -841,5 +965,14 @@
     >
       <i class="fa-solid fa-arrow-up"></i>
     </button>
+    <!-- AOS Scroll Animations Library & Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.AOS) {
+          AOS.init({ duration: 700, once: true, offset: 40 });
+        }
+      });
+    </script>
   </body>
 </html>
