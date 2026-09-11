@@ -1070,6 +1070,14 @@ h2 {
   font-size: 11px;
   color: var(--muted);
 }
+.feature-card {
+  margin-bottom: 3rem;
+}
+.feature-card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
 .stats-section {
   background: linear-gradient(100deg, #0c2039, #0b1a2e);
   border-bottom: 1px solid var(--border);
