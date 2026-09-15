@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Stackly Enterprise Client Portal - Subscribed Solutions, SLA Telemetry, and Dedicated Technical Support."
+      content="Stackly Enterprise Client Portal - Subscribed IT Services, SLA Telemetry, Support Tickets, and Invoices."
     />
     <title>Customer Workspace | Stackly</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,513 +24,393 @@
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script defer src="../assets/js/shared.js"></script>
+    <script defer src="../assets/js/dashboard.js"></script>
   </head>
   <body class="dashboard-page">
     <!-- Screen Loader -->
     <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
       <img src="../assets/images/logoStackly.webp" alt="" />
       <span class="loader-spinner"></span>
-      <span>Loading Client Portal...</span>
+      <span>Loading Client Workspace...</span>
     </div>
 
     <!-- Fixed Header -->
     <header class="dashboard-header">
-      <a class="brand" href="../index.html">
-        <img src="../assets/images/logoStackly.webp" alt="Stackly" />
-      </a>
-      <div class="dashboard-user">
-        <span class="user-avatar" id="userAvatar">C</span>
-        <span>
-          <strong id="userName">Enterprise Client</strong>
-          <small id="userRole">Customer Access</small>
-        </span>
-        <button
-          class="button button-small button-ghost"
-          id="signOut"
-          type="button"
-        >
-          Sign out
-        </button>
+      <div class="container nav-inner">
+        <div class="dashboard-header-left">
+          <a class="brand" href="../index.html" aria-label="Stackly home">
+            <img src="../assets/images/logoStackly.webp" alt="Stackly" />
+          </a>
+        </div>
+        <div class="dashboard-user">
+          <span class="user-avatar" id="userAvatar">C</span>
+          <span>
+            <strong id="userName">Enterprise Client</strong>
+            <small id="userRole">Customer Access</small>
+          </span>
+          <button
+            class="button button-small button-ghost"
+            id="signOut"
+            type="button"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="dashboard-main" id="main-content">
-      <div class="container">
-        <!-- Top Hero & Greeting Section -->
-        <section class="dashboard-hero-section" data-aos="fade-down">
-          <div class="dashboard-heading">
-            <div class="eyebrow">
-              <span class="eyebrow-line"></span>
-              <span>Client Services &amp; SLA Management</span>
-            </div>
-            <h1>
-              <span id="greetingTime">Good morning</span>,
-              <span class="gradient-text" id="greetingName"
-                >Enterprise Partner.</span
-              >
-            </h1>
-            <p>
-              Your managed cloud subscriptions, 99.99% uptime SLA commitments,
-              and dedicated engineering support tickets.
-            </p>
+    <!-- App Shell: Collapsible Sidebar + Main Screen Area -->
+    <div class="dashboard-app-shell">
+      <!-- Left Collapsible Sidebar -->
+      <aside
+        class="dashboard-sidebar"
+        id="dashboardSidebar"
+        aria-label="Client navigation"
+      >
+        <div class="sidebar-header">
+          <div class="sidebar-header-brand">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="sidebar-brand-title">Client Portal</span>
+          </div>
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            type="button"
+            aria-label="Toggle navigation sidebar"
+            data-tooltip="Collapse Sidebar"
+          >
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-inner">
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Service Overview</span>
+            <button
+              class="sidebar-item active"
+              data-screen="screen-overview"
+              data-tooltip="Portal Overview"
+              type="button"
+            >
+              <i class="fa-solid fa-house-chimney item-icon"></i>
+              <span class="item-label">Portal Overview</span>
+              <span class="sidebar-badge">99.99%</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-services"
+              data-tooltip="Subscribed Services"
+              type="button"
+            >
+              <i class="fa-solid fa-cloud-arrow-up item-icon"></i>
+              <span class="item-label">Subscribed Services</span>
+              <span class="sidebar-badge">3 Active</span>
+            </button>
           </div>
 
-          <!-- Dynamic Meta & System Health Pills -->
-          <div
-            class="dashboard-meta-bar"
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 16px;
-              margin-top: 20px;
-              flex-wrap: wrap;
-            "
-          >
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Support &amp; SLA</span>
+            <button
+              class="sidebar-item"
+              data-screen="screen-tickets"
+              data-tooltip="Support Tickets"
+              type="button"
+            >
+              <i class="fa-solid fa-headset item-icon"></i>
+              <span class="item-label">Support Tickets</span>
+              <span class="sidebar-badge">1 Open</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-sla-reports"
+              data-tooltip="SLA &amp; Uptime"
+              type="button"
+            >
+              <i class="fa-solid fa-chart-column item-icon"></i>
+              <span class="item-label">SLA &amp; Uptime</span>
+              <span class="sidebar-badge">Contract</span>
+            </button>
+          </div>
+
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Account &amp; Governance</span>
+            <button
+              class="sidebar-item"
+              data-screen="screen-invoices"
+              data-tooltip="Billing &amp; Invoices"
+              type="button"
+            >
+              <i class="fa-solid fa-receipt item-icon"></i>
+              <span class="item-label">Billing &amp; Invoices</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-compliance"
+              data-tooltip="Certifications"
+              type="button"
+            >
+              <i class="fa-solid fa-certificate item-icon"></i>
+              <span class="item-label">Certifications</span>
+              <span class="sidebar-badge">SOC2</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-team"
+              data-tooltip="Account Team"
+              type="button"
+            >
+              <i class="fa-solid fa-user-tie item-icon"></i>
+              <span class="item-label">Account Team</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Backdrop for mobile drawer -->
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <!-- Main Content Area with 7 Distinct Screens -->
+      <main class="dashboard-main" id="main-content">
+        <!-- ================================================================
+             SCREEN 1: Client Portal Overview (Default)
+             ================================================================ -->
+        <section class="dashboard-screen active" id="screen-overview">
+          <section class="dashboard-hero-section" data-aos="fade-down">
+            <div class="dashboard-heading">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span>Enterprise Client Workspace</span>
+              </div>
+              <h1>
+                <span id="greetingTime">Good morning</span>,
+                <span class="gradient-text" id="greetingName"
+                  >Global Logistics Corp.</span
+                >
+              </h1>
+              <p>
+                Managed cloud environments, cybersecurity protection, and
+                24/7/365 NOC monitoring are fully operational.
+              </p>
+            </div>
+
+            <!-- Dynamic Meta Bar -->
             <div
+              class="dashboard-meta-bar"
               style="
                 display: flex;
                 align-items: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 16px;
+                margin-top: 20px;
                 flex-wrap: wrap;
               "
             >
-              <div class="dashboard-meta-pill">
-                <i class="fa-solid fa-clock"></i>
-                <span id="timeAndZone">Loading local time...</span>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div class="dashboard-meta-pill">
+                  <i class="fa-solid fa-clock"></i>
+                  <span id="timeAndZone">Loading local time...</span>
+                </div>
+                <div class="system-status-indicator">
+                  <span class="status-pulse"></span>
+                  <span>Uptime SLA: 99.99% Guaranteed</span>
+                </div>
+                <div class="dashboard-meta-pill">
+                  <i
+                    class="fa-solid fa-shield-halved"
+                    style="color: var(--mint)"
+                  ></i>
+                  <span>Tier: Enterprise Dedicated</span>
+                </div>
               </div>
-              <div class="system-status-indicator">
-                <span class="status-pulse"></span>
-                <span>Enterprise SLA: 99.99% Active</span>
-              </div>
-              <div class="dashboard-meta-pill">
-                <i
-                  class="fa-solid fa-user-shield"
-                  style="color: var(--mint)"
-                ></i>
-                <span>Dedicated TAM: Alex Miller</span>
+
+              <div
+                class="dashboard-actions"
+                style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+              >
+                <button
+                  class="button button-small button-primary"
+                  id="openNewTicketModal"
+                  type="button"
+                >
+                  <i class="fa-solid fa-plus"></i> Open Support Ticket
+                </button>
+                <a
+                  class="button button-small button-ghost action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-phone"></i> Emergency Bridge
+                </a>
+                <a
+                  class="button button-small button-ghost action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-file-pdf"></i> Monthly Report
+                </a>
               </div>
             </div>
 
-            <!-- Quick Action Triggers -->
+            <!-- Interactive Quick Controls Grid -->
             <div
-              class="dashboard-actions"
-              style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+              class="quick-controls-grid"
+              data-aos="fade-up"
+              data-aos-delay="50"
             >
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Automated Snapshot Backups</strong>
+                  <small>Enabled &bull; Hourly point-in-time</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Real-Time Threat Notifications</strong>
+                  <small>Enabled &bull; Direct SMS &amp; Email alerts</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Maintenance Window Approval</strong>
+                  <small>Standard: Sundays 02:00 UTC</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Staging Test Environment</strong>
+                  <small>Enabled &bull; Sandboxed preview</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core KPI Grid -->
+          <section class="kpi-grid" data-aos="fade-up" style="margin-top: 28px">
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-shield-check"></i
+              ></span>
+              <small>Uptime SLA Guarantee</small>
+              <strong>99.99%</strong>
+              <em>0 Minutes downtime this month</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-server"></i></span>
+              <small>Active Cloud Nodes</small>
+              <strong>4 Dedicated</strong>
+              <em>US-East &amp; EU-West redundant</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-headset"></i></span>
+              <small>Open Support Requests</small>
+              <strong>1 Ticket</strong>
+              <em>Assigned to Tier-3 Architect</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-bolt"></i></span>
+              <small>Mean Response Time</small>
+              <strong>6.8 mins</strong>
+              <em>Under 15-min contractual SLA</em>
+            </div>
+          </section>
+
+          <!-- Real-Time Service Status Overview -->
+          <section class="dashboard-full-panel" data-aos="fade-up">
+            <div class="dashboard-panel-header">
+              <div>
+                <small>Contracted Services</small>
+                <h2>Operational Telemetry &amp; Resource Availability</h2>
+              </div>
+              <div class="time-range-pills">
+                <button class="time-pill-btn active" type="button">Live</button>
+                <button class="time-pill-btn" type="button">24H</button>
+                <button class="time-pill-btn" type="button">7D</button>
+                <button class="time-pill-btn" type="button">30D</button>
+              </div>
+            </div>
+
+            <div class="chart-bars-horizontal">
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span>Primary Cloud Cluster (us-east-1)</span>
+                  <span style="color: var(--mint)"
+                    >99.99% Uptime &bull; Healthy</span
+                  >
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill mint" style="width: 99%"></div>
+                </div>
+              </div>
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span>Hot Standby Replica (eu-west-1)</span>
+                  <span style="color: var(--mint)"
+                    >100% In Sync &bull; 0ms lag</span
+                  >
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill mint" style="width: 100%"></div>
+                </div>
+              </div>
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span>Cyber Defense &amp; WAF Gateway</span>
+                  <span style="color: var(--mint)"
+                    >100% Blocks &bull; 0 False Positives</span
+                  >
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill mint" style="width: 95%"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 2: Subscribed IT Services
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-services">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Subscribed Tiers
+              </div>
+              <h2>Active Managed IT &amp; Cloud Infrastructure Packages</h2>
+              <p>
+                Details on your current enterprise contracts, allocated service
+                tiers, and expansion options.
+              </p>
+            </div>
+            <div class="screen-actions">
               <a
                 class="button button-small button-primary action-trigger"
                 href="../404.html"
               >
-                <i class="fa-solid fa-plus"></i> Open Support Ticket
-              </a>
-              <a
-                class="button button-small button-ghost action-trigger"
-                href="../404.html"
-              >
-                <i class="fa-solid fa-cloud-arrow-up"></i> Upgrade Capacity
-              </a>
-              <a
-                class="button button-small button-ghost action-trigger"
-                href="../404.html"
-              >
-                <i class="fa-solid fa-download"></i> Invoices &amp; Reports
+                <i class="fa-solid fa-plus"></i> Add New Service
               </a>
             </div>
-          </div>
-
-          <!-- Interactive Quick Controls Grid -->
-          <div
-            class="quick-controls-grid"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Real-Time Incident SMS</strong>
-                <small>Enabled &bull; Direct dispatch to on-call phone</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Auto-Scaling Burst Protection</strong>
-                <small>Enabled &bull; Up to 200% burst quota</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Monthly Usage Digest</strong>
-                <small>Enabled &bull; Delivered on 1st of month</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Auto-Renew Subscriptions</strong>
-                <small>Disabled &bull; Manual PO invoice approval</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-          </div>
-        </section>
-
-        <!-- KPI Grid: Core Customer Metrics -->
-        <section class="kpi-grid" style="margin-top: 32px">
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="50">
-            <span class="kpi-icon"><i class="fa-solid fa-cloud"></i></span>
-            <small>Subscribed Solutions</small>
-            <strong>3 Tiers</strong>
-            <em>Enterprise Cloud &bull; Active</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="100">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-shield-heart"></i
-            ></span>
-            <small>Guaranteed SLA</small>
-            <strong>99.99%</strong>
-            <em>0 incidents during current cycle</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="150">
-            <span class="kpi-icon"><i class="fa-solid fa-headset"></i></span>
-            <small>Active Support Inquiries</small>
-            <strong>1 Open</strong>
-            <em>Assigned TAM working on resolution</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="200">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-calendar-check"></i
-            ></span>
-            <small>Billing Cycle Days</small>
-            <strong>19 Days Left</strong>
-            <em>Estimated monthly: $4,200</em>
-          </article>
-        </section>
-
-        <!-- Panel 1: Monthly Service Quotas & API Consumption Telemetry -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Usage Telemetry</small>
-              <h2>Monthly Service Quotas &amp; API Consumption</h2>
-            </div>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                flex-wrap: wrap;
-              "
-            >
-              <!-- Interactive Time-Range Selector -->
-              <div class="time-range-pills">
-                <button type="button" class="time-pill-btn active">
-                  Current Cycle
-                </button>
-                <button type="button" class="time-pill-btn">Last Month</button>
-                <button type="button" class="time-pill-btn">Q2 2026</button>
-                <button type="button" class="time-pill-btn">
-                  Year-to-Date
-                </button>
-              </div>
-              <a class="panel-link action-trigger" href="../404.html">
-                Quota Manager <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Horizontal Bars for Service Quotas -->
-          <div class="chart-bars-wrap">
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >Managed Cloud Compute Units (480/600 vCPU-Hours)</strong
-                >
-                <span>80% &bull; Normal</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill mint" style="width: 80%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong>Bandwidth Data Egress (12.4 TB / 20 TB Plan)</strong>
-                <span>62% &bull; Optimal</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill cyan" style="width: 62%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong>Enterprise API Gateway (1.45M / 2.0M Requests)</strong>
-                <span>72% &bull; Healthy</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill" style="width: 72%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >Encrypted Object Storage (3.8 TB / 5.0 TB
-                  Provisioned)</strong
-                >
-                <span>76% &bull; Normal</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill mint" style="width: 76%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >24/7 Dedicated Support Hours (14 / 20 Hours Used)</strong
-                >
-                <span>70% &bull; Available</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill warning" style="width: 70%"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Telemetry Metrics -->
-          <div
-            class="metrics-row"
-            style="
-              margin-top: 24px;
-              padding-top: 20px;
-              border-top: 1px solid var(--border);
-            "
-          >
-            <div class="metric-block">
-              <span class="metric-label">Monthly SLA Attainment</span>
-              <strong class="metric-value">100.0%</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-circle-check"></i> Exceeds 99.99%
-                target</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Avg API Latency</span>
-              <strong class="metric-value">22 ms</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-bolt"></i> Low latency verified</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Support Response Time</span>
-              <strong class="metric-value">8 mins</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-headset"></i> P1 Guarantee: 15m</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Contract Status</span>
-              <strong class="metric-value">Active &bull; Q4</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-shield-check"></i> Annual
-                agreement</small
-              >
-            </div>
-          </div>
-        </section>
-
-        <!-- Panel 2: Interactive Enterprise Support Tickets Table -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Helpdesk &amp; Incidents</small>
-              <h2>Enterprise Support Inquiries &amp; Technical Tickets</h2>
-            </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Submit Ticket <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Interactive Search & Status Filtering Toolbar -->
-          <div class="dashboard-filter-toolbar">
-            <div class="search-input-wrap">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="text"
-                class="table-search-input"
-                data-target-table="customerTicketsTable"
-                placeholder="Filter tickets by ID, service, subject, or TAM..."
-              />
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px">
-              <label
-                for="customerStatusFilter"
-                style="font-size: 12px; color: var(--muted)"
-                >Filter Status:</label
-              >
-              <select
-                id="customerStatusFilter"
-                class="filter-dropdown table-status-filter"
-                data-target-table="customerTicketsTable"
-              >
-                <option value="all">All Statuses</option>
-                <option value="in progress">In Progress</option>
-                <option value="resolved">Resolved</option>
-                <option value="completed">Completed</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Interactive Table -->
-          <div class="dashboard-table-wrap">
-            <table class="dashboard-table" id="customerTicketsTable">
-              <thead>
-                <tr>
-                  <th>Ticket ID</th>
-                  <th>Service Domain</th>
-                  <th>Subject / Summary</th>
-                  <th>Priority</th>
-                  <th>Assigned TAM</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>TKT-8841</strong></td>
-                  <td>Cloud Infrastructure</td>
-                  <td>
-                    Additional read-replica provisioning in Frankfurt zone
-                  </td>
-                  <td><span class="badge-tag blue">P3 Low</span></td>
-                  <td>Alex Miller</td>
-                  <td>
-                    <span class="status-badge in-progress">In Progress</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Track</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>TKT-8812</strong></td>
-                  <td>Edge Security</td>
-                  <td>WAF custom regex rule whitelist for webhook ingestion</td>
-                  <td><span class="badge-tag warning">P2 Medium</span></td>
-                  <td>Sarah Jenkins</td>
-                  <td>
-                    <span class="status-badge operational">Resolved</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Track</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>TKT-8790</strong></td>
-                  <td>Database Ops</td>
-                  <td>
-                    PostgreSQL automated backup retention extension (30 to 90
-                    days)
-                  </td>
-                  <td><span class="badge-tag purple">P2 Medium</span></td>
-                  <td>Alex Miller</td>
-                  <td>
-                    <span class="status-badge operational">Completed</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Track</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>TKT-8764</strong></td>
-                  <td>Network &amp; CDN</td>
-                  <td>Origin SSL certificate renewal verification</td>
-                  <td><span class="badge-tag success">P4 Minor</span></td>
-                  <td>Alex Chen</td>
-                  <td>
-                    <span class="status-badge operational">Completed</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Track</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>TKT-8730</strong></td>
-                  <td>Compliance</td>
-                  <td>
-                    SOC2 Type II annual audit compliance pack download request
-                  </td>
-                  <td><span class="badge-tag blue">P3 Low</span></td>
-                  <td>Sarah Jenkins</td>
-                  <td>
-                    <span class="status-badge operational">Resolved</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Track</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>TKT-8695</strong></td>
-                  <td>Disaster Recovery</td>
-                  <td>Quarterly failover drill simulation report</td>
-                  <td><span class="badge-tag purple">P2 Medium</span></td>
-                  <td>Alex Miller</td>
-                  <td>
-                    <span class="status-badge operational">Completed</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Track</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <!-- Panel 3: Subscribed Services & Solution Entitlements Grid -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Service Tiers</small>
-              <h2>Active Enterprise Solutions &amp; Plan Entitlements</h2>
-            </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Add New Service <i class="fa-solid fa-arrow-right"></i>
-            </a>
           </div>
 
           <div class="dashboard-card-grid">
@@ -551,54 +431,44 @@
                   margin-bottom: 12px;
                 "
               >
-                <span
-                  class="kpi-icon"
-                  style="
-                    margin-bottom: 0;
-                    width: 44px;
-                    height: 44px;
-                    font-size: 18px;
-                  "
-                  ><i class="fa-solid fa-cloud"></i
-                ></span>
-                <span class="status-badge operational">Active Tier</span>
+                <div>
+                  <strong
+                    style="display: block; font-size: 16px; color: var(--white)"
+                    >Enterprise Cloud Management</strong
+                  >
+                  <small style="color: var(--cyan); font-size: 11px"
+                    >Dedicated Virtual Private Cloud</small
+                  >
+                </div>
+                <span class="status-badge operational">Operational</span>
               </div>
-              <strong
-                style="
-                  font-size: 16px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 6px;
-                "
-                >Enterprise Managed Cloud v4</strong
-              >
               <p
                 style="
                   font-size: 12px;
                   color: var(--muted);
-                  margin-bottom: 16px;
+                  margin-bottom: 14px;
+                  line-height: 1.6;
                 "
               >
-                Multi-region automated failover, dedicated Kubernetes cluster,
-                and zero downtime rolling upgrades.
+                Continuous Kubernetes orchestration, dynamic load balancing,
+                automated horizontal pod elasticity, and 99.99% uptime SLA.
               </p>
               <div
-                style="
-                  font-size: 11px;
-                  color: var(--text);
-                  border-top: 1px solid var(--border);
-                  padding-top: 12px;
-                  display: flex;
-                  justify-content: space-between;
-                "
+                style="font-size: 12px; color: var(--text); margin-bottom: 12px"
               >
-                <span>Renews: Dec 31, 2026</span>
-                <a
-                  href="../404.html"
-                  class="action-trigger"
-                  style="color: var(--cyan)"
-                  >Manage &rarr;</a
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
                 >
+                  <span>Allocated Capacity</span
+                  ><span>4 Nodes (64 GB RAM)</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 65%"></div>
+                </div>
               </div>
             </article>
 
@@ -619,54 +489,45 @@
                   margin-bottom: 12px;
                 "
               >
-                <span
-                  class="kpi-icon"
-                  style="
-                    margin-bottom: 0;
-                    width: 44px;
-                    height: 44px;
-                    font-size: 18px;
-                  "
-                  ><i class="fa-solid fa-shield-halved"></i
-                ></span>
-                <span class="status-badge operational">Active Tier</span>
+                <div>
+                  <strong
+                    style="display: block; font-size: 16px; color: var(--white)"
+                    >24/7/365 NOC &amp; SOC Sentinel</strong
+                  >
+                  <small style="color: var(--cyan); font-size: 11px"
+                    >Threat Monitoring &amp; Rapid Response</small
+                  >
+                </div>
+                <span class="status-badge operational">Operational</span>
               </div>
-              <strong
-                style="
-                  font-size: 16px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 6px;
-                "
-                >24/7 Threat Detection &amp; SOC</strong
-              >
               <p
                 style="
                   font-size: 12px;
                   color: var(--muted);
-                  margin-bottom: 16px;
+                  margin-bottom: 14px;
+                  line-height: 1.6;
                 "
               >
-                Continuous SIEM telemetry ingestion, zero-day mitigation, DDoS
-                protection, and automated incident triage.
+                Synchronized security operations center coverage, behavioral
+                anomaly detection, distributed DDoS mitigation, and sub-15m P1
+                SLA.
               </p>
               <div
-                style="
-                  font-size: 11px;
-                  color: var(--text);
-                  border-top: 1px solid var(--border);
-                  padding-top: 12px;
-                  display: flex;
-                  justify-content: space-between;
-                "
+                style="font-size: 12px; color: var(--text); margin-bottom: 12px"
               >
-                <span>Renews: Dec 31, 2026</span>
-                <a
-                  href="../404.html"
-                  class="action-trigger"
-                  style="color: var(--cyan)"
-                  >Manage &rarr;</a
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
                 >
+                  <span>Threat Block Rate</span
+                  ><span>100% (1,420 blocked)</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill cyan" style="width: 100%"></div>
+                </div>
               </div>
             </article>
 
@@ -687,138 +548,841 @@
                   margin-bottom: 12px;
                 "
               >
-                <span
-                  class="kpi-icon"
-                  style="
-                    margin-bottom: 0;
-                    width: 44px;
-                    height: 44px;
-                    font-size: 18px;
-                  "
-                  ><i class="fa-solid fa-headset"></i
-                ></span>
-                <span class="status-badge operational">Active Tier</span>
+                <div>
+                  <strong
+                    style="display: block; font-size: 16px; color: var(--white)"
+                    >Disaster Recovery &amp; Snapshots</strong
+                  >
+                  <small style="color: var(--cyan); font-size: 11px"
+                    >Zero-Data-Loss RPO / RTO</small
+                  >
+                </div>
+                <span class="status-badge operational">Operational</span>
               </div>
-              <strong
-                style="
-                  font-size: 16px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 6px;
-                "
-                >Dedicated Technical Account Manager</strong
-              >
               <p
                 style="
                   font-size: 12px;
                   color: var(--muted);
-                  margin-bottom: 16px;
+                  margin-bottom: 14px;
+                  line-height: 1.6;
                 "
               >
-                Quarterly executive reviews, tailored cloud roadmap planning,
-                and 15-minute priority SLA turnaround.
+                Hourly encrypted snapshots replicated to geographically isolated
+                cold storage with quarterly disaster recovery simulations.
               </p>
               <div
-                style="
-                  font-size: 11px;
-                  color: var(--text);
-                  border-top: 1px solid var(--border);
-                  padding-top: 12px;
-                  display: flex;
-                  justify-content: space-between;
-                "
+                style="font-size: 12px; color: var(--text); margin-bottom: 12px"
               >
-                <span>Renews: Dec 31, 2026</span>
-                <a
-                  href="../404.html"
-                  class="action-trigger"
-                  style="color: var(--cyan)"
-                  >Manage &rarr;</a
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
                 >
+                  <span>Snapshot Verification</span
+                  ><span>Last: 24 mins ago</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 100%"></div>
+                </div>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- Panel 4: Billing History & Statements -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Account Ledger</small>
-              <h2>Recent Enterprise Invoices &amp; Statements</h2>
+        <!-- ================================================================
+             SCREEN 3: Support Tickets & Requests
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-tickets">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Support Desk
+              </div>
+              <h2>Service Requests &amp; Technical Support Tickets</h2>
+              <p>
+                Track resolution status for all submitted technical inquiries,
+                configuration requests, and incident tickets.
+              </p>
             </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              All Invoices <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <div class="screen-actions">
+              <button
+                class="button button-small button-primary"
+                onclick="
+                  document
+                    .querySelector('#newTicketModalBackdrop')
+                    .classList.add('open')
+                "
+                type="button"
+              >
+                <i class="fa-solid fa-plus"></i> Open New Ticket
+              </button>
+            </div>
           </div>
 
-          <div class="dashboard-table-wrap">
-            <table class="dashboard-table">
-              <thead>
-                <tr>
-                  <th>Invoice ID</th>
-                  <th>Billing Period</th>
-                  <th>Amount</th>
-                  <th>Payment Method</th>
-                  <th>Invoice Status</th>
-                  <th>Receipt</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>INV-2026-08</strong></td>
-                  <td>Aug 01, 2026 &ndash; Aug 31, 2026</td>
-                  <td>$4,200.00</td>
-                  <td>Corporate ACH &bull; Ending 9021</td>
-                  <td><span class="status-badge operational">Paid</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Download PDF</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>INV-2026-07</strong></td>
-                  <td>Jul 01, 2026 &ndash; Jul 31, 2026</td>
-                  <td>$4,200.00</td>
-                  <td>Corporate ACH &bull; Ending 9021</td>
-                  <td><span class="status-badge operational">Paid</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Download PDF</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>INV-2026-06</strong></td>
-                  <td>Jun 01, 2026 &ndash; Jun 30, 2026</td>
-                  <td>$4,150.00</td>
-                  <td>Corporate ACH &bull; Ending 9021</td>
-                  <td><span class="status-badge operational">Paid</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Download PDF</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="dashboard-full-panel">
+            <div class="dashboard-filter-toolbar">
+              <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  class="table-search-input"
+                  data-target-table="customerTicketsTable"
+                  placeholder="Filter tickets by ID, subject, priority, or status..."
+                />
+              </div>
+              <select
+                class="table-status-filter"
+                data-target-table="customerTicketsTable"
+              >
+                <option value="all">All Statuses</option>
+                <option value="open">Open / Triage</option>
+                <option value="resolved">Resolved</option>
+              </select>
+            </div>
+
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table" id="customerTicketsTable">
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Subject Description</th>
+                    <th>Current Status</th>
+                    <th>Priority</th>
+                    <th>Opened</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>STK-7412</strong></td>
+                    <td>
+                      Request IP whitelist expansion for secondary logistics
+                      office
+                    </td>
+                    <td>
+                      <span class="status-badge live">Open / Triage</span>
+                    </td>
+                    <td><span style="color: var(--cyan)">Normal</span></td>
+                    <td>2 hours ago</td>
+                    <td>
+                      <button
+                        class="button button-small button-ghost action-trigger"
+                        type="button"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-7290</strong></td>
+                    <td>Quarterly firewall port vulnerability scan results</td>
+                    <td>
+                      <span class="status-badge operational">Resolved</span>
+                    </td>
+                    <td><span style="color: var(--mint)">Normal</span></td>
+                    <td>Sep 02, 2026</td>
+                    <td>
+                      <button
+                        class="button button-small button-ghost action-trigger"
+                        type="button"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>STK-7084</strong></td>
+                    <td>Database read-replica bandwidth scaling request</td>
+                    <td>
+                      <span class="status-badge operational">Resolved</span>
+                    </td>
+                    <td><span style="color: #fbbf24">High</span></td>
+                    <td>Aug 18, 2026</td>
+                    <td>
+                      <button
+                        class="button button-small button-ghost action-trigger"
+                        type="button"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
+
+        <!-- ================================================================
+             SCREEN 4: SLA Performance & Uptime Reports
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-sla-reports">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> SLA Audit
+              </div>
+              <h2>Contractual SLA Performance &amp; Uptime History</h2>
+              <p>
+                Independent third-party verification of your 99.99% service
+                availability guarantee and incident resolution speeds.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-download"></i> Download Audit Report
+              </a>
+            </div>
+          </div>
+
+          <div class="dashboard-card-grid">
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <small style="color: var(--muted)"
+                >September 2026 (Month-to-Date)</small
+              >
+              <strong
+                style="
+                  font-size: 30px;
+                  display: block;
+                  margin: 8px 0;
+                  color: var(--mint);
+                "
+                >99.998% Uptime</strong
+              >
+              <p style="font-size: 12px; color: var(--muted); margin: 0">
+                Total downtime: 0 mins. All 4 VPC zones operational.
+              </p>
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <small style="color: var(--muted)">August 2026</small>
+              <strong
+                style="
+                  font-size: 30px;
+                  display: block;
+                  margin: 8px 0;
+                  color: var(--mint);
+                "
+                >100.00% Uptime</strong
+              >
+              <p style="font-size: 12px; color: var(--muted); margin: 0">
+                Total downtime: 0 mins. Zero service interruptions.
+              </p>
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <small style="color: var(--muted)">July 2026</small>
+              <strong
+                style="
+                  font-size: 30px;
+                  display: block;
+                  margin: 8px 0;
+                  color: var(--mint);
+                "
+                >99.995% Uptime</strong
+              >
+              <p style="font-size: 12px; color: var(--muted); margin: 0">
+                Scheduled maintenance: 2 mins (zero user impact).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 5: Billing Statements & Invoices
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-invoices">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Invoicing
+              </div>
+              <h2>Billing Statements &amp; Payment History</h2>
+              <p>
+                Download monthly PDF invoices, track payment status, and review
+                recurring subscription breakdowns.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-ghost action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-credit-card"></i> Payment Method
+              </a>
+            </div>
+          </div>
+
+          <div class="dashboard-full-panel">
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table" id="customerInvoicesTable">
+                <thead>
+                  <tr>
+                    <th>Invoice #</th>
+                    <th>Billing Period</th>
+                    <th>Service Scope</th>
+                    <th>Amount (USD)</th>
+                    <th>Payment Status</th>
+                    <th>Invoice File</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>INV-2026-09</strong></td>
+                    <td>Sep 01 - Sep 30, 2026</td>
+                    <td>Managed Cloud Enterprise + 24/7 SOC</td>
+                    <td>$14,500.00</td>
+                    <td><span class="status-badge operational">Paid</span></td>
+                    <td>
+                      <a
+                        href="../404.html"
+                        class="action-trigger"
+                        style="color: var(--cyan)"
+                        ><i class="fa-solid fa-file-pdf"></i> Download PDF</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>INV-2026-08</strong></td>
+                    <td>Aug 01 - Aug 31, 2026</td>
+                    <td>Managed Cloud Enterprise + 24/7 SOC</td>
+                    <td>$14,500.00</td>
+                    <td><span class="status-badge operational">Paid</span></td>
+                    <td>
+                      <a
+                        href="../404.html"
+                        class="action-trigger"
+                        style="color: var(--cyan)"
+                        ><i class="fa-solid fa-file-pdf"></i> Download PDF</a
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>INV-2026-07</strong></td>
+                    <td>Jul 01 - Jul 31, 2026</td>
+                    <td>Managed Cloud Enterprise + 24/7 SOC</td>
+                    <td>$14,500.00</td>
+                    <td><span class="status-badge operational">Paid</span></td>
+                    <td>
+                      <a
+                        href="../404.html"
+                        class="action-trigger"
+                        style="color: var(--cyan)"
+                        ><i class="fa-solid fa-file-pdf"></i> Download PDF</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 6: Security & Compliance Certifications
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-compliance">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Verified Certifications
+              </div>
+              <h2>Security &amp; Regulatory Compliance Documentation</h2>
+              <p>
+                Download certified annual audit reports, SOC2 attestations, and
+                ISO certificates for your compliance audits.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-file-shield"></i> Request Auditor Letter
+              </a>
+            </div>
+          </div>
+
+          <div class="dashboard-card-grid">
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <i
+                class="fa-solid fa-shield-halved"
+                style="
+                  color: var(--cyan);
+                  font-size: 24px;
+                  margin-bottom: 12px;
+                  display: block;
+                "
+              ></i>
+              <strong
+                style="font-size: 16px; display: block; margin-bottom: 6px"
+                >SOC 2 Type II Attestation</strong
+              >
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  margin-bottom: 14px;
+                "
+              >
+                Verified report covering Security, Availability, and
+                Confidentiality trust service criteria issued by independent CPA
+                audit.
+              </p>
+              <a
+                href="../404.html"
+                class="action-trigger"
+                style="color: var(--mint); font-size: 12px"
+                >Download Report PDF &rarr;</a
+              >
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <i
+                class="fa-solid fa-certificate"
+                style="
+                  color: var(--mint);
+                  font-size: 24px;
+                  margin-bottom: 12px;
+                  display: block;
+                "
+              ></i>
+              <strong
+                style="font-size: 16px; display: block; margin-bottom: 6px"
+                >ISO/IEC 27001:2022 Certified</strong
+              >
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  margin-bottom: 14px;
+                "
+              >
+                Global standard for information security management systems
+                (ISMS) across all cloud hosting facilities.
+              </p>
+              <a
+                href="../404.html"
+                class="action-trigger"
+                style="color: var(--mint); font-size: 12px"
+                >Download Certificate &rarr;</a
+              >
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <i
+                class="fa-solid fa-file-contract"
+                style="
+                  color: var(--cyan);
+                  font-size: 24px;
+                  margin-bottom: 12px;
+                  display: block;
+                "
+              ></i>
+              <strong
+                style="font-size: 16px; display: block; margin-bottom: 6px"
+                >HIPAA &amp; GDPR Compliance</strong
+              >
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  margin-bottom: 14px;
+                "
+              >
+                Business Associate Agreement (BAA) and Data Processing Addendum
+                (DPA) protecting encrypted patient and customer records.
+              </p>
+              <a
+                href="../404.html"
+                class="action-trigger"
+                style="color: var(--mint); font-size: 12px"
+                >Download BAA Document &rarr;</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 7: Dedicated Account Team
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-team">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Contact Directory
+              </div>
+              <h2>Dedicated Account Team &amp; Emergency Escalation</h2>
+              <p>
+                Direct contacts for your assigned Enterprise Cloud Architect,
+                Account Executive, and 24/7 technical hotline.
+              </p>
+            </div>
+          </div>
+
+          <div class="dashboard-card-grid">
+            <div
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 14px;
+                "
+              >
+                <div
+                  class="user-avatar"
+                  style="width: 44px; height: 44px; font-size: 18px"
+                >
+                  SC
+                </div>
+                <div>
+                  <strong style="font-size: 16px; display: block"
+                    >Sarah Chen</strong
+                  >
+                  <small style="color: var(--cyan); font-size: 12px"
+                    >Principal Enterprise Architect</small
+                  >
+                </div>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 14px;
+                  line-height: 1.6;
+                "
+              >
+                Directly oversees your cloud infrastructure topology,
+                high-availability architecture, and quarterly performance
+                reviews.
+              </p>
+              <div style="display: flex; gap: 10px">
+                <a
+                  href="../404.html"
+                  class="button button-small button-ghost action-trigger"
+                  ><i class="fa-solid fa-envelope"></i> Email Architect</a
+                >
+                <a
+                  href="../404.html"
+                  class="button button-small button-primary action-trigger"
+                  ><i class="fa-solid fa-calendar"></i> Book Review</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 14px;
+                "
+              >
+                <div
+                  class="user-avatar"
+                  style="
+                    width: 44px;
+                    height: 44px;
+                    font-size: 18px;
+                    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+                  "
+                >
+                  MV
+                </div>
+                <div>
+                  <strong style="font-size: 16px; display: block"
+                    >Marcus Vance</strong
+                  >
+                  <small style="color: var(--cyan); font-size: 12px"
+                    >Customer Success Director</small
+                  >
+                </div>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 14px;
+                  line-height: 1.6;
+                "
+              >
+                Manages contract commitments, SLA escalation oversight, new
+                service expansions, and billing concierge inquiries.
+              </p>
+              <div style="display: flex; gap: 10px">
+                <a
+                  href="../404.html"
+                  class="button button-small button-ghost action-trigger"
+                  ><i class="fa-solid fa-envelope"></i> Email Director</a
+                >
+                <a
+                  href="../404.html"
+                  class="button button-small button-primary action-trigger"
+                  ><i class="fa-solid fa-phone"></i> Direct Line</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 14px;
+                  margin-bottom: 14px;
+                "
+              >
+                <div
+                  class="user-avatar"
+                  style="
+                    width: 44px;
+                    height: 44px;
+                    font-size: 18px;
+                    background: linear-gradient(135deg, #ef4444, #f97316);
+                  "
+                >
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                  <strong
+                    style="font-size: 16px; display: block; color: #f87171"
+                    >24/7 Priority Emergency Bridge</strong
+                  >
+                  <small style="color: var(--muted); font-size: 12px"
+                    >Direct Tier-3 NOC Hotline</small
+                  >
+                </div>
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  margin-bottom: 14px;
+                  line-height: 1.6;
+                "
+              >
+                Dedicated emergency line for P1 incident escalation. Bypasses
+                standard ticket queues with immediate engineer patch.
+              </p>
+              <a
+                href="../404.html"
+                class="button button-small button-primary action-trigger"
+                style="
+                  background: rgba(239, 68, 68, 0.2);
+                  border-color: rgba(239, 68, 68, 0.4);
+                  color: #f87171;
+                "
+              >
+                <i class="fa-solid fa-phone-volume"></i> Call Emergency Bridge
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Interactive Support Ticket Submission Modal -->
+    <div class="dashboard-modal-backdrop" id="newTicketModalBackdrop">
+      <div class="dashboard-modal">
+        <div class="dashboard-modal-header">
+          <h3 style="font-size: 18px; margin: 0">
+            <i
+              class="fa-solid fa-ticket"
+              style="color: var(--cyan); margin-right: 8px"
+            ></i>
+            Open Support Ticket
+          </h3>
+          <button
+            class="dashboard-modal-close"
+            id="closeTicketModal"
+            type="button"
+          >
+            &times;
+          </button>
+        </div>
+        <form id="newTicketForm">
+          <div class="form-group" style="margin-bottom: 14px">
+            <label
+              for="ticketSubject"
+              style="
+                display: block;
+                font-size: 12px;
+                margin-bottom: 6px;
+                color: var(--text);
+              "
+              >Subject / Summary</label
+            >
+            <input
+              id="ticketSubject"
+              type="text"
+              required
+              placeholder="e.g. Request firewall rule update for staging API"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                background: rgba(7, 17, 31, 0.8);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: #fff;
+                box-sizing: border-box;
+              "
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 14px">
+            <label
+              for="ticketPriority"
+              style="
+                display: block;
+                font-size: 12px;
+                margin-bottom: 6px;
+                color: var(--text);
+              "
+              >Priority Severity</label
+            >
+            <select
+              id="ticketPriority"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                background: rgba(7, 17, 31, 0.8);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: #fff;
+                box-sizing: border-box;
+              "
+            >
+              <option value="Normal">Normal (SLA: 4h)</option>
+              <option value="High">High (SLA: 1h)</option>
+              <option value="Critical">Critical P1 (SLA: 15m)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 20px">
+            <label
+              for="ticketDetails"
+              style="
+                display: block;
+                font-size: 12px;
+                margin-bottom: 6px;
+                color: var(--text);
+              "
+              >Issue Details</label
+            >
+            <textarea
+              id="ticketDetails"
+              rows="3"
+              placeholder="Describe the technical assistance required..."
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                background: rgba(7, 17, 31, 0.8);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                color: #fff;
+                box-sizing: border-box;
+                resize: vertical;
+              "
+            ></textarea>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 10px">
+            <button
+              class="button button-small button-ghost"
+              type="button"
+              onclick="
+                document
+                  .querySelector('#newTicketModalBackdrop')
+                  .classList.remove('open')
+              "
+            >
+              Cancel
+            </button>
+            <button class="button button-small button-primary" type="submit">
+              Submit Ticket <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </form>
       </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer inner-footer"></footer>
-
-    <!-- AOS & Dashboard Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script defer src="../assets/js/dashboard.js"></script>
+    </div>
   </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Stackly IT Manager Workspace - Delivery Roadmaps, Team Velocity, SLA Metrics, and Resource Allocation."
+      content="Stackly Delivery Manager Workspace - Squad Capacity, Sprint Velocity, and Project Deliverables."
     />
-    <title>IT Manager Workspace | Stackly</title>
+    <title>Manager Workspace | Stackly</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,332 +24,397 @@
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script defer src="../assets/js/shared.js"></script>
+    <script defer src="../assets/js/dashboard.js"></script>
   </head>
   <body class="dashboard-page">
     <!-- Screen Loader -->
     <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
       <img src="../assets/images/logoStackly.webp" alt="" />
       <span class="loader-spinner"></span>
-      <span>Loading Manager Console...</span>
+      <span>Loading Operations Workspace...</span>
     </div>
 
     <!-- Fixed Header -->
     <header class="dashboard-header">
-      <a class="brand" href="../index.html">
-        <img src="../assets/images/logoStackly.webp" alt="Stackly" />
-      </a>
-      <div class="dashboard-user">
-        <span class="user-avatar" id="userAvatar">M</span>
-        <span>
-          <strong id="userName">IT Manager</strong>
-          <small id="userRole">Manager Access</small>
-        </span>
-        <button
-          class="button button-small button-ghost"
-          id="signOut"
-          type="button"
-        >
-          Sign out
-        </button>
+      <div class="container nav-inner">
+        <div class="dashboard-header-left">
+          <a class="brand" href="../index.html" aria-label="Stackly home">
+            <img src="../assets/images/logoStackly.webp" alt="Stackly" />
+          </a>
+        </div>
+        <div class="dashboard-user">
+          <span class="user-avatar" id="userAvatar">M</span>
+          <span>
+            <strong id="userName">Engineering Manager</strong>
+            <small id="userRole">Manager Access</small>
+          </span>
+          <button
+            class="button button-small button-ghost"
+            id="signOut"
+            type="button"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="dashboard-main" id="main-content">
-      <div class="container">
-        <!-- Top Hero & Greeting Section -->
-        <section class="dashboard-hero-section" data-aos="fade-down">
-          <div class="dashboard-heading">
-            <div class="eyebrow">
-              <span class="eyebrow-line"></span>
-              <span>Engineering Deliveries &amp; Resource Operations</span>
-            </div>
-            <h1>
-              <span id="greetingTime">Good morning</span>,
-              <span class="gradient-text" id="greetingName"
-                >Engineering Lead.</span
-              >
-            </h1>
-            <p>
-              Review active delivery milestones, monitor sprint burn-up rates,
-              and inspect team capacity across all squads.
-            </p>
+    <!-- App Shell: Collapsible Sidebar + Main Screen Area -->
+    <div class="dashboard-app-shell">
+      <!-- Left Collapsible Sidebar -->
+      <aside
+        class="dashboard-sidebar"
+        id="dashboardSidebar"
+        aria-label="Manager navigation"
+      >
+        <div class="sidebar-header">
+          <div class="sidebar-header-brand">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="sidebar-brand-title">Manager Workspace</span>
+          </div>
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            type="button"
+            aria-label="Toggle navigation sidebar"
+            data-tooltip="Collapse Sidebar"
+          >
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-inner">
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Operations &amp; Squads</span>
+            <button
+              class="sidebar-item active"
+              data-screen="screen-overview"
+              data-tooltip="Delivery Pulse"
+              type="button"
+            >
+              <i class="fa-solid fa-chart-line item-icon"></i>
+              <span class="item-label">Delivery Pulse</span>
+              <span class="sidebar-badge">94%</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-squads"
+              data-tooltip="Squad Capacity"
+              type="button"
+            >
+              <i class="fa-solid fa-users item-icon"></i>
+              <span class="item-label">Squad Capacity</span>
+              <span class="sidebar-badge">4 Squads</span>
+            </button>
           </div>
 
-          <!-- Dynamic Meta & System Health Pills -->
-          <div
-            class="dashboard-meta-bar"
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 16px;
-              margin-top: 20px;
-              flex-wrap: wrap;
-            "
-          >
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Project Delivery</span>
+            <button
+              class="sidebar-item"
+              data-screen="screen-projects"
+              data-tooltip="Client Deliverables"
+              type="button"
+            >
+              <i class="fa-solid fa-list-check item-icon"></i>
+              <span class="item-label">Client Deliverables</span>
+              <span class="sidebar-badge">12 Active</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-escalations"
+              data-tooltip="SLA Escalations"
+              type="button"
+            >
+              <i class="fa-solid fa-fire item-icon"></i>
+              <span class="item-label">SLA Escalations</span>
+              <span class="sidebar-badge alert">0 Breaches</span>
+            </button>
+          </div>
+
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Governance &amp; Budgets</span>
+            <button
+              class="sidebar-item"
+              data-screen="screen-budgets"
+              data-tooltip="Department Budgets"
+              type="button"
+            >
+              <i class="fa-solid fa-wallet item-icon"></i>
+              <span class="item-label">Department Budgets</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-approvals"
+              data-tooltip="Change Approvals"
+              type="button"
+            >
+              <i class="fa-solid fa-signature item-icon"></i>
+              <span class="item-label">Change Approvals</span>
+              <span class="sidebar-badge">2 Pending</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-reports"
+              data-tooltip="Executive Reports"
+              type="button"
+            >
+              <i class="fa-solid fa-file-lines item-icon"></i>
+              <span class="item-label">Executive Reports</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Backdrop for mobile drawer -->
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <!-- Main Content Area with 7 Distinct Screens -->
+      <main class="dashboard-main" id="main-content">
+        <!-- ================================================================
+             SCREEN 1: Operations Delivery Pulse & Burndown (Default)
+             ================================================================ -->
+        <section class="dashboard-screen active" id="screen-overview">
+          <section class="dashboard-hero-section" data-aos="fade-down">
+            <div class="dashboard-heading">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span>Engineering Operations &amp; Sprint Velocity</span>
+              </div>
+              <h1>
+                <span id="greetingTime">Good morning</span>,
+                <span class="gradient-text" id="greetingName"
+                  >Marcus Vance.</span
+                >
+              </h1>
+              <p>
+                Squad capacity allocation, client deliverable milestones, and
+                SLA commitments are tracking on schedule.
+              </p>
+            </div>
+
+            <!-- Dynamic Meta Bar -->
             <div
+              class="dashboard-meta-bar"
               style="
                 display: flex;
                 align-items: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 16px;
+                margin-top: 20px;
                 flex-wrap: wrap;
               "
             >
-              <div class="dashboard-meta-pill">
-                <i class="fa-solid fa-clock"></i>
-                <span id="timeAndZone">Loading local time...</span>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div class="dashboard-meta-pill">
+                  <i class="fa-solid fa-clock"></i>
+                  <span id="timeAndZone">Loading local time...</span>
+                </div>
+                <div class="system-status-indicator">
+                  <span class="status-pulse"></span>
+                  <span>Sprint 28: On Track &bull; 4 Days Left</span>
+                </div>
+                <div class="dashboard-meta-pill">
+                  <i class="fa-solid fa-trophy" style="color: var(--mint)"></i>
+                  <span>Velocity: 94.2%</span>
+                </div>
               </div>
-              <div class="system-status-indicator">
-                <span class="status-pulse"></span>
-                <span>Sprint 26: 94% On Schedule</span>
-              </div>
-              <div class="dashboard-meta-pill">
-                <i class="fa-solid fa-users" style="color: var(--cyan)"></i>
-                <span>4 Engineering Squads Active</span>
+
+              <div
+                class="dashboard-actions"
+                style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+              >
+                <a
+                  class="button button-small button-primary action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-plus"></i> New Project Scope
+                </a>
+                <a
+                  class="button button-small button-ghost action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-arrows-split-up-and-left"></i> Rebalance
+                  Squads
+                </a>
+                <a
+                  class="button button-small button-ghost action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-file-pdf"></i> Export Sprint QBR
+                </a>
               </div>
             </div>
 
-            <!-- Quick Action Triggers -->
+            <!-- Interactive Quick Controls Grid -->
             <div
-              class="dashboard-actions"
-              style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+              class="quick-controls-grid"
+              data-aos="fade-up"
+              data-aos-delay="50"
             >
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>CI/CD Auto-Deploy to Staging</strong>
+                  <small>Enabled &bull; Continuous integration</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Automated SLA Escalation Alerts</strong>
+                  <small>Enabled &bull; P1 alerts to on-call</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Code Freeze Mode</strong>
+                  <small>Disabled &bull; Active sprint branches open</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Sprint Velocity Telemetry</strong>
+                  <small>Enabled &bull; Real-time burn-up</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core KPI Grid -->
+          <section class="kpi-grid" data-aos="fade-up" style="margin-top: 28px">
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-bolt"></i></span>
+              <small>Sprint Velocity</small>
+              <strong>94.2%</strong>
+              <em>142 / 150 Story points closed</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-users"></i></span>
+              <small>Squad Utilization</small>
+              <strong>88%</strong>
+              <em>Balanced workload allocation</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-circle-check"></i
+              ></span>
+              <small>Client SLA Compliance</small>
+              <strong>100%</strong>
+              <em>Sub-15m resolution maintained</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-wallet"></i></span>
+              <small>Monthly Cloud Burn</small>
+              <strong>$44.1k</strong>
+              <em>-8% under allocated ceiling</em>
+            </div>
+          </section>
+
+          <!-- Sprint Velocity Overview Panel -->
+          <section class="dashboard-full-panel" data-aos="fade-up">
+            <div class="dashboard-panel-header">
+              <div>
+                <small>Sprint Performance</small>
+                <h2>Engineering Squad Velocity &amp; Story Point Burndown</h2>
+              </div>
+              <div class="time-range-pills">
+                <button class="time-pill-btn active" type="button">
+                  Sprint 28
+                </button>
+                <button class="time-pill-btn" type="button">Sprint 27</button>
+                <button class="time-pill-btn" type="button">Sprint 26</button>
+                <button class="time-pill-btn" type="button">Quarterly</button>
+              </div>
+            </div>
+
+            <div class="chart-bars-horizontal">
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span
+                    >Squad Alpha (Cloud Infrastructure &amp; Kubernetes)</span
+                  >
+                  <span style="color: var(--mint)">98% &bull; 42/43 pts</span>
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill mint" style="width: 98%"></div>
+                </div>
+              </div>
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span>Squad Beta (Zero-Trust Security &amp; IAM)</span>
+                  <span style="color: var(--mint)">92% &bull; 35/38 pts</span>
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill mint" style="width: 92%"></div>
+                </div>
+              </div>
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span>Squad Gamma (Client Integration &amp; APIs)</span>
+                  <span style="color: var(--cyan)">89% &bull; 38/42 pts</span>
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill cyan" style="width: 89%"></div>
+                </div>
+              </div>
+              <div class="chart-item">
+                <div class="chart-item-header">
+                  <span>Squad Delta (Site Reliability &amp; On-Call)</span>
+                  <span style="color: var(--mint)">96% &bull; 27/28 pts</span>
+                </div>
+                <div class="chart-bar-bg">
+                  <div class="chart-bar-fill mint" style="width: 96%"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 2: Squad Capacity & Workload Heatmap
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-squads">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Squad Orchestration
+              </div>
+              <h2>Engineering Squad Capacity &amp; Workload Allocation</h2>
+              <p>
+                Monitors team utilization, bench capacity, open sprint epics,
+                and on-call rotation schedules.
+              </p>
+            </div>
+            <div class="screen-actions">
               <a
                 class="button button-small button-primary action-trigger"
                 href="../404.html"
               >
-                <i class="fa-solid fa-plus"></i> New Sprint Milestone
-              </a>
-              <a
-                class="button button-small button-ghost action-trigger"
-                href="../404.html"
-              >
-                <i class="fa-solid fa-file-invoice-dollar"></i> Budget Overview
-              </a>
-              <a
-                class="button button-small button-ghost action-trigger"
-                href="../404.html"
-              >
-                <i class="fa-solid fa-chart-pie"></i> Export Velocity Report
+                <i class="fa-solid fa-user-plus"></i> Reassign Engineers
               </a>
             </div>
-          </div>
-
-          <!-- Interactive Quick Controls Grid -->
-          <div
-            class="quick-controls-grid"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Sprint Auto-Assign</strong>
-                <small>Enabled &bull; Balances ticket weighting</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>SLA Escalation Alerts</strong>
-                <small>Enabled &bull; Priority escalation at 80% SLA</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Weekly Client Digest</strong>
-                <small>Enabled &bull; Auto-dispatches Monday 09:00</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Overtime Safeguard</strong>
-                <small>Disabled &bull; Squad allocation uncapped</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-          </div>
-        </section>
-
-        <!-- KPI Grid: Core Management Metrics -->
-        <section class="kpi-grid" style="margin-top: 32px">
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="50">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-diagram-project"></i
-            ></span>
-            <small>Active Deliveries</small>
-            <strong>14 Projects</strong>
-            <em>12 on schedule &bull; 2 under review</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="100">
-            <span class="kpi-icon"><i class="fa-solid fa-gauge-high"></i></span>
-            <small>Team Sprint Velocity</small>
-            <strong>184 Pts</strong>
-            <em>+18% higher than sprint avg</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="150">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-clock-rotate-left"></i
-            ></span>
-            <small>SLA Resolution Rate</small>
-            <strong>98.6%</strong>
-            <em>Mean time to resolve: 42 mins</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="200">
-            <span class="kpi-icon"><i class="fa-solid fa-user-check"></i></span>
-            <small>Resource Allocation</small>
-            <strong>87% Bandwidth</strong>
-            <em>13% available buffer for Q4</em>
-          </article>
-        </section>
-
-        <!-- Panel 1: Sprint Milestones & Burn-Up Velocity -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Sprint Execution</small>
-              <h2>Active Milestones &amp; Burn-Up Velocity</h2>
-            </div>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                flex-wrap: wrap;
-              "
-            >
-              <!-- Interactive Time-Range Selector -->
-              <div class="time-range-pills">
-                <button type="button" class="time-pill-btn active">
-                  Sprint 26
-                </button>
-                <button type="button" class="time-pill-btn">Sprint 25</button>
-                <button type="button" class="time-pill-btn">Sprint 24</button>
-                <button type="button" class="time-pill-btn">Quarterly</button>
-              </div>
-              <a class="panel-link action-trigger" href="../404.html">
-                Roadmap Details <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Horizontal Bars for Project Progress -->
-          <div class="chart-bars-wrap">
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong>Fintech Cloud Migration Phase 3 (Apex Banking)</strong>
-                <span>92% &bull; Near Completion</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill mint" style="width: 92%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong>Zero-Trust Identity Federation (MedCore Health)</strong>
-                <span>78% &bull; In Code Review</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill cyan" style="width: 78%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >Microservices Decoupling (Global Retail E-Commerce)</strong
-                >
-                <span>95% &bull; Delivering</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill mint" style="width: 95%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >Kubernetes Ingress Gateway Upgrade (Core Platform)</strong
-                >
-                <span>64% &bull; Testing Phase</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill" style="width: 64%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong>Data Pipeline Modernization &amp; Kafka Mesh</strong>
-                <span>48% &bull; Sizing Review</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill warning" style="width: 48%"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Velocity Metrics -->
-          <div
-            class="metrics-row"
-            style="
-              margin-top: 24px;
-              padding-top: 20px;
-              border-top: 1px solid var(--border);
-            "
-          >
-            <div class="metric-block">
-              <span class="metric-label">Completed Story Points</span>
-              <strong class="metric-value">172 / 184 Pts</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-arrow-trend-up"></i> 93.5% Burn-up</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Pull Request Cycle Time</span>
-              <strong class="metric-value">4.2 Hours</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-bolt"></i> Fast turnaround</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Deployment Frequency</span>
-              <strong class="metric-value">18 Deploys/Wk</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-rocket"></i> Elite DORA tier</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Unplanned Bug Rate</span>
-              <strong class="metric-value">1.8%</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-shield-check"></i> Below 5% target</small
-              >
-            </div>
-          </div>
-        </section>
-
-        <!-- Panel 2: Department Budget Burn & Vendor Spend Tracker -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Financial Governance</small>
-              <h2>Department Budget Burn &amp; Vendor Cost Tracker</h2>
-            </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Fiscal Ledger <i class="fa-solid fa-arrow-right"></i>
-            </a>
           </div>
 
           <div class="dashboard-card-grid">
@@ -362,32 +427,57 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
-              <small
-                style="color: var(--muted); display: block; margin-bottom: 4px"
-                >Cloud Infrastructure</small
-              >
-              <strong
+              <div
                 style="
-                  font-size: 22px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 8px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
                 "
-                >$42,850</strong
               >
-              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
-                <div class="chart-bar-fill mint" style="width: 85%"></div>
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >Squad Alpha &bull; Cloud Core</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Lead: Sarah Chen &bull; 6 Engineers</small
+                  >
+                </div>
+                <span class="status-badge operational">Optimal</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>Capacity Utilization</span><span>88% (Normal)</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 88%"></div>
+                </div>
               </div>
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
+                  align-items: center;
                   font-size: 11px;
                   color: var(--muted);
                 "
               >
-                <span>Cap: $50,000</span
-                ><span style="color: var(--mint)">85% utilized</span>
+                <span>Focus: Multi-Region Kubernetes</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Sprint Board &rarr;</a
+                >
               </div>
             </article>
 
@@ -400,32 +490,57 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
-              <small
-                style="color: var(--muted); display: block; margin-bottom: 4px"
-                >SaaS Licenses &amp; Tooling</small
-              >
-              <strong
+              <div
                 style="
-                  font-size: 22px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 8px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
                 "
-                >$18,200</strong
               >
-              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
-                <div class="chart-bar-fill cyan" style="width: 82%"></div>
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >Squad Beta &bull; Cyber Defense</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Lead: Alexei Volkov &bull; 5 Engineers</small
+                  >
+                </div>
+                <span class="status-badge operational">Optimal</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>Capacity Utilization</span><span>92% (Heavy)</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill cyan" style="width: 92%"></div>
+                </div>
               </div>
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
+                  align-items: center;
                   font-size: 11px;
                   color: var(--muted);
                 "
               >
-                <span>Cap: $22,000</span
-                ><span style="color: var(--cyan)">82% utilized</span>
+                <span>Focus: Zero-Trust IAM &amp; WAF</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Sprint Board &rarr;</a
+                >
               </div>
             </article>
 
@@ -438,32 +553,57 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
-              <small
-                style="color: var(--muted); display: block; margin-bottom: 4px"
-                >External Specialized Contractors</small
-              >
-              <strong
+              <div
                 style="
-                  font-size: 22px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 8px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
                 "
-                >$12,400</strong
               >
-              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
-                <div class="chart-bar-fill" style="width: 80%"></div>
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >Squad Gamma &bull; Client Delivery</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Lead: Priya Sharma &bull; 7 Engineers</small
+                  >
+                </div>
+                <span class="status-badge operational">Optimal</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>Capacity Utilization</span><span>82% (Available)</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 82%"></div>
+                </div>
               </div>
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
+                  align-items: center;
                   font-size: 11px;
                   color: var(--muted);
                 "
               >
-                <span>Cap: $15,000</span
-                ><span style="color: var(--white)">80% utilized</span>
+                <span>Focus: Enterprise Migrations</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >Sprint Board &rarr;</a
+                >
               </div>
             </article>
 
@@ -476,291 +616,385 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
-              <small
-                style="color: var(--muted); display: block; margin-bottom: 4px"
-                >Training &amp; Certifications</small
-              >
-              <strong
+              <div
                 style="
-                  font-size: 22px;
-                  color: var(--white);
-                  display: block;
-                  margin-bottom: 8px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
                 "
-                >$4,100</strong
               >
-              <div class="chart-bar-bg" style="height: 6px; margin-bottom: 8px">
-                <div class="chart-bar-fill warning" style="width: 68%"></div>
+                <div>
+                  <strong
+                    style="display: block; font-size: 15px; color: var(--white)"
+                    >Squad Delta &bull; SRE &amp; NOC</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Lead: David Kalu &bull; 6 Engineers</small
+                  >
+                </div>
+                <span class="status-badge operational">Optimal</span>
+              </div>
+              <div
+                style="font-size: 12px; color: var(--text); margin-bottom: 10px"
+              >
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 4px;
+                  "
+                >
+                  <span>Capacity Utilization</span><span>84% (Normal)</span>
+                </div>
+                <div class="chart-bar-bg" style="height: 6px">
+                  <div class="chart-bar-fill mint" style="width: 84%"></div>
+                </div>
               </div>
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
+                  align-items: center;
                   font-size: 11px;
                   color: var(--muted);
                 "
               >
-                <span>Cap: $6,000</span
-                ><span style="color: var(--muted)">68% utilized</span>
+                <span>Focus: 24/7 Monitoring &amp; Chaos Engineering</span>
+                <a
+                  href="../404.html"
+                  class="action-trigger"
+                  style="color: var(--cyan)"
+                  >On-Call Schedule &rarr;</a
+                >
               </div>
             </article>
           </div>
         </section>
 
-        <!-- Panel 3: Interactive Department Deliverables & Sprint Milestones Table -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Deliverables Portfolio</small>
-              <h2>Active Client Projects &amp; Sprint Milestones</h2>
+        <!-- ================================================================
+             SCREEN 3: Enterprise Client Deliverables
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-projects">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Client Delivery Tracker
+              </div>
+              <h2>Active Client Milestones &amp; Project Health</h2>
+              <p>
+                Tracks ongoing client implementation deliverables, milestone
+                progress, and projected completion dates.
+              </p>
             </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Gantt View <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-plus"></i> New Client Milestone
+              </a>
+            </div>
           </div>
 
-          <!-- Interactive Search & Status Filtering Toolbar -->
-          <div class="dashboard-filter-toolbar">
-            <div class="search-input-wrap">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="text"
-                class="table-search-input"
-                data-target-table="managerProjectsTable"
-                placeholder="Filter deliverables by project, client, lead, or domain..."
-              />
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px">
-              <label
-                for="managerStatusFilter"
-                style="font-size: 12px; color: var(--muted)"
-                >Status Filter:</label
-              >
+          <div class="dashboard-full-panel">
+            <div class="dashboard-filter-toolbar">
+              <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  class="table-search-input"
+                  data-target-table="managerProjectsTable"
+                  placeholder="Filter deliverables by client, squad, milestone, or status..."
+                />
+              </div>
               <select
-                id="managerStatusFilter"
-                class="filter-dropdown table-status-filter"
+                class="table-status-filter"
                 data-target-table="managerProjectsTable"
               >
-                <option value="all">All Projects</option>
-                <option value="delivering">Delivering</option>
-                <option value="in progress">In Progress</option>
-                <option value="code review">Code Review</option>
-                <option value="planning">Planning</option>
+                <option value="all">All Statuses</option>
+                <option value="on track">On Track</option>
+                <option value="in review">In Review</option>
+                <option value="at risk">At Risk</option>
               </select>
             </div>
-          </div>
 
-          <!-- Interactive Table -->
-          <div class="dashboard-table-wrap">
-            <table class="dashboard-table" id="managerProjectsTable">
-              <thead>
-                <tr>
-                  <th>Client &amp; Initiative</th>
-                  <th>Industry Domain</th>
-                  <th>Tech Lead</th>
-                  <th>Milestone Scope</th>
-                  <th>Progress</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="table-project-title">
-                      <strong>Apex Banking Group</strong>
-                      <small>Core Cloud Migration &bull; Tier-1</small>
-                    </div>
-                  </td>
-                  <td>Banking / FinTech</td>
-                  <td>Alex Chen</td>
-                  <td>Multi-AZ Vault Provisioning</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 92%"></div>
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table" id="managerProjectsTable">
+                <thead>
+                  <tr>
+                    <th>Client Organization</th>
+                    <th>Implementation Scope</th>
+                    <th>Assigned Squad</th>
+                    <th>Sprint Progress</th>
+                    <th>Milestone Deadline</th>
+                    <th>Status Health</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Apex Financial Corp</strong></td>
+                    <td>Hybrid Cloud Core Migration</td>
+                    <td>Squad Alpha</td>
+                    <td>
+                      <div
+                        class="chart-bar-bg"
+                        style="height: 6px; width: 100px"
+                      >
+                        <div
+                          class="chart-bar-fill mint"
+                          style="width: 88%"
+                        ></div>
                       </div>
-                      <span class="progress-text">92%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="status-badge operational">Delivering</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Review</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="table-project-title">
-                      <strong>MedCore Systems</strong>
-                      <small>Zero-Trust HIPAA Ingress</small>
-                    </div>
-                  </td>
-                  <td>Healthcare IT</td>
-                  <td>Sarah Jenkins</td>
-                  <td>Role-Based Access Control</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 78%"></div>
+                      <small style="color: var(--muted)">88% Closed</small>
+                    </td>
+                    <td>Oct 15, 2026</td>
+                    <td>
+                      <span class="status-badge operational">On Track</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nordic BioHealth</strong></td>
+                    <td>HIPAA Kubernetes Ingress &amp; Vault</td>
+                    <td>Squad Beta</td>
+                    <td>
+                      <div
+                        class="chart-bar-bg"
+                        style="height: 6px; width: 100px"
+                      >
+                        <div
+                          class="chart-bar-fill mint"
+                          style="width: 76%"
+                        ></div>
                       </div>
-                      <span class="progress-text">78%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="status-badge in-progress">Code Review</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Review</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="table-project-title">
-                      <strong>Global Retail Corp</strong>
-                      <small>Black Friday Peak Elasticity</small>
-                    </div>
-                  </td>
-                  <td>E-Commerce</td>
-                  <td>Elena Rostova</td>
-                  <td>Microservices Decoupling</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 95%"></div>
+                      <small style="color: var(--muted)">76% Closed</small>
+                    </td>
+                    <td>Nov 02, 2026</td>
+                    <td>
+                      <span class="status-badge operational">On Track</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Vanguard Retail Logistics</strong></td>
+                    <td>Multi-Region Anycast Edge CDN</td>
+                    <td>Squad Gamma</td>
+                    <td>
+                      <div
+                        class="chart-bar-bg"
+                        style="height: 6px; width: 100px"
+                      >
+                        <div
+                          class="chart-bar-fill cyan"
+                          style="width: 94%"
+                        ></div>
                       </div>
-                      <span class="progress-text">95%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="status-badge operational">Delivering</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Review</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="table-project-title">
-                      <strong>OmniLogistics Hub</strong>
-                      <small>Fleet IoT Telemetry Ingestion</small>
-                    </div>
-                  </td>
-                  <td>Supply Chain</td>
-                  <td>Marcus Vance</td>
-                  <td>Kafka Real-Time Streaming</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 60%"></div>
+                      <small style="color: var(--muted)">94% Closed</small>
+                    </td>
+                    <td>Sep 30, 2026</td>
+                    <td><span class="status-badge live">In Review</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Kite Energy Systems</strong></td>
+                    <td>SCADA Zero-Trust Firewall Hardening</td>
+                    <td>Squad Beta</td>
+                    <td>
+                      <div
+                        class="chart-bar-bg"
+                        style="height: 6px; width: 100px"
+                      >
+                        <div
+                          class="chart-bar-fill mint"
+                          style="width: 62%"
+                        ></div>
                       </div>
-                      <span class="progress-text">60%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="status-badge in-progress">In Progress</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Review</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="table-project-title">
-                      <strong>DE-Telecom Enterprise</strong>
-                      <small>5G Core Network Slicing</small>
-                    </div>
-                  </td>
-                  <td>Telecommunications</td>
-                  <td>Klaus Schmidt</td>
-                  <td>BGP Peering &amp; Edge Mesh</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 35%"></div>
+                      <small style="color: var(--muted)">62% Closed</small>
+                    </td>
+                    <td>Dec 14, 2026</td>
+                    <td>
+                      <span class="status-badge operational">On Track</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Starlight Media Labs</strong></td>
+                    <td>Ultra-Low Latency Video Relay API</td>
+                    <td>Squad Gamma</td>
+                    <td>
+                      <div
+                        class="chart-bar-bg"
+                        style="height: 6px; width: 100px"
+                      >
+                        <div
+                          class="chart-bar-fill"
+                          style="width: 48%; background: #fbbf24"
+                        ></div>
                       </div>
-                      <span class="progress-text">35%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      class="status-badge"
-                      style="
-                        background: rgba(245, 158, 11, 0.15);
-                        color: #f59e0b;
-                      "
-                      >Planning</span
-                    >
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Review</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="table-project-title">
-                      <strong>FinTech Secure Net</strong>
-                      <small>Automated Fraud Detection Engine</small>
-                    </div>
-                  </td>
-                  <td>FinTech</td>
-                  <td>David Thorne</td>
-                  <td>Model Inference Gateway</td>
-                  <td>
-                    <div class="progress-container">
-                      <div class="progress-bar-bg">
-                        <div class="progress-bar-fill" style="width: 84%"></div>
-                      </div>
-                      <span class="progress-text">84%</span>
-                    </div>
-                  </td>
-                  <td>
-                    <span class="status-badge operational">Delivering</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >Review</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                      <small style="color: #fbbf24">48% Closed</small>
+                    </td>
+                    <td>Oct 08, 2026</td>
+                    <td>
+                      <span
+                        class="status-badge"
+                        style="
+                          background: rgba(251, 191, 36, 0.15);
+                          color: #fbbf24;
+                        "
+                        >At Risk</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-        <!-- Panel 4: Team Capacity Heatmap & Allocation Matrix -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Resource Planning</small>
-              <h2>Engineering Squad Capacity &amp; Workload Heatmap</h2>
+        <!-- ================================================================
+             SCREEN 4: SLA Escalations & P1 Incidents
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-escalations">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Critical SLA Triage
+              </div>
+              <h2>SLA Incident Escalations &amp; On-Call Queue</h2>
+              <p>
+                Guaranteed sub-15-minute resolution countdown, ticket severity
+                tiers, and direct on-call dispatch.
+              </p>
             </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Rebalance Squads <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-phone"></i> Page On-Call Lead
+              </a>
+            </div>
+          </div>
+
+          <div class="dashboard-card-grid">
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <span class="status-badge operational">0 Active P1s</span>
+                <span style="color: var(--mint); font-size: 12px"
+                  ><i class="fa-solid fa-shield-check"></i> Clean Queue</span
+                >
+              </div>
+              <strong
+                style="font-size: 16px; display: block; margin-bottom: 6px"
+                >Zero Critical Service Disruptions</strong
+              >
+              <p style="font-size: 12px; color: var(--muted); line-height: 1.6">
+                All production clusters across North America, Europe, and
+                Asia-Pacific operating within standard SLA limits.
+              </p>
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <span class="status-badge live">P2 Triage (1)</span>
+                <span style="color: var(--cyan); font-size: 12px"
+                  ><i class="fa-solid fa-stopwatch"></i> 8m Response</span
+                >
+              </div>
+              <strong
+                style="font-size: 16px; display: block; margin-bottom: 6px"
+                >Starlight Media: Transcode Lag</strong
+              >
+              <p style="font-size: 12px; color: var(--muted); line-height: 1.6">
+                Assigned to Squad Gamma. Extra worker node provisioned; response
+                time well within 15m contractual commitment.
+              </p>
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-start;
+                  margin-bottom: 12px;
+                "
+              >
+                <span class="status-badge operational">On-Call Primary</span>
+                <span style="color: var(--mint); font-size: 12px"
+                  >David Kalu (SRE)</span
+                >
+              </div>
+              <strong
+                style="font-size: 16px; display: block; margin-bottom: 6px"
+                >Current Shift: 08:00 - 16:00 UTC</strong
+              >
+              <p style="font-size: 12px; color: var(--muted); line-height: 1.6">
+                Secondary: Elena Rostova. Escalation manager on standby: Marcus
+                Vance.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 5: Department Cloud Budgets & Spend
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-budgets">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Fiscal Management
+              </div>
+              <h2>Department Cloud Budgets &amp; Squad Cost Allocation</h2>
+              <p>
+                Detailed tracking of monthly cloud computing expenditure by
+                engineering squad and infrastructure resource.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-file-invoice-dollar"></i> Fiscal Ledger
+              </a>
+            </div>
           </div>
 
           <div class="dashboard-card-grid">
@@ -773,31 +1007,30 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
+              <strong
+                style="font-size: 15px; display: block; margin-bottom: 8px"
+                >Squad Alpha (Compute)</strong
+              >
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 10px;
+                  font-size: 13px;
+                  color: var(--text);
+                  margin-bottom: 6px;
                 "
               >
-                <strong style="color: var(--white); font-size: 14px"
-                  >Squad Alpha (Cloud &amp; DevOps)</strong
-                >
-                <span class="status-badge operational">92% Loaded</span>
+                <span>Spent: $18,400</span><span>Budget: $22,000</span>
               </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
-                  margin-bottom: 12px;
-                "
+              <div
+                class="chart-bar-bg"
+                style="height: 6px; margin-bottom: 10px"
               >
-                6 Engineers &bull; 42 Tickets In Flight &bull; Lead: Alex Chen
-              </p>
-              <div class="chart-bar-bg" style="height: 6px">
-                <div class="chart-bar-fill mint" style="width: 92%"></div>
+                <div class="chart-bar-fill mint" style="width: 83%"></div>
               </div>
+              <small style="color: var(--muted)"
+                >83% Utilized &bull; $3,600 Remaining</small
+              >
             </article>
 
             <article
@@ -809,31 +1042,30 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
+              <strong
+                style="font-size: 15px; display: block; margin-bottom: 8px"
+                >Squad Beta (Security &amp; WAF)</strong
+              >
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 10px;
+                  font-size: 13px;
+                  color: var(--text);
+                  margin-bottom: 6px;
                 "
               >
-                <strong style="color: var(--white); font-size: 14px"
-                  >Squad Bravo (Backend &amp; APIs)</strong
-                >
-                <span class="status-badge operational">84% Loaded</span>
+                <span>Spent: $9,200</span><span>Budget: $12,000</span>
               </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
-                  margin-bottom: 12px;
-                "
+              <div
+                class="chart-bar-bg"
+                style="height: 6px; margin-bottom: 10px"
               >
-                8 Engineers &bull; 56 Tickets In Flight &bull; Lead: Priya Patel
-              </p>
-              <div class="chart-bar-bg" style="height: 6px">
-                <div class="chart-bar-fill cyan" style="width: 84%"></div>
+                <div class="chart-bar-fill cyan" style="width: 76%"></div>
               </div>
+              <small style="color: var(--muted)"
+                >76% Utilized &bull; $2,800 Remaining</small
+              >
             </article>
 
             <article
@@ -845,80 +1077,205 @@
                 background: rgba(7, 17, 31, 0.5);
               "
             >
+              <strong
+                style="font-size: 15px; display: block; margin-bottom: 8px"
+                >Squad Gamma (API &amp; CDN)</strong
+              >
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 10px;
+                  font-size: 13px;
+                  color: var(--text);
+                  margin-bottom: 6px;
                 "
               >
-                <strong style="color: var(--white); font-size: 14px"
-                  >Squad Charlie (Frontend &amp; UI)</strong
-                >
-                <span class="status-badge operational">78% Loaded</span>
+                <span>Spent: $11,500</span><span>Budget: $14,000</span>
               </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
-                  margin-bottom: 12px;
-                "
-              >
-                5 Engineers &bull; 28 Tickets In Flight &bull; Lead: Elena
-                Rostova
-              </p>
-              <div class="chart-bar-bg" style="height: 6px">
-                <div class="chart-bar-fill" style="width: 78%"></div>
-              </div>
-            </article>
-
-            <article
-              class="dashboard-card"
-              style="
-                padding: 20px;
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                background: rgba(7, 17, 31, 0.5);
-              "
-            >
               <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 10px;
-                "
+                class="chart-bar-bg"
+                style="height: 6px; margin-bottom: 10px"
               >
-                <strong style="color: var(--white); font-size: 14px"
-                  >Squad Delta (Security &amp; QA)</strong
-                >
-                <span class="status-badge operational">88% Loaded</span>
+                <div class="chart-bar-fill mint" style="width: 82%"></div>
               </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
-                  margin-bottom: 12px;
-                "
+              <small style="color: var(--muted)"
+                >82% Utilized &bull; $2,500 Remaining</small
               >
-                4 Engineers &bull; 34 Audits In Flight &bull; Lead: Sarah
-                Jenkins
-              </p>
-              <div class="chart-bar-bg" style="height: 6px">
-                <div class="chart-bar-fill mint" style="width: 88%"></div>
-              </div>
             </article>
           </div>
         </section>
-      </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer inner-footer"></footer>
+        <!-- ================================================================
+             SCREEN 6: Change Requests & Production Approvals
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-approvals">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Sign-Off Queue
+              </div>
+              <h2>Production Deployment Approvals &amp; Change Requests</h2>
+              <p>
+                Managerial review required for production migrations, database
+                schema updates, and cluster reconfigurations.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <button
+                class="button button-small button-ghost action-trigger"
+                type="button"
+              >
+                <i class="fa-solid fa-clock-rotate-left"></i> Approval History
+              </button>
+            </div>
+          </div>
 
-    <!-- AOS & Dashboard Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script defer src="../assets/js/dashboard.js"></script>
+          <div class="dashboard-full-panel">
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table" id="managerApprovalsTable">
+                <thead>
+                  <tr>
+                    <th>Request ID</th>
+                    <th>Change Description</th>
+                    <th>Requesting Squad</th>
+                    <th>Risk Rating</th>
+                    <th>Submission Time</th>
+                    <th>Status</th>
+                    <th>Manager Decision</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>CR-8941</strong></td>
+                    <td>
+                      Scale AP-South Kubernetes worker cluster to 12 replicas
+                    </td>
+                    <td>Squad Alpha</td>
+                    <td>
+                      <span style="color: var(--mint); font-weight: 600"
+                        >Low Risk</span
+                      >
+                    </td>
+                    <td>24m ago</td>
+                    <td>
+                      <span class="status-badge live">Pending Review</span>
+                    </td>
+                    <td>
+                      <div style="display: flex; gap: 8px">
+                        <button
+                          class="button button-small button-primary approval-btn"
+                          data-action="approve"
+                          type="button"
+                        >
+                          Approve
+                        </button>
+                        <button
+                          class="button button-small button-ghost approval-btn"
+                          data-action="reject"
+                          type="button"
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>CR-8940</strong></td>
+                    <td>Zero-Downtime PostgreSQL read-replica failover test</td>
+                    <td>Squad Delta</td>
+                    <td>
+                      <span style="color: #fbbf24; font-weight: 600"
+                        >Medium Risk</span
+                      >
+                    </td>
+                    <td>1h ago</td>
+                    <td>
+                      <span class="status-badge live">Pending Review</span>
+                    </td>
+                    <td>
+                      <div style="display: flex; gap: 8px">
+                        <button
+                          class="button button-small button-primary approval-btn"
+                          data-action="approve"
+                          type="button"
+                        >
+                          Approve
+                        </button>
+                        <button
+                          class="button button-small button-ghost approval-btn"
+                          data-action="reject"
+                          type="button"
+                        >
+                          Reject
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 7: Executive Reporting & Client CSAT
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-reports">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Executive Analytics
+              </div>
+              <h2>Quarterly Business Review (QBR) &amp; Client Satisfaction</h2>
+              <p>
+                Key executive metrics summarizing team velocity, SLA guarantees,
+                and enterprise account health.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-download"></i> Download QBR Presentation
+              </a>
+            </div>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-star"></i></span>
+              <small>Enterprise CSAT</small>
+              <strong>4.94 / 5.0</strong>
+              <em>Top percentile client ranking</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-chart-pie"></i
+              ></span>
+              <small>On-Time Delivery Rate</small>
+              <strong>98.2%</strong>
+              <em>Across 24 active enterprise contracts</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-handshake"></i
+              ></span>
+              <small>Net Revenue Retention</small>
+              <strong>128%</strong>
+              <em>High contract renewal rate</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-stopwatch-20"></i
+              ></span>
+              <small>Incident MTTR</small>
+              <strong>8.4 mins</strong>
+              <em>Far below 15m contract SLA</em>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>

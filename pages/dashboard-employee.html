@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Stackly Engineering Workspace - Assigned Tickets, CI/CD Pipeline Telemetry, and Sandbox Containers."
+      content="Stackly Engineer Workspace - Sprint Tickets, Dev Pods, CI/CD Builds, and Terminal Sandbox."
     />
-    <title>Developer Workspace | Stackly</title>
+    <title>Employee Workspace | Stackly</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,491 +24,715 @@
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script defer src="../assets/js/shared.js"></script>
+    <script defer src="../assets/js/dashboard.js"></script>
   </head>
   <body class="dashboard-page">
     <!-- Screen Loader -->
     <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
       <img src="../assets/images/logoStackly.webp" alt="" />
       <span class="loader-spinner"></span>
-      <span>Loading Engineering Console...</span>
+      <span>Loading Engineering Workbench...</span>
     </div>
 
     <!-- Fixed Header -->
     <header class="dashboard-header">
-      <a class="brand" href="../index.html">
-        <img src="../assets/images/logoStackly.webp" alt="Stackly" />
-      </a>
-      <div class="dashboard-user">
-        <span class="user-avatar" id="userAvatar">E</span>
-        <span>
-          <strong id="userName">Software Engineer</strong>
-          <small id="userRole">Employee Access</small>
-        </span>
-        <button
-          class="button button-small button-ghost"
-          id="signOut"
-          type="button"
-        >
-          Sign out
-        </button>
+      <div class="container nav-inner">
+        <div class="dashboard-header-left">
+          <a class="brand" href="../index.html" aria-label="Stackly home">
+            <img src="../assets/images/logoStackly.webp" alt="Stackly" />
+          </a>
+        </div>
+        <div class="dashboard-user">
+          <span class="user-avatar" id="userAvatar">E</span>
+          <span>
+            <strong id="userName">Platform Engineer</strong>
+            <small id="userRole">Employee Access</small>
+          </span>
+          <button
+            class="button button-small button-ghost"
+            id="signOut"
+            type="button"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="dashboard-main" id="main-content">
-      <div class="container">
-        <!-- Top Hero & Greeting Section -->
-        <section class="dashboard-hero-section" data-aos="fade-down">
-          <div class="dashboard-heading">
-            <div class="eyebrow">
-              <span class="eyebrow-line"></span>
-              <span>Engineering &amp; Code Pipeline Console</span>
-            </div>
-            <h1>
-              <span id="greetingTime">Good morning</span>,
-              <span class="gradient-text" id="greetingName">Developer.</span>
-            </h1>
-            <p>
-              Your local development containers, pull request reviews, and
-              automated CI/CD builds are synchronized.
-            </p>
+    <!-- App Shell: Collapsible Sidebar + Main Screen Area -->
+    <div class="dashboard-app-shell">
+      <!-- Left Collapsible Sidebar -->
+      <aside
+        class="dashboard-sidebar"
+        id="dashboardSidebar"
+        aria-label="Engineer navigation"
+      >
+        <div class="sidebar-header">
+          <div class="sidebar-header-brand">
+            <i class="fa-solid fa-layer-group"></i>
+            <span class="sidebar-brand-title">Dev Console</span>
+          </div>
+          <button
+            class="sidebar-toggle-btn"
+            id="sidebarToggleBtn"
+            type="button"
+            aria-label="Toggle navigation sidebar"
+            data-tooltip="Collapse Sidebar"
+          >
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-inner">
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">My Workbench</span>
+            <button
+              class="sidebar-item active"
+              data-screen="screen-overview"
+              data-tooltip="Dev Workbench"
+              type="button"
+            >
+              <i class="fa-solid fa-laptop-code item-icon"></i>
+              <span class="item-label">Dev Workbench</span>
+              <span class="sidebar-badge">4 Tasks</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-tickets"
+              data-tooltip="Assigned Tickets"
+              type="button"
+            >
+              <i class="fa-solid fa-ticket-simple item-icon"></i>
+              <span class="item-label">Assigned Tickets</span>
+              <span class="sidebar-badge alert">3 Open</span>
+            </button>
           </div>
 
-          <!-- Dynamic Meta & System Health Pills -->
-          <div
-            class="dashboard-meta-bar"
-            style="
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              gap: 16px;
-              margin-top: 20px;
-              flex-wrap: wrap;
-            "
-          >
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Engineering Tools</span>
+            <button
+              class="sidebar-item"
+              data-screen="screen-pipelines"
+              data-tooltip="CI/CD Pipelines"
+              type="button"
+            >
+              <i class="fa-solid fa-code-commit item-icon"></i>
+              <span class="item-label">CI/CD Pipelines</span>
+              <span class="sidebar-badge">All Pass</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-terminal"
+              data-tooltip="Pods &amp; Live Terminal"
+              type="button"
+            >
+              <i class="fa-solid fa-terminal item-icon"></i>
+              <span class="item-label">Pods &amp; Live Terminal</span>
+              <span class="sidebar-badge">Live</span>
+            </button>
+          </div>
+
+          <div class="sidebar-category">
+            <span class="sidebar-category-title">Docs &amp; Time</span>
+            <button
+              class="sidebar-item"
+              data-screen="screen-runbooks"
+              data-tooltip="Runbooks &amp; Manuals"
+              type="button"
+            >
+              <i class="fa-solid fa-book-bookmark item-icon"></i>
+              <span class="item-label">Runbooks &amp; Manuals</span>
+            </button>
+            <button
+              class="sidebar-item"
+              data-screen="screen-timesheet"
+              data-tooltip="Timesheet &amp; Hours"
+              type="button"
+            >
+              <i class="fa-solid fa-business-time item-icon"></i>
+              <span class="item-label">Timesheet &amp; Hours</span>
+              <span class="sidebar-badge">38h</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Backdrop for mobile drawer -->
+      <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+      <!-- Main Content Area with 6 Distinct Screens -->
+      <main class="dashboard-main" id="main-content">
+        <!-- ================================================================
+             SCREEN 1: Developer Workbench (Default)
+             ================================================================ -->
+        <section class="dashboard-screen active" id="screen-overview">
+          <section class="dashboard-hero-section" data-aos="fade-down">
+            <div class="dashboard-heading">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span>Engineer Workspace &amp; Sprint Focus</span>
+              </div>
+              <h1>
+                <span id="greetingTime">Good morning</span>,
+                <span class="gradient-text" id="greetingName"
+                  >Elena Rostova.</span
+                >
+              </h1>
+              <p>
+                Assigned sprint tasks, staging build pipelines, and pod
+                telemetry are ready for active development.
+              </p>
+            </div>
+
+            <!-- Dynamic Meta Bar -->
             <div
+              class="dashboard-meta-bar"
               style="
                 display: flex;
                 align-items: center;
-                gap: 12px;
+                justify-content: space-between;
+                gap: 16px;
+                margin-top: 20px;
                 flex-wrap: wrap;
               "
             >
-              <div class="dashboard-meta-pill">
-                <i class="fa-solid fa-clock"></i>
-                <span id="timeAndZone">Loading local time...</span>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <div class="dashboard-meta-pill">
+                  <i class="fa-solid fa-clock"></i>
+                  <span id="timeAndZone">Loading local time...</span>
+                </div>
+                <div class="system-status-indicator">
+                  <span class="status-pulse"></span>
+                  <span>Dev Pods: 3 Healthy &bull; 0 Restarts</span>
+                </div>
+                <div class="dashboard-meta-pill">
+                  <i
+                    class="fa-solid fa-code-branch"
+                    style="color: var(--mint)"
+                  ></i>
+                  <span>Branch: feat/cluster-autoscaler</span>
+                </div>
               </div>
-              <div class="system-status-indicator">
-                <span class="status-pulse"></span>
-                <span>Dev Cluster Online &bull; VPN Connected</span>
-              </div>
-              <div class="dashboard-meta-pill">
-                <i
-                  class="fa-solid fa-code-branch"
-                  style="color: var(--mint)"
-                ></i>
-                <span>Git branch: <code>feat/otel-tracing</code></span>
+
+              <div
+                class="dashboard-actions"
+                style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+              >
+                <a
+                  class="button button-small button-primary action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-code-pull-request"></i> Open PR
+                </a>
+                <a
+                  class="button button-small button-ghost action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-play"></i> Trigger Staging Build
+                </a>
+                <a
+                  class="button button-small button-ghost action-trigger"
+                  href="../404.html"
+                >
+                  <i class="fa-solid fa-clock"></i> Log Hours
+                </a>
               </div>
             </div>
 
-            <!-- Quick Action Triggers -->
+            <!-- Interactive Quick Controls Grid -->
             <div
-              class="dashboard-actions"
-              style="margin: 0; display: flex; gap: 10px; flex-wrap: wrap"
+              class="quick-controls-grid"
+              data-aos="fade-up"
+              data-aos-delay="50"
             >
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Local Mock API Daemon</strong>
+                  <small>Enabled &bull; Port 8080 listening</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Hot-Reload Debug Stream</strong>
+                  <small>Enabled &bull; Live container sync</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Do Not Disturb (Focus Mode)</strong>
+                  <small>Enabled &bull; Slack alerts paused</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="quick-control-card">
+                <div class="quick-control-info">
+                  <strong>Verbose Debug Logging</strong>
+                  <small>Disabled &bull; Production log level</small>
+                </div>
+                <label class="interactive-toggle">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core KPI Grid -->
+          <section class="kpi-grid" data-aos="fade-up" style="margin-top: 28px">
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-list-check"></i
+              ></span>
+              <small>My Sprint Points</small>
+              <strong>28 / 32</strong>
+              <em>87% completed &bull; 2 tasks left</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-ticket"></i></span>
+              <small>Assigned Tickets</small>
+              <strong>3 Active</strong>
+              <em>1 High, 2 Normal severity</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"
+                ><i class="fa-solid fa-code-pull-request"></i
+              ></span>
+              <small>PR Review Queue</small>
+              <strong>2 Pending</strong>
+              <em>Squad Alpha peer reviews</em>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-icon"><i class="fa-solid fa-clock"></i></span>
+              <small>Logged This Week</small>
+              <strong>38.5 hrs</strong>
+              <em>Target: 40 hrs</em>
+            </div>
+          </section>
+
+          <!-- Today's Prioritized Engineering Focus Panel -->
+          <section class="dashboard-full-panel" data-aos="fade-up">
+            <div class="dashboard-panel-header">
+              <div>
+                <small>Daily Focus</small>
+                <h2>Prioritized Sprint Tasks &amp; Milestones</h2>
+              </div>
+              <div class="time-range-pills">
+                <button class="time-pill-btn active" type="button">
+                  Today
+                </button>
+                <button class="time-pill-btn" type="button">Sprint 28</button>
+                <button class="time-pill-btn" type="button">Backlog</button>
+              </div>
+            </div>
+
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                margin-top: 14px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 14px 18px;
+                  border: 1px solid var(--border);
+                  border-radius: 10px;
+                  background: rgba(16, 35, 61, 0.45);
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 12px">
+                  <input
+                    type="checkbox"
+                    checked
+                    style="
+                      accent-color: var(--mint);
+                      width: 18px;
+                      height: 18px;
+                      cursor: pointer;
+                    "
+                  />
+                  <div>
+                    <strong
+                      style="
+                        font-size: 14px;
+                        text-decoration: line-through;
+                        color: var(--muted);
+                      "
+                      >[STK-489] Patch Redis Sentinel failover timeout
+                      config</strong
+                    >
+                    <small
+                      style="
+                        display: block;
+                        color: var(--muted);
+                        font-size: 11px;
+                      "
+                      >Merged in PR #412 &bull; Deployed to Staging</small
+                    >
+                  </div>
+                </div>
+                <span class="status-badge operational">Completed</span>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 14px 18px;
+                  border: 1px solid var(--border);
+                  border-radius: 10px;
+                  background: rgba(16, 35, 61, 0.45);
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 12px">
+                  <input
+                    type="checkbox"
+                    style="
+                      accent-color: var(--mint);
+                      width: 18px;
+                      height: 18px;
+                      cursor: pointer;
+                    "
+                  />
+                  <div>
+                    <strong style="font-size: 14px"
+                      >[STK-512] Implement circuit breaker on Auth Gateway JWT
+                      validator</strong
+                    >
+                    <small
+                      style="
+                        display: block;
+                        color: var(--cyan);
+                        font-size: 11px;
+                      "
+                      >In Progress &bull; Branch:
+                      feat/jwt-circuit-breaker</small
+                    >
+                  </div>
+                </div>
+                <span class="status-badge live">In Progress</span>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 14px 18px;
+                  border: 1px solid var(--border);
+                  border-radius: 10px;
+                  background: rgba(16, 35, 61, 0.45);
+                "
+              >
+                <div style="display: flex; align-items: center; gap: 12px">
+                  <input
+                    type="checkbox"
+                    style="
+                      accent-color: var(--mint);
+                      width: 18px;
+                      height: 18px;
+                      cursor: pointer;
+                    "
+                  />
+                  <div>
+                    <strong style="font-size: 14px"
+                      >[STK-528] Write e2e test suite for multi-region DNS
+                      failover</strong
+                    >
+                    <small
+                      style="
+                        display: block;
+                        color: var(--muted);
+                        font-size: 11px;
+                      "
+                      >Blocked by Staging Cluster upgrade &bull; Estimated:
+                      4h</small
+                    >
+                  </div>
+                </div>
+                <span
+                  class="status-badge"
+                  style="background: rgba(251, 191, 36, 0.15); color: #fbbf24"
+                  >Pending</span
+                >
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 2: Assigned Incident Tickets
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-tickets">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Ticket Queue
+              </div>
+              <h2>Assigned Incident Tickets &amp; SLA Responders</h2>
+              <p>
+                Live triage queue for tickets assigned to your engineer seat.
+                Real-time SLA response countdown.
+              </p>
+            </div>
+            <div class="screen-actions">
               <a
                 class="button button-small button-primary action-trigger"
                 href="../404.html"
               >
-                <i class="fa-solid fa-plus"></i> Create Feature Branch
-              </a>
-              <a
-                class="button button-small button-ghost action-trigger"
-                href="../404.html"
-              >
-                <i class="fa-solid fa-play"></i> Trigger CI Pipeline
-              </a>
-              <a
-                class="button button-small button-ghost action-trigger"
-                href="../404.html"
-              >
-                <i class="fa-solid fa-code-pull-request"></i> Open PR Review
+                <i class="fa-solid fa-plus"></i> Claim Next Queue Item
               </a>
             </div>
           </div>
 
-          <!-- Interactive Quick Controls Grid -->
-          <div
-            class="quick-controls-grid"
-            data-aos="fade-up"
-            data-aos-delay="50"
-          >
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Pre-Commit Linter Hook</strong>
-                <small>Enabled &bull; Enforces ESLint &amp; Prettier</small>
+          <div class="dashboard-full-panel">
+            <div class="dashboard-filter-toolbar">
+              <div class="search-input-wrap">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  class="table-search-input"
+                  data-target-table="employeeTicketsTable"
+                  placeholder="Filter tickets by ID, title, severity, or customer..."
+                />
               </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Turbo Test Suite</strong>
-                <small>Enabled &bull; Parallelized unit test runners</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Cloud Dev Sandbox</strong>
-                <small>Enabled &bull; Dedicated staging pod alive</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" checked />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-            <div class="quick-control-card">
-              <div class="quick-control-info">
-                <strong>Branch Auto-Stash</strong>
-                <small>Disabled &bull; Manual git checkout workflow</small>
-              </div>
-              <label class="interactive-toggle">
-                <input type="checkbox" />
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
-          </div>
-        </section>
-
-        <!-- KPI Grid: Core Developer Metrics -->
-        <section class="kpi-grid" style="margin-top: 32px">
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="50">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-code-commit"></i
-            ></span>
-            <small>Assigned Work Items</small>
-            <strong>8 Active</strong>
-            <em>3 ready for peer code review</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="100">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-code-pull-request"></i
-            ></span>
-            <small>Pull Requests</small>
-            <strong>4 Pending PRs</strong>
-            <em>1 awaiting your final approval</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="150">
-            <span class="kpi-icon"
-              ><i class="fa-solid fa-circle-check"></i
-            ></span>
-            <small>CI/CD Build Health</small>
-            <strong>98.8%</strong>
-            <em>24 passing pipeline builds</em>
-          </article>
-          <article class="kpi-card" data-aos="fade-up" data-aos-delay="200">
-            <span class="kpi-icon"><i class="fa-solid fa-terminal"></i></span>
-            <small>Dev Sandbox Latency</small>
-            <strong>14 ms</strong>
-            <em>Dedicated pod warm &bull; Hot-reload on</em>
-          </article>
-        </section>
-
-        <!-- Panel 1: Task Velocity & Sprint Work Distribution -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>My Sprint Progress</small>
-              <h2>Active Feature Epics &amp; Workload Distribution</h2>
-            </div>
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 14px;
-                flex-wrap: wrap;
-              "
-            >
-              <!-- Interactive Time-Range Selector -->
-              <div class="time-range-pills">
-                <button type="button" class="time-pill-btn active">
-                  Current Sprint
-                </button>
-                <button type="button" class="time-pill-btn">
-                  Previous Sprint
-                </button>
-                <button type="button" class="time-pill-btn">All PRs</button>
-                <button type="button" class="time-pill-btn">Backlog</button>
-              </div>
-              <a class="panel-link action-trigger" href="../404.html">
-                Sprint Board <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Horizontal Bars for Task Progress -->
-          <div class="chart-bars-wrap">
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >API Gateway v2 &bull; OpenTelemetry Distributed
-                  Tracing</strong
-                >
-                <span>80% &bull; In Testing</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill mint" style="width: 80%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >OAuth2 PKCE Provider &bull; Session Cookie Hardening</strong
-                >
-                <span>95% &bull; Ready to Merge</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill cyan" style="width: 95%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >Kubernetes Helm Charts &bull; Production Rollout
-                  Automation</strong
-                >
-                <span>60% &bull; Code Review</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill" style="width: 60%"></div>
-              </div>
-            </div>
-            <div class="chart-item">
-              <div class="chart-item-header">
-                <strong
-                  >GraphQL Federation Subgraphs &bull; Schema Registry
-                  Cache</strong
-                >
-                <span>40% &bull; In Progress</span>
-              </div>
-              <div class="chart-bar-bg">
-                <div class="chart-bar-fill warning" style="width: 40%"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Bottom Telemetry Metrics -->
-          <div
-            class="metrics-row"
-            style="
-              margin-top: 24px;
-              padding-top: 20px;
-              border-top: 1px solid var(--border);
-            "
-          >
-            <div class="metric-block">
-              <span class="metric-label">Unit Test Coverage</span>
-              <strong class="metric-value">94.2%</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-circle-check"></i> Above 90%
-                threshold</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Integration Tests</span>
-              <strong class="metric-value">128 Passed</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-shield-check"></i> 0 regressions</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Avg Build Duration</span>
-              <strong class="metric-value">2m 14s</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-bolt"></i> Cached Docker layers</small
-              >
-            </div>
-            <div class="metric-block">
-              <span class="metric-label">Commits Pushed</span>
-              <strong class="metric-value">36 Commits</strong>
-              <small class="metric-sub text-success"
-                ><i class="fa-solid fa-code-commit"></i> This week</small
-              >
-            </div>
-          </div>
-        </section>
-
-        <!-- Panel 2: Interactive Assigned Engineering Tickets Table -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Issue Tracking</small>
-              <h2>Assigned Engineering Tickets &amp; Pull Requests</h2>
-            </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Open in Jira <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-
-          <!-- Interactive Search & Status Filtering Toolbar -->
-          <div class="dashboard-filter-toolbar">
-            <div class="search-input-wrap">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input
-                type="text"
-                class="table-search-input"
-                data-target-table="employeeTicketsTable"
-                placeholder="Filter tickets by ID, repo, branch, or priority..."
-              />
-            </div>
-            <div style="display: flex; align-items: center; gap: 10px">
-              <label
-                for="employeeStatusFilter"
-                style="font-size: 12px; color: var(--muted)"
-                >Filter Status:</label
-              >
               <select
-                id="employeeStatusFilter"
-                class="filter-dropdown table-status-filter"
+                class="table-status-filter"
                 data-target-table="employeeTicketsTable"
               >
-                <option value="all">All Statuses</option>
-                <option value="review">Review</option>
-                <option value="testing">Testing</option>
-                <option value="in progress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="all">All Severities</option>
+                <option value="critical">Critical / P1</option>
+                <option value="high">High / P2</option>
+                <option value="normal">Normal / P3</option>
               </select>
             </div>
-          </div>
 
-          <!-- Interactive Table -->
-          <div class="dashboard-table-wrap">
-            <table class="dashboard-table" id="employeeTicketsTable">
-              <thead>
-                <tr>
-                  <th>Ticket ID</th>
-                  <th>Repository</th>
-                  <th>Branch / Ref</th>
-                  <th>Priority</th>
-                  <th>Reviewer / Assignee</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>STACK-1104</strong></td>
-                  <td>api-gateway-core</td>
-                  <td><code>feat/otel-tracing</code></td>
-                  <td><span class="badge-tag warning">Critical</span></td>
-                  <td>Marcus Vance</td>
-                  <td><span class="status-badge in-progress">Testing</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >View PR</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>STACK-1098</strong></td>
-                  <td>auth-service-v3</td>
-                  <td><code>fix/pkce-exchange</code></td>
-                  <td><span class="badge-tag purple">High</span></td>
-                  <td>Alex Chen</td>
-                  <td><span class="status-badge operational">Review</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >View PR</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>STACK-1112</strong></td>
-                  <td>k8s-ingress-mesh</td>
-                  <td><code>chore/cert-rotation</code></td>
-                  <td><span class="badge-tag success">Normal</span></td>
-                  <td>Automated CI</td>
-                  <td><span class="status-badge operational">Done</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >View PR</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>STACK-1126</strong></td>
-                  <td>schema-registry-gql</td>
-                  <td><code>feat/subgraph-caching</code></td>
-                  <td><span class="badge-tag blue">Medium</span></td>
-                  <td>Sarah Jenkins</td>
-                  <td>
-                    <span class="status-badge in-progress">In Progress</span>
-                  </td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >View PR</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>STACK-1130</strong></td>
-                  <td>payment-processor</td>
-                  <td><code>refactor/webhook-retry</code></td>
-                  <td><span class="badge-tag warning">High</span></td>
-                  <td>Elena Rostova</td>
-                  <td><span class="status-badge operational">Review</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >View PR</a
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>STACK-1135</strong></td>
-                  <td>infra-terraform</td>
-                  <td><code>patch/elasticache-redis6</code></td>
-                  <td><span class="badge-tag success">Normal</span></td>
-                  <td>Priya Patel</td>
-                  <td><span class="status-badge operational">Done</span></td>
-                  <td>
-                    <a
-                      class="table-action-btn action-trigger"
-                      href="../404.html"
-                      >View PR</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table" id="employeeTicketsTable">
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Summary &amp; Service</th>
+                    <th>Customer</th>
+                    <th>Severity</th>
+                    <th>SLA Timer</th>
+                    <th>Current Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>INC-9018</strong></td>
+                    <td>High CPU spike on PostgreSQL query pooler</td>
+                    <td>Apex Financial Corp</td>
+                    <td>
+                      <span style="color: #f87171; font-weight: 600"
+                        >Critical</span
+                      >
+                    </td>
+                    <td>
+                      <span style="color: var(--mint)"
+                        ><i class="fa-solid fa-clock"></i> 8m left</span
+                      >
+                    </td>
+                    <td>
+                      <span class="status-badge live">Investigating</span>
+                    </td>
+                    <td>
+                      <button
+                        class="button button-small button-ghost action-trigger"
+                        type="button"
+                      >
+                        Update
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>INC-8994</strong></td>
+                    <td>Ingress certificate renewal verification</td>
+                    <td>Vanguard Retail</td>
+                    <td>
+                      <span style="color: #fbbf24; font-weight: 600">High</span>
+                    </td>
+                    <td>
+                      <span style="color: var(--mint)"
+                        ><i class="fa-solid fa-clock"></i> 42m left</span
+                      >
+                    </td>
+                    <td><span class="status-badge live">In Review</span></td>
+                    <td>
+                      <button
+                        class="button button-small button-ghost action-trigger"
+                        type="button"
+                      >
+                        Update
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>INC-8972</strong></td>
+                    <td>S3 cross-region replica configuration check</td>
+                    <td>Nordic BioHealth</td>
+                    <td>
+                      <span style="color: var(--mint); font-weight: 600"
+                        >Normal</span
+                      >
+                    </td>
+                    <td>
+                      <span style="color: var(--muted)"
+                        ><i class="fa-solid fa-clock"></i> 3h left</span
+                      >
+                    </td>
+                    <td>
+                      <span class="status-badge operational">Scheduled</span>
+                    </td>
+                    <td>
+                      <button
+                        class="button button-small button-ghost action-trigger"
+                        type="button"
+                      >
+                        Update
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-        <!-- Panel 3: Cloud Sandbox, Microservices & Dev Containers -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Local &amp; Remote Sandbox</small>
-              <h2>Container Runtime &amp; Development Services</h2>
+        <!-- ================================================================
+             SCREEN 3: CI/CD Pipelines & Builds
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-pipelines">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Automated Delivery
+              </div>
+              <h2>Continuous Integration &amp; Deployment Builds</h2>
+              <p>
+                Status of automated GitHub/GitLab build runners, unit tests,
+                security scans, and container image registries.
+              </p>
             </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              Restart Containers <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <div class="screen-actions">
+              <button
+                class="button button-small button-primary action-trigger"
+                type="button"
+              >
+                <i class="fa-solid fa-play"></i> Trigger Staging Build
+              </button>
+            </div>
+          </div>
+
+          <div class="dashboard-full-panel">
+            <div class="dashboard-table-wrap">
+              <table class="dashboard-table" id="employeePipelinesTable">
+                <thead>
+                  <tr>
+                    <th>Pipeline Name</th>
+                    <th>Commit SHA</th>
+                    <th>Branch</th>
+                    <th>Author</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>stackly-ingress-gateway</strong></td>
+                    <td><code>a8f19bc</code></td>
+                    <td>main</td>
+                    <td>elena.rostova</td>
+                    <td>2m 14s</td>
+                    <td>
+                      <span class="status-badge operational">Passed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>auth-service-v2</strong></td>
+                    <td><code>c99201f</code></td>
+                    <td>feat/jwt-circuit-breaker</td>
+                    <td>elena.rostova</td>
+                    <td>3m 48s</td>
+                    <td>
+                      <span class="status-badge live">Running (84%)</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>db-migrations-runner</strong></td>
+                    <td><code>01ba77e</code></td>
+                    <td>staging</td>
+                    <td>david.kalu</td>
+                    <td>1m 02s</td>
+                    <td>
+                      <span class="status-badge operational">Passed</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>frontend-portal-cdn</strong></td>
+                    <td><code>44ff99a</code></td>
+                    <td>main</td>
+                    <td>sarah.chen</td>
+                    <td>4m 18s</td>
+                    <td>
+                      <span class="status-badge operational">Passed</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 4: Dev Pods & Interactive Live Terminal
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-terminal">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Sandbox Telemetry
+              </div>
+              <h2>Development Pods &amp; Interactive Live Terminal</h2>
+              <p>
+                Inspect active container worker pods or execute commands in the
+                interactive live terminal below.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <button
+                class="button button-small button-ghost action-trigger"
+                type="button"
+              >
+                <i class="fa-solid fa-arrow-rotate-right"></i> Restart
+                Containers
+              </button>
+            </div>
           </div>
 
           <div class="dashboard-card-grid">
@@ -525,25 +749,33 @@
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 8px;
-                "
-              >
-                <strong style="color: var(--white); font-size: 14px"
-                  >PostgreSQL 16 &bull; Dev DB</strong
-                >
-                <span class="status-badge operational">Port 5432</span>
-              </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
+                  align-items: flex-start;
                   margin-bottom: 10px;
                 "
               >
-                Container ID: <code>docker-pg-dev</code> &bull; 8 Connections
-              </p>
-              <div class="chart-bar-bg" style="height: 5px">
+                <div>
+                  <strong
+                    style="display: block; font-size: 14px; color: var(--white)"
+                    >auth-api-pod-88fa</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Node: us-east-1a &bull; v2.4.1</small
+                  >
+                </div>
+                <span class="status-badge operational">Running</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 12px;
+                  color: var(--text);
+                  margin-bottom: 6px;
+                "
+              >
+                <span>CPU: 18%</span><span>Memory: 412 MB</span>
+              </div>
+              <div class="chart-bar-bg" style="height: 6px">
                 <div class="chart-bar-fill mint" style="width: 28%"></div>
               </div>
             </article>
@@ -561,26 +793,34 @@
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 8px;
-                "
-              >
-                <strong style="color: var(--white); font-size: 14px"
-                  >Redis 7 &bull; Session Cache</strong
-                >
-                <span class="status-badge operational">Port 6379</span>
-              </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
+                  align-items: flex-start;
                   margin-bottom: 10px;
                 "
               >
-                Container ID: <code>docker-redis-dev</code> &bull; 1.4k Keys
-              </p>
-              <div class="chart-bar-bg" style="height: 5px">
-                <div class="chart-bar-fill cyan" style="width: 19%"></div>
+                <div>
+                  <strong
+                    style="display: block; font-size: 14px; color: var(--white)"
+                    >client-ingress-pod-11b</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Node: us-east-1a &bull; v1.9.0</small
+                  >
+                </div>
+                <span class="status-badge operational">Running</span>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  font-size: 12px;
+                  color: var(--text);
+                  margin-bottom: 6px;
+                "
+              >
+                <span>CPU: 32%</span><span>Memory: 820 MB</span>
+              </div>
+              <div class="chart-bar-bg" style="height: 6px">
+                <div class="chart-bar-fill cyan" style="width: 44%"></div>
               </div>
             </article>
 
@@ -597,130 +837,325 @@
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 8px;
-                "
-              >
-                <strong style="color: var(--white); font-size: 14px"
-                  >Kafka &bull; Event Streaming</strong
-                >
-                <span class="status-badge operational">Port 9092</span>
-              </div>
-              <p
-                style="
-                  font-size: 12px;
-                  color: var(--muted);
+                  align-items: flex-start;
                   margin-bottom: 10px;
                 "
               >
-                Container ID: <code>docker-kafka-broker</code> &bull; 6 Topics
-              </p>
-              <div class="chart-bar-bg" style="height: 5px">
-                <div class="chart-bar-fill" style="width: 44%"></div>
+                <div>
+                  <strong
+                    style="display: block; font-size: 14px; color: var(--white)"
+                    >redis-cache-worker-04</strong
+                  >
+                  <small style="color: var(--muted); font-size: 11px"
+                    >Node: us-east-1b &bull; v7.2.4</small
+                  >
+                </div>
+                <span class="status-badge operational">Running</span>
               </div>
-            </article>
-
-            <article
-              class="dashboard-card"
-              style="
-                padding: 20px;
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                background: rgba(7, 17, 31, 0.5);
-              "
-            >
               <div
                 style="
                   display: flex;
                   justify-content: space-between;
-                  align-items: center;
-                  margin-bottom: 8px;
-                "
-              >
-                <strong style="color: var(--white); font-size: 14px"
-                  >LocalStack &bull; AWS S3 Mock</strong
-                >
-                <span class="status-badge operational">Port 4566</span>
-              </div>
-              <p
-                style="
                   font-size: 12px;
-                  color: var(--muted);
-                  margin-bottom: 10px;
+                  color: var(--text);
+                  margin-bottom: 6px;
                 "
               >
-                Container ID: <code>docker-localstack</code> &bull; 4 Buckets
-              </p>
-              <div class="chart-bar-bg" style="height: 5px">
-                <div class="chart-bar-fill mint" style="width: 12%"></div>
+                <span>CPU: 12%</span><span>Memory: 1.4 GB</span>
+              </div>
+              <div class="chart-bar-bg" style="height: 6px">
+                <div class="chart-bar-fill mint" style="width: 22%"></div>
               </div>
             </article>
           </div>
-        </section>
 
-        <!-- Panel 4: Recent Git Commits & Pipeline History -->
-        <section class="dashboard-full-panel" data-aos="fade-up">
-          <div class="dashboard-panel-header">
-            <div>
-              <small>Version Control</small>
-              <h2>Recent Git Activity &amp; Automated Pipeline Runs</h2>
-            </div>
-            <a class="panel-link action-trigger" href="../404.html">
-              GitHub Repos <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-
+          <!-- Interactive Live Terminal -->
           <div
             class="live-terminal"
             style="
-              background: rgba(4, 9, 18, 0.95);
-              border: 1px solid var(--border);
-              border-radius: 10px;
-              padding: 18px 20px;
-              font-family: monospace;
-              font-size: 12px;
-              line-height: 1.8;
-              color: #a5f3fc;
-              overflow-x: auto;
+              margin-top: 24px;
+              min-height: 240px;
+              display: flex;
+              flex-direction: column;
             "
           >
-            <div>
-              <span style="color: var(--mint)">git commit 78a9c21</span> &bull;
-              (HEAD -> feat/otel-tracing) Add span context injection to HTTP
-              client middleware [14 mins ago]
+            <div
+              id="terminalOutput"
+              style="flex: 1; overflow-y: auto; max-height: 280px"
+            >
+              <div>
+                <span class="term-prompt">engineer@stackly:~$</span>
+                <strong>kubectl get pods -n production</strong>
+              </div>
+              <div class="term-dim">NAME READY STATUS RESTARTS AGE</div>
+              <div class="term-dim">auth-api-pod-88fa 1/1 Running 0 42m</div>
+              <div class="term-dim">
+                client-ingress-pod-11b 1/1 Running 0 6h
+              </div>
+              <div class="term-dim">
+                redis-cache-worker-04 1/1 Running 0 18h
+              </div>
+              <div>
+                <span class="term-prompt">engineer@stackly:~$</span>
+                <span style="color: var(--mint)"
+                  >All pods healthy. Ready for interactive commands. (Type
+                  'help' for command list)</span
+                >
+              </div>
             </div>
-            <div>
-              <span style="color: var(--mint)">git commit 42dfb90</span> &bull;
-              (origin/main) Merge pull request #894 from stackly/auth-hardening
-              [1 hour ago]
+            <form
+              id="terminalInputForm"
+              class="term-input-row"
+              style="
+                margin-top: 12px;
+                border-top: 1px solid rgba(45, 212, 191, 0.2);
+                padding-top: 10px;
+              "
+            >
+              <span class="term-prompt">engineer@stackly:~$</span>
+              <input
+                id="terminalInput"
+                class="term-input"
+                type="text"
+                autocomplete="off"
+                placeholder="Type command: 'help', 'status', 'pods', 'restart', 'deploy', or 'clear' and press Enter..."
+              />
+            </form>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SCREEN 5: Engineering Runbooks & Documentation
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-runbooks">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Knowledge Base
+              </div>
+              <h2>Engineering Runbooks &amp; Architecture Manuals</h2>
+              <p>
+                Step-by-step incident resolution procedures, failover runbooks,
+                and microservice architecture reference documentation.
+              </p>
             </div>
-            <div>
-              <span style="color: #60a5fa">CI Build #429</span> &bull; pipeline:
-              api-gateway-core &bull; tests: 240 passed, 0 failed &bull; build
-              status: <strong style="color: var(--mint)">PASSING</strong> [2m
-              14s]
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-plus"></i> Submit New Runbook
+              </a>
             </div>
-            <div>
-              <span style="color: #60a5fa">CI Build #428</span> &bull; pipeline:
-              auth-service-v3 &bull; tests: 118 passed, 0 failed &bull; build
-              status: <strong style="color: var(--mint)">PASSING</strong> [1m
-              45s]
+          </div>
+
+          <div class="dashboard-card-grid">
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin-bottom: 12px;
+                "
+              >
+                <i
+                  class="fa-solid fa-book"
+                  style="color: var(--cyan); font-size: 18px"
+                ></i>
+                <strong style="font-size: 15px"
+                  >RB-01: Redis Cache Cluster Failover</strong
+                >
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  margin-bottom: 12px;
+                "
+              >
+                Automated procedure for promoting secondary Redis replicas to
+                master in case of sentinel node heartbeat timeout.
+              </p>
+              <a
+                href="../404.html"
+                class="action-trigger"
+                style="color: var(--cyan); font-size: 12px"
+                >Read Runbook &rarr;</a
+              >
             </div>
-            <div>
-              <span style="color: var(--mint)">Docker Image</span> &bull;
-              Registry: registry.stackly.internal/api-gateway:sha-78a9c21 tagged
-              &amp; pushed successfully.
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin-bottom: 12px;
+                "
+              >
+                <i
+                  class="fa-solid fa-book"
+                  style="color: var(--mint); font-size: 18px"
+                ></i>
+                <strong style="font-size: 15px"
+                  >RB-04: Blue/Green Deployment Rollback</strong
+                >
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  margin-bottom: 12px;
+                "
+              >
+                Sub-30-second traffic cutback procedure via Ingress routing
+                tables during regression alerts.
+              </p>
+              <a
+                href="../404.html"
+                class="action-trigger"
+                style="color: var(--cyan); font-size: 12px"
+                >Read Runbook &rarr;</a
+              >
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 22px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(16, 35, 61, 0.5);
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  margin-bottom: 12px;
+                "
+              >
+                <i
+                  class="fa-solid fa-book"
+                  style="color: var(--cyan); font-size: 18px"
+                ></i>
+                <strong style="font-size: 15px"
+                  >RB-09: Disaster Recovery Snapshot Restoration</strong
+                >
+              </div>
+              <p
+                style="
+                  font-size: 12px;
+                  color: var(--muted);
+                  line-height: 1.6;
+                  margin-bottom: 12px;
+                "
+              >
+                Restoring encrypted multi-region PostgreSQL snapshots from AWS
+                S3 Glacier into secondary active hot standby.
+              </p>
+              <a
+                href="../404.html"
+                class="action-trigger"
+                style="color: var(--cyan); font-size: 12px"
+                >Read Runbook &rarr;</a
+              >
             </div>
           </div>
         </section>
-      </div>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer inner-footer"></footer>
+        <!-- ================================================================
+             SCREEN 6: Timesheet & Hours Logger
+             ================================================================ -->
+        <section class="dashboard-screen" id="screen-timesheet">
+          <div class="screen-header">
+            <div class="screen-title-wrap">
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span> Time Tracking
+              </div>
+              <h2>Timesheet &amp; Engineering Work Logs</h2>
+              <p>
+                Track weekly engineering allocation across active client
+                contracts and internal platform tooling.
+              </p>
+            </div>
+            <div class="screen-actions">
+              <a
+                class="button button-small button-primary action-trigger"
+                href="../404.html"
+              >
+                <i class="fa-solid fa-plus"></i> Log Task Hours
+              </a>
+            </div>
+          </div>
 
-    <!-- AOS & Dashboard Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script defer src="../assets/js/dashboard.js"></script>
+          <div class="dashboard-card-grid">
+            <div
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <small style="color: var(--muted)"
+                >Current Week (Sep 07 - Sep 11)</small
+              >
+              <strong style="font-size: 32px; display: block; margin: 8px 0"
+                >38.5 / 40 hrs</strong
+              >
+              <div
+                class="chart-bar-bg"
+                style="height: 8px; margin-bottom: 12px"
+              >
+                <div class="chart-bar-fill mint" style="width: 96%"></div>
+              </div>
+              <span style="color: var(--mint); font-size: 12px"
+                ><i class="fa-solid fa-circle-check"></i> On track to complete
+                week</span
+              >
+            </div>
+
+            <div
+              class="dashboard-card"
+              style="
+                padding: 24px;
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                background: rgba(7, 17, 31, 0.5);
+              "
+            >
+              <small style="color: var(--muted)">Allocation by Category</small>
+              <div class="momentum-bars" style="margin: 16px 0 0">
+                <span><b>Feature Work:</b><i style="--bar: 65%"></i></span>
+                <span><b>Bug Mitigation:</b><i style="--bar: 20%"></i></span>
+                <span><b>Code Review:</b><i style="--bar: 15%"></i></span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
